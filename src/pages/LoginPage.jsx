@@ -11,12 +11,14 @@ import {
   ShieldCheck,
   Building2,
   CheckCircle2,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { SIHBanner } from '../components/common/SIHBanner';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { setUserRole, addToast } = useApp();
+  const { setUserRole, addToast, theme, toggleTheme } = useApp();
 
   const [identifier, setIdentifier] = useState('rajesh.verma@meity.gov.in');
   const [password, setPassword] = useState('••••••••••••');
@@ -48,6 +50,26 @@ export const LoginPage = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between">
       <SIHBanner />
+
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-3 flex justify-end">
+        <button
+          onClick={toggleTheme}
+          className="p-2 px-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-navy-800 border border-slate-200/80 dark:border-navy-700 transition-all flex items-center gap-1.5 text-xs font-semibold bg-white/80 dark:bg-navy-900/80 backdrop-blur-sm shadow-sm"
+          title={`Switch to ${theme === 'dark' ? 'Bright (White with Blue)' : 'Dark (Black with Green)'} theme`}
+        >
+          {theme === 'dark' ? (
+            <>
+              <Sun className="w-3.5 h-3.5 text-amber-400" />
+              <span>Bright Theme</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-3.5 h-3.5 text-blue-600" />
+              <span>Dark Theme</span>
+            </>
+          )}
+        </button>
+      </div>
 
       <div className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
         <div className="w-full max-w-md space-y-6">

@@ -18,19 +18,29 @@
 
   html.dark {
     color-scheme: dark;
-    background-color: #030712;
+    background-color: #020604;
   }
 
-  body {
+  /* Bright theme: Crisp White with Blue atmospheric ambient glow */
+  body, .bg-slate-50 {
     overflow-x: hidden;
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(59, 130, 246, 0.12) 0%, rgba(219, 234, 254, 0.4) 30%, transparent 70%),
+      radial-gradient(ellipse 60% 45% at 90% 35%, rgba(6, 182, 212, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 10% 75%, rgba(37, 99, 235, 0.06) 0%, transparent 55%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
-  html.dark body {
-    background-color: #030712;
+  /* Dark mode: Dark Black with Green atmospheric ambient glow */
+  html.dark body, .dark .bg-navy-950 {
+    background-color: #020604;
     background-image: 
-      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(56, 189, 248, 0.14) 0%, rgba(224, 242, 254, 0.04) 30%, transparent 70%),
-      radial-gradient(ellipse 60% 45% at 90% 40%, rgba(186, 230, 253, 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 45% at 10% 75%, rgba(96, 165, 250, 0.07) 0%, transparent 60%);
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(16, 185, 129, 0.18) 0%, rgba(5, 150, 105, 0.06) 30%, transparent 70%),
+      radial-gradient(ellipse 60% 45% at 88% 38%, rgba(52, 211, 153, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 45% at 12% 75%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,56 +67,48 @@
 }
 
 @layer utilities {
-  /* Command Center Card Style: Crisp 1px thin borders, subtle ambient elevation */
+  /* Bright theme: White cards with blue border and ambient glow */
   .command-card {
     background: #ffffff;
-    border: 1px solid rgba(226, 232, 240, 0.85);
-    box-shadow: 0 4px 20px -2px rgba(7, 12, 30, 0.05);
+    border: 1px solid rgba(191, 219, 254, 0.85);
+    box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.07), 0 1px 3px 0 rgba(0, 0, 0, 0.03);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* Dark mode: Dark black cards with emerald green border and elevation */
   .dark .command-card {
-    background: #070c18;
-    border: 1px solid rgba(186, 230, 253, 0.12);
-    box-shadow: 0 4px 28px -2px rgba(0, 0, 0, 0.75), 0 0 16px -2px rgba(56, 189, 248, 0.06);
+    background: #040c08;
+    border: 1px solid rgba(52, 211, 153, 0.18);
+    box-shadow: 0 4px 28px -2px rgba(0, 0, 0, 0.82), 0 0 16px -2px rgba(16, 185, 129, 0.1);
   }
 
   .command-card-hover:hover {
     transform: translateY(-2px);
-    border-color: rgba(6, 182, 212, 0.3);
-    box-shadow: 0 8px 30px -4px rgba(6, 182, 212, 0.12);
+    border-color: rgba(59, 130, 246, 0.45);
+    box-shadow: 0 8px 30px -4px rgba(59, 130, 246, 0.18), 0 0 16px 0 rgba(191, 219, 254, 0.4);
   }
 
   .dark .command-card-hover:hover {
-    border-color: rgba(186, 230, 253, 0.45);
-    box-shadow: 0 8px 34px -4px rgba(56, 189, 248, 0.22), 0 0 22px 0 rgba(224, 242, 254, 0.1);
+    border-color: rgba(52, 211, 153, 0.5);
+    box-shadow: 0 8px 36px -4px rgba(16, 185, 129, 0.25), 0 0 20px 0 rgba(52, 211, 153, 0.14);
   }
 
+  /* Bright theme: Frosted white with blue border */
   .glass-card {
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(226, 232, 240, 0.85);
+    border: 1px solid rgba(191, 219, 254, 0.85);
+    box-shadow: 0 8px 30px -4px rgba(59, 130, 246, 0.08);
   }
 
+  /* Dark mode: Frosted dark black glass with green border */
   .dark .glass-card {
-    background: rgba(7, 12, 24, 0.82);
+    background: rgba(4, 12, 8, 0.84);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(224, 242, 254, 0.14);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), 0 0 15px -3px rgba(186, 230, 253, 0.06);
-  }
-
-  /* Dark mode background: Dark black with atmospheric white-blue radial glow */
-  .dark .bg-navy-950 {
-    background-color: #030712;
-    background-image: 
-      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(56, 189, 248, 0.14) 0%, rgba(224, 242, 254, 0.04) 30%, transparent 70%),
-      radial-gradient(ellipse 60% 45% at 90% 40%, rgba(186, 230, 253, 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 45% at 10% 75%, rgba(96, 165, 250, 0.07) 0%, transparent 60%);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    border: 1px solid rgba(52, 211, 153, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.65), 0 0 16px -2px rgba(16, 185, 129, 0.08);
   }
 
   .ai-gradient-text {
@@ -116,7 +118,7 @@
   }
 
   .dark .ai-gradient-text {
-    background: linear-gradient(135deg, #38bdf8 0%, #22d3ee 50%, #34d399 100%);
+    background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #06b6d4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -156,20 +158,22 @@
     background: transparent;
   }
 
+  /* Bright theme scrollbar: Translucent blue */
   ::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.35);
+    background: rgba(147, 197, 253, 0.5);
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(100, 116, 139, 0.6);
+    background: rgba(59, 130, 246, 0.75);
   }
 
+  /* Dark mode scrollbar: Translucent emerald green */
   .dark ::-webkit-scrollbar-thumb {
-    background: rgba(186, 230, 253, 0.22);
+    background: rgba(52, 211, 153, 0.3);
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: rgba(186, 230, 253, 0.45);
+    background: rgba(52, 211, 153, 0.65);
   }
 }

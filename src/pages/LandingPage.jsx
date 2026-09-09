@@ -22,13 +22,17 @@ import {
   BarChart3,
   HelpCircle,
   Activity,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { SIHBanner } from '../components/common/SIHBanner';
 import { AICoreVisual } from '../components/common/AICoreVisual';
 import { useInView } from '../hooks/useInView';
+import { useApp } from '../context/AppContext';
 
 export const LandingPage = () => {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useApp();
 
   // Scroll Storytelling InView hooks
   const [section1Ref, section1InView] = useInView({ threshold: 0.25 });
@@ -171,7 +175,21 @@ export const LandingPage = () => {
             </a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-navy-800 border border-slate-200/60 dark:border-navy-700/60 transition-all"
+              title={`Switch to ${theme === 'dark' ? 'Bright (White with Blue)' : 'Dark (Black with Green)'} theme`}
+              aria-label="Toggle Bright / Dark theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform" />
+              ) : (
+                <Moon className="w-4 h-4 text-blue-600 hover:-rotate-12 transition-transform" />
+              )}
+            </button>
+
             <Link
               to="/login"
               className="text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-cyan-500 px-3 py-1.5 transition-colors"
