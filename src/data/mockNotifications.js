@@ -1,0 +1,47 @@
+export const initialNotifications = [
+  {
+    id: 'notif-1',
+    title: 'AI Skill Gap Detected',
+    message: 'AI identified 2 new skill gaps in Cloud Architecture & CERT-In Compliance.',
+    category: 'ai',
+    timestamp: '15 mins ago',
+    unread: true,
+    link: '/skills',
+  },
+  {
+    id: 'notif-2',
+    title: 'Course In-Progress Reminder',
+    message: 'Your Cybersecurity Essentials course is 20% complete. Continue today to preserve your 7-day streak.',
+    category: 'course',
+    timestamp: '2 hours ago',
+    unread: true,
+    link: '/learning/cybersecurity-essentials',
+  },
+  {
+    id: 'notif-3',
+    title: 'Assessment Score Logged',
+    message: 'You scored 82% in your latest AI-generated assessment on Governance Cryptography.',
+    category: 'quiz',
+    timestamp: 'Yesterday',
+    unread: false,
+    link: '/quiz/result',
+  },
+  {
+    id: 'notif-4',
+    title: 'New Learning Path Available',
+    message: 'New personalized learning path: "Digital Personal Data Protection Act 2023" published under Karmayogi.',
+    category: 'karmayogi',
+    timestamp: '2 days ago',
+    unread: true,
+    link: '/learning',
+  },
+  {
+    id: 'notif-5',
+    title: 'iGOT Karmayogi Sync Completed',
+    message: 'Bi-directional competency credits synced successfully with the National Civil Services Registry.',
+    category: 'system',
+    timestamp: '3 days ago',
+    unread: false,
+    link: '/profile',
+  }
+];
