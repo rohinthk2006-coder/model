@@ -38,8 +38,8 @@ export const AICoreVisual = () => {
       className="relative w-full max-w-[480px] sm:max-w-[540px] aspect-square mx-auto flex items-center justify-center select-none"
     >
       {/* Background Ambient Radial Glow */}
-      <div className="absolute w-72 h-72 rounded-full bg-cyan-500/10 dark:bg-cyan-500/15 blur-3xl pointer-events-none" />
-      <div className="absolute w-56 h-56 rounded-full bg-blue-600/15 dark:bg-blue-600/20 blur-2xl pointer-events-none" />
+      <div className="absolute w-72 h-72 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-3xl pointer-events-none" />
+      <div className="absolute w-56 h-56 rounded-full bg-teal-600/15 dark:bg-teal-600/20 blur-2xl pointer-events-none" />
 
       {/* SVG Layer for Orbits, Scanning Sweep, and Neural Vectors */}
       <svg

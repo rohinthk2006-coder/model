@@ -64,7 +64,7 @@ export const LoginPage = () => {
             </>
           ) : (
             <>
-              <Moon className="w-3.5 h-3.5 text-blue-600" />
+              <Moon className="w-3.5 h-3.5 text-emerald-600" />
               <span>Dark Theme</span>
             </>
           )}
@@ -76,7 +76,7 @@ export const LoginPage = () => {
           {/* Logo & Portal Header */}
           <div className="text-center space-y-2">
             <Link to="/" className="inline-flex items-center gap-2.5">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-600 to-cyan-400 flex items-center justify-center shadow-blue-glow text-white font-black text-xl">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 flex items-center justify-center shadow-green-glow text-white font-black text-xl">
                 G
               </div>
               <div className="text-left">
@@ -84,7 +84,7 @@ export const LoginPage = () => {
                   <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
                     GovLearn
                   </span>
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[11px] font-bold px-1.5 py-0.5 rounded tracking-wide uppercase">
+                  <span className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[11px] font-bold px-1.5 py-0.5 rounded tracking-wide uppercase">
                     AI
                   </span>
                 </div>
@@ -103,9 +103,9 @@ export const LoginPage = () => {
           </div>
 
           {/* Quick Demo Personas (SIH Hackathon Presentation Helpers) */}
-          <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-900/10 via-cyan-500/10 to-blue-900/10 dark:from-navy-900 dark:via-blue-950 dark:to-navy-900 border border-cyan-500/30 space-y-3">
+          <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-900/10 via-teal-500/10 to-emerald-900/10 dark:from-navy-900 dark:via-emerald-950/40 dark:to-navy-900 border border-emerald-500/30 space-y-3">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-cyan-600 dark:text-cyan-400 flex items-center gap-1">
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                 <Sparkles className="w-3.5 h-3.5" /> Instant Demo Access (No Password)
               </span>
               <span className="text-[10px] font-mono text-slate-400">SIH 2026 Mode</span>
@@ -115,13 +115,13 @@ export const LoginPage = () => {
               <button
                 type="button"
                 onClick={handleDemoEmployee}
-                className="p-3 rounded-xl bg-white dark:bg-navy-800 hover:bg-blue-50 dark:hover:bg-navy-700 border border-blue-200 dark:border-navy-600 text-left transition-all shadow-sm group"
+                className="p-3 rounded-xl bg-white dark:bg-navy-800 hover:bg-emerald-50 dark:hover:bg-navy-700 border border-emerald-200 dark:border-navy-600 text-left transition-all shadow-sm group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
                     Demo Employee
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 text-blue-500 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 text-emerald-500 group-hover:translate-x-0.5 transition-transform" />
                 </div>
                 <p className="text-[11px] font-medium text-slate-800 dark:text-slate-200 mt-1">
                   Rajesh Verma
@@ -207,7 +207,7 @@ export const LoginPage = () => {
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="w-3.5 h-3.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    className="w-3.5 h-3.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                   />
                   <span className="text-slate-600 dark:text-slate-400">Remember this device</span>
                 </label>
@@ -217,7 +217,7 @@ export const LoginPage = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 btn-command"
               >
                 {isLoading ? (
                   <span>Authenticating with Central Registry...</span>

@@ -138,7 +138,7 @@ export const QuizResultPage = () => {
             </div>
 
             {/* Performance Analysis Bullet Points */}
-            <div className="p-4 rounded-xl bg-blue-50/60 dark:bg-navy-900/60 border border-blue-100 dark:border-navy-800 space-y-2 text-xs">
+            <div className="p-4 rounded-xl bg-emerald-50/60 dark:bg-navy-900/60 border border-emerald-100 dark:border-navy-800 space-y-2 text-xs">
               <div className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                 <TrendingUp className="w-4 h-4 text-cyan-500" />
                 <span>Performance Analysis:</span>
@@ -199,7 +199,7 @@ export const QuizResultPage = () => {
 
             <button
               onClick={() => navigate('/learning')}
-              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-2 btn-command"
+              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-2 btn-command"
             >
               <span>Continue Learning</span>
               <ArrowRight className="w-4 h-4" />

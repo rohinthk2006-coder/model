@@ -73,7 +73,7 @@ export const SkillGapAnalysisPage = () => {
 
           <button
             onClick={() => navigate('/learning')}
-            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md transition-all flex items-center gap-1.5 btn-command"
+            className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5 btn-command"
           >
             <BookOpen className="w-3.5 h-3.5" />
             <span>Curriculum Catalog</span>
@@ -84,65 +84,76 @@ export const SkillGapAnalysisPage = () => {
       {/* AI ANALYZED Status Indicator Bar (Requirement #7) */}
       <div className="command-card rounded-2xl p-4 border border-cyan-500/30 flex flex-wrap items-center justify-between gap-3 text-xs bg-slate-50/70 dark:bg-navy-900/70">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 font-mono font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider text-[11px]">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            AI ANALYSIS COMPLETE
+          <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500">
+            <CheckCircle2 className="w-4 h-4" />
           </div>
-          <span className="text-slate-300 dark:text-navy-700">|</span>
-          <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
-            <span>Skill Score:</span>
-            <strong className="text-slate-900 dark:text-white font-mono">78%</strong>
-          </div>
-          <span className="text-slate-300 dark:text-navy-700">|</span>
-          <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
-            <span>Confidence:</span>
-            <strong className="text-emerald-500 font-mono">92%</strong>
+          <div>
+            <p className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
+              <span>Competency Gap Model Calibrated</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
+                ACTIVE
+              </span>
+            </p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              Diagnostic synthesized across 6 civil service benchmarks • Last sync 4 mins ago
+            </p>
           </div>
         </div>
 
-        <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-          Skills analyzed: <strong className="text-cyan-500">6 Competency Domains</strong>
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+            Department Standard:
+          </span>
+          <span className="font-bold text-slate-800 dark:text-slate-200">
+            MeitY Senior Officer Tier-1
+          </span>
         </div>
       </div>
 
-      {/* Animated Skill Comparison: Current Level (78%) vs Target Level (90%) */}
-      <div className="command-card rounded-2xl p-6 border border-slate-200 dark:border-navy-800 space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider text-xs">
-              Maturity Level Trajectory
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Your overall competency rating compared against Level 5 Senior Secretarial Target
-            </p>
+      {/* Two-Column Progress Target Visual (Current vs Target) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Current Level */}
+        <div className="command-card rounded-2xl p-5 border border-slate-200 dark:border-navy-800 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Current Proficiency
+            </span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+              Baseline Ready
+            </span>
           </div>
-          <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 font-mono">
-            Delta: -12% to Mastery
-          </span>
-        </div>
 
-        <div className="space-y-3 text-xs">
-          {/* Current Level */}
           <div>
             <div className="flex justify-between text-xs font-semibold mb-1">
               <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-400" /> Current Level
+                <span className="w-2 h-2 rounded-full bg-cyan-400" /> Current Skill Level
               </span>
               <span className="font-mono font-bold text-cyan-500">78%</span>
             </div>
             <div className="w-full bg-slate-100 dark:bg-navy-950 h-2.5 rounded-full overflow-hidden">
               <div
-                className="bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full transition-all duration-1000 ease-out"
+                className="bg-gradient-to-r from-emerald-600 to-teal-400 h-full rounded-full transition-all duration-1000 ease-out"
                 style={{ width: '78%' }}
               />
             </div>
           </div>
+        </div>
 
-          {/* Target Level */}
+        {/* Target Level */}
+        <div className="command-card rounded-2xl p-5 border border-slate-200 dark:border-navy-800 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Target Level (National Goal)
+            </span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              Level 5 Mastery
+            </span>
+          </div>
+
           <div>
             <div className="flex justify-between text-xs font-semibold mb-1">
               <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" /> Target Level (National Goal)
+                <span className="w-2 h-2 rounded-full bg-emerald-400" /> Target Skill Level
               </span>
               <span className="font-mono font-bold text-emerald-500">90%</span>
             </div>
@@ -157,14 +168,14 @@ export const SkillGapAnalysisPage = () => {
       </div>
 
       {/* AI RECOMMENDATION CARD */}
-      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-navy-950 via-navy-900 to-blue-950 text-white border border-cyan-500/40 shadow-cyan-glow overflow-hidden">
-        <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-navy-950 via-navy-900 to-emerald-950/50 text-white border border-emerald-500/40 shadow-green-glow overflow-hidden">
+        <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 text-xs font-bold font-mono">
-                <Sparkles className="w-3 h-3 text-cyan-300 animate-spin" style={{ animationDuration: '4s' }} />
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold font-mono">
+                <Sparkles className="w-3 h-3 text-emerald-300 animate-spin" style={{ animationDuration: '4s' }} />
                 RECOMMENDED FOCUS
               </span>
               <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
@@ -182,13 +193,13 @@ export const SkillGapAnalysisPage = () => {
               <span>•</span>
               <span>Estimated Commitment: <strong>10 hours</strong></span>
               <span>•</span>
-              <span className="text-cyan-300">CERT-In Compliance Aligned</span>
+              <span className="text-emerald-300">CERT-In Compliance Aligned</span>
             </div>
           </div>
 
           <button
             onClick={() => navigate('/learning')}
-            className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold shadow-cyan-glow transition-all flex items-center gap-2 shrink-0 group btn-command"
+            className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-2 shrink-0 group btn-command"
           >
             <span>View Recommended Learning</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -72,7 +72,7 @@ export const EmployeeDashboard = () => {
 
             <button
               onClick={() => navigate('/learning/cloud-fundamentals')}
-              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/20 transition-all flex items-center gap-1.5 btn-command"
+              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5 btn-command"
             >
               <PlayCircle className="w-3.5 h-3.5" />
               <span>Resume Cloud Course</span>
@@ -101,7 +101,7 @@ export const EmployeeDashboard = () => {
             icon={BookOpen}
             trend="80% to Q3 Target"
             trendPositive={true}
-            color="blue"
+            color="emerald"
             progress={80}
             animateValue={true}
           />
@@ -123,7 +123,7 @@ export const EmployeeDashboard = () => {
             value="7 days"
             subtitle="Personal Best: 14 days"
             icon={Flame}
-            trend="🔥 Active Daily"
+            trend="Active Daily"
             trendPositive={true}
             color="amber"
             progress={50}
@@ -131,11 +131,8 @@ export const EmployeeDashboard = () => {
           />
         </div>
 
-        {/* AI INSIGHT CARD with Typewriter Reveal */}
-        <AIInsightCard
-          buttonText="View AI Analysis"
-          buttonLink="/skills"
-        />
+        {/* Dynamic AI Competency Gap Insight Card (Sequential Typewriter) */}
+        <AIInsightCard />
 
         {/* In Progress Section */}
         <div className="space-y-4 pt-2">
@@ -144,13 +141,13 @@ export const EmployeeDashboard = () => {
               <h2 className="text-lg font-bold text-slate-900 dark:text-white font-display">
                 Continue Learning
               </h2>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 {inProgressCourses.length} in progress
               </span>
             </div>
             <Link
               to="/learning"
-              className="text-xs font-bold text-blue-600 dark:text-cyan-400 hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
             >
               View All Courses <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -270,7 +267,7 @@ export const EmployeeDashboard = () => {
 
             <button
               onClick={handleQuickQuizLaunch}
-              className="mt-5 w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs shadow-cyan-glow transition-all flex items-center justify-center gap-2 btn-command"
+              className="mt-5 w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs shadow-green-glow transition-all flex items-center justify-center gap-2 btn-command"
             >
               <span>Launch AI Quiz Engine</span>
               <ArrowRight className="w-4 h-4" />

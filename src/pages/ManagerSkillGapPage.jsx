@@ -66,7 +66,7 @@ export const ManagerSkillGapPage = () => {
 
         <button
           onClick={() => handleOpenAssign(teamSkillGaps[0])}
-          className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/20 transition-all flex items-center gap-2 shrink-0"
+          className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-2 shrink-0"
         >
           <Send className="w-3.5 h-3.5" />
           <span>Assign Training</span>
@@ -74,14 +74,14 @@ export const ManagerSkillGapPage = () => {
       </div>
 
       {/* AI RECOMMENDATION CARD (Prominently Required) */}
-      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-navy-900 via-blue-950 to-navy-900 text-white border border-cyan-500/40 shadow-cyan-glow overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-navy-900 via-emerald-950/40 to-navy-900 text-white border border-emerald-500/40 shadow-green-glow overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 text-xs font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
                 AI Executive Recommendation
               </span>
               <span className="text-[11px] font-semibold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full border border-rose-500/20">
@@ -99,13 +99,13 @@ export const ManagerSkillGapPage = () => {
               <span>•</span>
               <span>Department: <strong>IT & Operations</strong></span>
               <span>•</span>
-              <span className="text-cyan-300">MeghRaj Architecture Standard</span>
+              <span className="text-emerald-300">MeghRaj Architecture Standard</span>
             </div>
           </div>
 
           <button
             onClick={() => handleOpenAssign(teamSkillGaps[0])}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold shadow-cyan-glow transition-all flex items-center gap-2 shrink-0 group"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-2 shrink-0 group"
           >
             <span>Assign Training</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -168,7 +168,7 @@ export const ManagerSkillGapPage = () => {
 
                   <button
                     onClick={() => handleOpenAssign(gap)}
-                    className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1 shrink-0"
+                    className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1 shrink-0"
                   >
                     <span>Assign</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -179,7 +179,13 @@ export const ManagerSkillGapPage = () => {
               {/* Visual Progress Bar */}
               <div className="w-full bg-slate-200 dark:bg-navy-900 rounded-full h-2 overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-rose-500 to-amber-500 transition-all duration-500"
+                  className={`h-full rounded-full transition-all duration-700 ease-out ${
+                    gap.gapPercentage > 20
+                      ? 'bg-rose-500'
+                      : gap.gapPercentage > 10
+                      ? 'bg-amber-500'
+                      : 'bg-emerald-500'
+                  }`}
                   style={{ width: `${gap.gapPercentage}%` }}
                 />
               </div>
@@ -191,10 +197,10 @@ export const ManagerSkillGapPage = () => {
       {/* Assign Training Interactive Modal */}
       {showAssignModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/75 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-lg bg-white dark:bg-navy-900 rounded-2xl shadow-2xl border border-cyan-500/40 overflow-hidden text-slate-900 dark:text-white">
+          <div className="w-full max-w-lg bg-white dark:bg-navy-900 rounded-2xl shadow-2xl border border-emerald-500/30 overflow-hidden text-slate-900 dark:text-white">
             <div className="p-6 border-b border-slate-100 dark:border-navy-800 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                   <Send className="w-4 h-4" />
                 </div>
                 <div>
@@ -225,7 +231,7 @@ export const ManagerSkillGapPage = () => {
                   value={selectedCourse}
                   onChange={(e) => setSelectedCourse(e.target.value)}
                   required
-                  className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs font-semibold text-slate-800 dark:text-slate-200"
+                  className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
@@ -237,7 +243,7 @@ export const ManagerSkillGapPage = () => {
                   <select
                     value={targetDept}
                     onChange={(e) => setTargetDept(e.target.value)}
-                    className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs text-slate-700 dark:text-slate-300"
+                    className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option>IT & Operations</option>
                     <option>Finance & Accounts</option>
@@ -253,7 +259,7 @@ export const ManagerSkillGapPage = () => {
                   <select
                     value={deadlineDays}
                     onChange={(e) => setDeadlineDays(e.target.value)}
-                    className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs text-slate-700 dark:text-slate-300"
+                    className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option value="15">15 Days (Urgent)</option>
                     <option value="30">30 Days (Standard)</option>
@@ -262,13 +268,13 @@ export const ManagerSkillGapPage = () => {
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-blue-50 dark:bg-navy-950 border border-blue-100 dark:border-navy-800 text-xs text-slate-600 dark:text-slate-300 flex items-center justify-between">
+              <div className="p-3 rounded-xl bg-emerald-50 dark:bg-navy-950 border border-emerald-100 dark:border-navy-800 text-xs text-slate-600 dark:text-slate-300 flex items-center justify-between">
                 <span>Mark as Statutory / Mandatory Requirement</span>
                 <input
                   type="checkbox"
                   checked={isMandatory}
                   onChange={(e) => setIsMandatory(e.target.checked)}
-                  className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500"
+                  className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500"
                 />
               </div>
 
@@ -282,7 +288,7 @@ export const ManagerSkillGapPage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white text-xs font-bold shadow-cyan-glow transition-all flex items-center gap-1.5"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-1.5"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Dispatch Assignment</span>

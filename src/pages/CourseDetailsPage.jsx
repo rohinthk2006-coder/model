@@ -81,7 +81,7 @@ export const CourseDetailsPage = () => {
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div className="space-y-2 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                 {course.category}
               </span>
               <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-300">
@@ -112,12 +112,12 @@ export const CourseDetailsPage = () => {
             <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Course Progress
             </div>
-            <div className="text-3xl font-black text-blue-600 dark:text-cyan-400">
+            <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400">
               {course.progress}%
             </div>
             <div className="w-full bg-slate-200 dark:bg-navy-800 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-gradient-to-r from-blue-600 to-cyan-400 h-full rounded-full transition-all duration-500"
+                className="bg-gradient-to-r from-emerald-600 to-teal-400 h-full rounded-full transition-all duration-500"
                 style={{ width: `${course.progress}%` }}
               />
             </div>
@@ -152,7 +152,7 @@ export const CourseDetailsPage = () => {
               {/* Center Play Button Overlay */}
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-16 h-16 rounded-2xl bg-blue-600/80 hover:bg-cyan-500 text-white flex items-center justify-center shadow-cyan-glow transition-all transform hover:scale-105 z-10"
+                className="w-16 h-16 rounded-2xl bg-emerald-600/80 hover:bg-emerald-500 text-white flex items-center justify-center shadow-green-glow transition-all transform hover:scale-105 z-10"
               >
                 {isPlaying ? (
                   <Pause className="w-7 h-7" />
@@ -237,7 +237,7 @@ export const CourseDetailsPage = () => {
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                   isModuleDone
                     ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
-                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-sm'
+                    : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
@@ -324,7 +324,7 @@ export const CourseDetailsPage = () => {
                 />
                 <button
                   onClick={handleSaveNotes}
-                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-sm"
+                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-sm btn-command"
                 >
                   Save Notes to Dossier
                 </button>
@@ -384,7 +384,7 @@ export const CourseDetailsPage = () => {
                     onClick={() => setSelectedModuleId(mod.id)}
                     className={`w-full p-3 rounded-xl text-left transition-all flex items-start gap-3 border ${
                       isSelected
-                        ? 'bg-blue-50 dark:bg-navy-800/80 border-cyan-500/50 shadow-sm'
+                        ? 'bg-emerald-50 dark:bg-navy-800/80 border-emerald-500/50 shadow-sm'
                         : 'bg-white dark:bg-navy-950/60 border-slate-200 dark:border-navy-800 hover:bg-slate-50 dark:hover:bg-navy-800/40'
                     }`}
                   >

@@ -62,7 +62,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
         {/* Sidebar Header */}
         <div className="h-16 px-4 border-b border-slate-200 dark:border-navy-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 via-blue-600 to-cyan-400 flex items-center justify-center shadow-blue-glow text-white font-bold text-sm shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 flex items-center justify-center shadow-green-glow text-white font-bold text-sm shrink-0">
               GL
             </div>
             {!isCollapsed && (
@@ -70,7 +70,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 <span className="font-extrabold text-sm tracking-tight text-slate-900 dark:text-white truncate block">
                   GovLearn AI
                 </span>
-                <span className="block text-[9px] uppercase tracking-widest text-cyan-600 dark:text-cyan-400 font-bold truncate">
+                <span className="block text-[9px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold truncate">
                   {userRole === 'manager' ? 'Executive Portal' : 'Employee Workspace'}
                 </span>
               </div>
@@ -82,11 +82,12 @@ export const Sidebar = ({ isOpen, onClose }) => {
             onClick={toggleSidebarCollapsed}
             className="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-navy-800 transition-colors"
             title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (
-              <ChevronsRight className="w-4 h-4" />
+              <ChevronsRight className="w-4 h-4 text-slate-400" />
             ) : (
-              <ChevronsLeft className="w-4 h-4" />
+              <ChevronsLeft className="w-4 h-4 text-slate-400" />
             )}
           </button>
 
@@ -104,7 +105,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
           isCollapsed ? 'p-2 flex flex-col items-center' : 'p-3.5'
         }`}>
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-lg overflow-hidden bg-blue-600 border border-cyan-500/30 shrink-0">
+            <div className="w-9 h-9 rounded-lg overflow-hidden bg-emerald-600 border border-emerald-500/30 shrink-0">
               <img
                 src={currentUser.avatarUrl}
                 alt={currentUser.name}
@@ -129,7 +130,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 <Flame className="w-3 h-3 fill-amber-500" />
                 <span>{currentUser.streak || 7}d Streak</span>
               </div>
-              <div className="text-cyan-600 dark:text-cyan-400 font-bold">
+              <div className="text-emerald-600 dark:text-emerald-400 font-bold">
                 Score: {currentUser.skillScore}%
               </div>
             </div>
@@ -157,7 +158,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                     isCollapsed ? 'justify-center py-2.5' : 'justify-between px-3 py-2.5'
                   } rounded-xl text-xs font-medium transition-all group relative ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20 font-semibold'
+                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25 font-semibold'
                       : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-navy-800 hover:text-slate-900 dark:hover:text-white'
                   }`
                 }

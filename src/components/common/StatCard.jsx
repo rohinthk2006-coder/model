@@ -25,12 +25,12 @@ export const StatCard = ({
 
   const colorMap = {
     blue: {
-      iconBg: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
-      bar: 'bg-blue-600',
+      iconBg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+      bar: 'bg-emerald-500',
     },
     cyan: {
-      iconBg: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
-      bar: 'bg-cyan-500',
+      iconBg: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20',
+      bar: 'bg-teal-500',
     },
     emerald: {
       iconBg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',

@@ -18,7 +18,7 @@
 
   html.dark {
     color-scheme: dark;
-    background-color: #020604;
+    background-color: #050807;
   }
 
   /* Bright theme: Crisp White with Blue atmospheric ambient glow */
@@ -36,7 +36,7 @@
 
   /* Dark mode: Dark Black with Green atmospheric ambient glow */
   html.dark body, .dark .bg-navy-950 {
-    background-color: #020604;
+    background-color: #050807;
     background-image: 
       radial-gradient(ellipse 90% 60% at 50% -10%, rgba(16, 185, 129, 0.18) 0%, rgba(5, 150, 105, 0.06) 30%, transparent 70%),
       radial-gradient(ellipse 60% 45% at 88% 38%, rgba(52, 211, 153, 0.10) 0%, transparent 60%),

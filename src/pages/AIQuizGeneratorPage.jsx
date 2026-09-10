@@ -197,7 +197,7 @@ export const AIQuizGeneratorPage = () => {
                     onClick={() => setTopic(t)}
                     className={`p-3 rounded-xl text-xs font-bold text-center transition-all border btn-command ${
                       topic === t
-                        ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/20'
+                        ? 'bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-600/20'
                         : 'bg-white dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-navy-800 hover:bg-slate-50'
                     }`}
                   >
@@ -266,7 +266,7 @@ export const AIQuizGeneratorPage = () => {
                     onClick={() => setQuestionType(type)}
                     className={`py-2.5 px-4 rounded-xl text-xs font-bold text-center transition-all border btn-command ${
                       questionType === type
-                        ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                        ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
                         : 'bg-white dark:bg-navy-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-navy-800'
                     }`}
                   >
@@ -398,7 +398,7 @@ export const AIQuizGeneratorPage = () => {
                     onClick={() => handleSelectAnswer(oIdx)}
                     className={`w-full p-4 rounded-xl text-left text-xs sm:text-sm font-semibold transition-all flex items-center gap-3 border btn-command ${
                       isSelected
-                        ? 'bg-blue-50 dark:bg-navy-800/90 border-cyan-500 text-slate-900 dark:text-white ring-2 ring-cyan-500/20'
+                        ? 'bg-emerald-50 dark:bg-navy-800/90 border-emerald-500 text-slate-900 dark:text-white ring-2 ring-emerald-500/20'
                         : 'bg-white dark:bg-navy-950 border-slate-200 dark:border-navy-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50'
                     }`}
                   >
@@ -434,7 +434,7 @@ export const AIQuizGeneratorPage = () => {
                   <button
                     type="button"
                     onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
-                    className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 btn-command"
+                    className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 btn-command"
                   >
                     <span>Next Question</span>
                     <ChevronRight className="w-4 h-4" />

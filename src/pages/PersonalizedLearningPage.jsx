@@ -115,7 +115,7 @@ export const PersonalizedLearningPage = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedCategory === cat
-                  ? 'bg-blue-600 text-white shadow-sm'
+                  ? 'bg-emerald-600 text-white shadow-sm'
                   : 'bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-navy-800'
               }`}
             >

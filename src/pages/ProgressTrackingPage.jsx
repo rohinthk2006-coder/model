@@ -89,7 +89,7 @@ export const ProgressTrackingPage = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg transition-all btn-command ${
                   timeFilter === tf
-                    ? 'bg-blue-600 text-white shadow-sm font-bold'
+                    ? 'bg-emerald-600 text-white shadow-sm font-bold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
