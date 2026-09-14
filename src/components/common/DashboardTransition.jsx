@@ -32,18 +32,18 @@ export const DashboardTransition = ({ onComplete }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/90 dark:bg-navy-950/95 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300">
-      <div className="max-w-md w-full bg-white dark:bg-navy-900 rounded-2xl p-6 sm:p-8 border border-cyan-500/30 shadow-2xl text-center space-y-5">
+      <div className="max-w-md w-full bg-white dark:bg-navy-900 rounded-2xl p-6 sm:p-8 border border-blue-200 dark:border-cyan-500/30 shadow-2xl text-center space-y-5">
         <div className="relative w-16 h-16 mx-auto flex items-center justify-center">
-          <div className="absolute inset-0 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-500/40 animate-pulse" />
+          <div className="absolute inset-0 rounded-2xl bg-blue-50 dark:bg-cyan-500/20 border border-blue-200 dark:border-cyan-500/40 animate-pulse" />
           {stage === 3 ? (
-            <CheckCircle2 className="w-8 h-8 text-emerald-400 animate-bounce" />
+            <CheckCircle2 className="w-8 h-8 text-blue-600 dark:text-emerald-400 animate-bounce" />
           ) : (
-            <Sparkles className="w-8 h-8 text-cyan-400 animate-spin" style={{ animationDuration: '4s' }} />
+            <Sparkles className="w-8 h-8 text-blue-600 dark:text-cyan-400 animate-spin" style={{ animationDuration: '4s' }} />
           )}
         </div>
 
         <div className="space-y-1.5">
-          <span className="text-[10px] font-mono tracking-widest uppercase text-cyan-600 dark:text-cyan-400 font-bold">
+          <span className="text-[10px] font-mono tracking-widest uppercase text-blue-600 dark:text-cyan-400 font-bold">
             GovLearn Neural Environment
           </span>
           <h3 className="text-base font-bold text-slate-900 dark:text-white transition-all">
@@ -59,7 +59,7 @@ export const DashboardTransition = ({ onComplete }) => {
         {/* Progress line */}
         <div className="w-full bg-slate-100 dark:bg-navy-950 rounded-full h-1.5 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-blue-600 via-cyan-400 to-emerald-400 rounded-full transition-all duration-300"
+            className="h-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-600 dark:via-cyan-400 dark:to-emerald-400 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
