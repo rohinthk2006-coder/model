@@ -261,7 +261,7 @@ export const CourseDetailsPage = () => {
                 onClick={() => setActiveTab('lecture')}
                 className={`pb-1 transition-all ${
                   activeTab === 'lecture'
-                    ? 'text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 font-extrabold'
+                    ? 'text-blue-600 dark:text-cyan-400 border-b-2 border-blue-600 dark:border-cyan-500 font-extrabold'
                     : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200'
                 }`}
               >
@@ -271,7 +271,7 @@ export const CourseDetailsPage = () => {
                 onClick={() => setActiveTab('notes')}
                 className={`pb-1 transition-all ${
                   activeTab === 'notes'
-                    ? 'text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 font-extrabold'
+                    ? 'text-blue-600 dark:text-cyan-400 border-b-2 border-blue-600 dark:border-cyan-500 font-extrabold'
                     : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200'
                 }`}
               >
@@ -281,7 +281,7 @@ export const CourseDetailsPage = () => {
                 onClick={() => setActiveTab('resources')}
                 className={`pb-1 transition-all ${
                   activeTab === 'resources'
-                    ? 'text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 font-extrabold'
+                    ? 'text-blue-600 dark:text-cyan-400 border-b-2 border-blue-600 dark:border-cyan-500 font-extrabold'
                     : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200'
                 }`}
               >
@@ -320,11 +320,11 @@ export const CourseDetailsPage = () => {
                   value={userNote}
                   onChange={(e) => setUserNote(e.target.value)}
                   placeholder="Type personal takeaways, circular references, or question points here..."
-                  className="w-full p-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full p-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
                   onClick={handleSaveNotes}
-                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-sm btn-command"
+                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-sm btn-command"
                 >
                   Save Notes to Dossier
                 </button>
@@ -335,12 +335,12 @@ export const CourseDetailsPage = () => {
               <div className="space-y-2 text-xs">
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-rose-500" />
+                    <FileText className="w-4 h-4 text-blue-500" />
                     <span>MeghRaj GI Cloud Architecture Standard Manual.pdf</span>
                   </div>
                   <button
                     onClick={() => addToast('Simulated PDF Download initiated (MeghRaj Manual)', 'info')}
-                    className="text-cyan-600 dark:text-cyan-400 font-bold hover:underline flex items-center gap-1"
+                    className="text-blue-600 dark:text-cyan-400 font-bold hover:underline flex items-center gap-1"
                   >
                     <Download className="w-3.5 h-3.5" /> Download
                   </button>
@@ -352,7 +352,7 @@ export const CourseDetailsPage = () => {
                   </div>
                   <button
                     onClick={() => addToast('Simulated PDF Download initiated (CERT-In Checklist)', 'info')}
-                    className="text-cyan-600 dark:text-cyan-400 font-bold hover:underline flex items-center gap-1"
+                    className="text-blue-600 dark:text-cyan-400 font-bold hover:underline flex items-center gap-1"
                   >
                     <Download className="w-3.5 h-3.5" /> Download
                   </button>
@@ -384,16 +384,16 @@ export const CourseDetailsPage = () => {
                     onClick={() => setSelectedModuleId(mod.id)}
                     className={`w-full p-3 rounded-xl text-left transition-all flex items-start gap-3 border ${
                       isSelected
-                        ? 'bg-emerald-50 dark:bg-navy-800/80 border-emerald-500/50 shadow-sm'
+                        ? 'bg-blue-50/80 dark:bg-navy-800/80 border-blue-300 dark:border-emerald-500/50 shadow-sm'
                         : 'bg-white dark:bg-navy-950/60 border-slate-200 dark:border-navy-800 hover:bg-slate-50 dark:hover:bg-navy-800/40'
                     }`}
                   >
                     <div className="mt-0.5 shrink-0">
                       {mod.completed ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-emerald-500" />
                       ) : isSelected ? (
-                        <div className="w-4 h-4 rounded-full border-2 border-cyan-500 flex items-center justify-center">
-                          <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                        <div className="w-4 h-4 rounded-full border-2 border-blue-600 dark:border-cyan-500 flex items-center justify-center">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-cyan-500" />
                         </div>
                       ) : (
                         <div className="w-4 h-4 rounded-full border border-slate-300 dark:border-navy-700" />
@@ -404,7 +404,7 @@ export const CourseDetailsPage = () => {
                       <p
                         className={`text-xs font-bold leading-tight ${
                           isSelected
-                            ? 'text-cyan-600 dark:text-cyan-300'
+                            ? 'text-blue-700 dark:text-cyan-300'
                             : 'text-slate-800 dark:text-slate-200'
                         }`}
                       >
@@ -415,7 +415,7 @@ export const CourseDetailsPage = () => {
                         {mod.completed && (
                           <>
                             <span>•</span>
-                            <span className="text-emerald-500 font-semibold">Done</span>
+                            <span className="text-blue-600 dark:text-emerald-500 font-semibold">Done</span>
                           </>
                         )}
                       </div>
@@ -434,7 +434,7 @@ export const CourseDetailsPage = () => {
             <div className="space-y-2 text-xs">
               {course.learningObjectives.map((obj, i) => (
                 <div key={i} className="flex items-start gap-2 text-slate-600 dark:text-slate-300">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-cyan-500 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-500 shrink-0 mt-0.5" />
                   <span className="leading-snug">{obj}</span>
                 </div>
               ))}

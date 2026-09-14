@@ -69,7 +69,7 @@ export const ProfilePage = () => {
 
         <div className="relative pt-12 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-5">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="w-24 h-24 rounded-2xl overflow-hidden bg-emerald-600 border-4 border-white dark:border-navy-900 shadow-xl shrink-0">
+            <div className="w-24 h-24 rounded-2xl overflow-hidden bg-blue-600 dark:bg-emerald-600 border-4 border-white dark:border-navy-900 shadow-xl shrink-0">
               <img
                 src={currentUser.avatarUrl}
                 alt={currentUser.name}
@@ -82,7 +82,7 @@ export const ProfilePage = () => {
                 <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
                   {currentUser.name}
                 </h1>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-cyan-500/10 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/20">
                   {currentUser.cadre}
                 </span>
               </div>
@@ -101,7 +101,7 @@ export const ProfilePage = () => {
               onClick={() => addToast('Digital Civil Service Dossier downloaded', 'success')}
               className="px-4 py-2 rounded-xl bg-white dark:bg-navy-900 hover:bg-slate-50 dark:hover:bg-navy-800 border border-slate-200 dark:border-navy-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
             >
-              <Download className="w-3.5 h-3.5 text-cyan-500" />
+              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-500" />
               <span>Export Dossier</span>
             </button>
           </div>
@@ -117,7 +117,7 @@ export const ProfilePage = () => {
           </div>
           <div>
             <span className="text-slate-400 text-[11px]">Learning Maturity:</span>
-            <p className="font-bold text-cyan-600 dark:text-cyan-400 mt-0.5">
+            <p className="font-bold text-blue-600 dark:text-cyan-400 mt-0.5">
               Level 4 - Advanced Practitioner
             </p>
           </div>
@@ -129,7 +129,7 @@ export const ProfilePage = () => {
           </div>
           <div>
             <span className="text-slate-400 text-[11px]">Karmayogi Status:</span>
-            <p className="font-bold text-emerald-500 flex items-center gap-1 mt-0.5">
+            <p className="font-bold text-blue-600 dark:text-emerald-500 flex items-center gap-1 mt-0.5">
               <CheckCircle2 className="w-3.5 h-3.5" /> Synced Today
             </p>
           </div>
