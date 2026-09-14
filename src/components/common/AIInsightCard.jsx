@@ -71,41 +71,41 @@ export const AIInsightCard = ({
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-navy-950 via-navy-900 to-emerald-950/50 text-white border border-emerald-500/30 shadow-green-glow">
+    <div className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-white via-blue-50/50 to-white dark:from-navy-950 dark:via-navy-900 dark:to-emerald-950/50 text-slate-900 dark:text-white border border-blue-200 dark:border-emerald-500/30 shadow-blue-glow dark:shadow-green-glow">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-      <div className="absolute bottom-0 left-0 w-60 h-60 bg-teal-600/15 rounded-full blur-2xl pointer-events-none -ml-20 -mb-20" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+      <div className="absolute bottom-0 left-0 w-60 h-60 bg-blue-600/10 dark:bg-teal-600/15 rounded-full blur-2xl pointer-events-none -ml-20 -mb-20" />
 
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
         <div className="space-y-3 max-w-2xl">
           {/* Header with Small Animated AI Indicator */}
           <div className="flex items-center gap-2.5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-400/30 text-xs font-bold tracking-wider uppercase font-mono">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-400/30 text-xs font-bold tracking-wider uppercase font-mono">
+              <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-emerald-400 animate-ping" />
               AI LEARNING INSIGHT
             </span>
 
-            <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+            <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 dark:text-emerald-400 dark:bg-emerald-500/10 px-2 py-0.5 rounded-full border border-blue-200 dark:border-emerald-500/20">
               Confidence: 94.8%
             </span>
           </div>
 
           {/* Sequential Typewriter Message Area */}
           <div className="min-h-[48px] flex items-center">
-            <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-slate-800 dark:text-slate-100 font-medium leading-relaxed font-sans">
               {displayedText}
-              <span className="inline-block w-1.5 h-4 bg-emerald-400 ml-1 translate-y-0.5 animate-typewriter-blink" />
+              <span className="inline-block w-1.5 h-4 bg-blue-600 dark:bg-emerald-400 ml-1 translate-y-0.5 animate-typewriter-blink" />
             </p>
           </div>
 
-          <div className="flex items-center gap-4 text-xs text-slate-400">
-            <span className="flex items-center gap-1 text-emerald-300">
-              <Zap className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <span className="flex items-center gap-1 text-blue-600 dark:text-emerald-300 font-medium">
+              <Zap className="w-3.5 h-3.5 text-blue-600 dark:text-emerald-400" />
               Predicted Competency Lift: +12% upon completing remedial paths
             </span>
             <span>•</span>
-            <span className="flex items-center gap-1 text-slate-300">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
+              <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-emerald-400" />
               CERT-In Baseline Verified
             </span>
           </div>
@@ -115,16 +115,16 @@ export const AIInsightCard = ({
         <div className="flex flex-wrap items-center gap-2.5 shrink-0">
           <button
             onClick={handleRefreshAnalysis}
-            className="px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white text-xs font-semibold border border-white/15 transition-all flex items-center gap-1.5"
+            className="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white text-xs font-semibold border border-slate-200 dark:border-white/15 transition-all flex items-center gap-1.5"
             title="Re-run AI Analysis"
           >
-            <RefreshCw className="w-3.5 h-3.5 text-emerald-300" />
+            <RefreshCw className="w-3.5 h-3.5 text-blue-600 dark:text-emerald-300" />
             <span className="hidden sm:inline">Re-analyze</span>
           </button>
 
           <button
             onClick={() => navigate(buttonLink)}
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-2 group btn-command"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 dark:from-emerald-500 dark:to-teal-600 dark:hover:from-emerald-400 dark:hover:to-teal-500 text-white text-xs font-bold shadow-blue-glow dark:shadow-green-glow transition-all flex items-center gap-2 group btn-command"
           >
             <span>{buttonText}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
