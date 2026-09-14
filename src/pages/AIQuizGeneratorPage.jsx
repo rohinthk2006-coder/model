@@ -220,7 +220,7 @@ export const AIQuizGeneratorPage = () => {
                     onClick={() => setDifficulty(d)}
                     className={`py-2 px-3 rounded-xl text-xs font-semibold text-center transition-all border btn-command ${
                       difficulty === d
-                        ? 'bg-cyan-500 text-navy-950 font-bold border-cyan-500 shadow-sm'
+                        ? 'bg-blue-600 text-white dark:bg-cyan-500 dark:text-navy-950 font-bold border-blue-600 dark:border-cyan-500 shadow-sm'
                         : 'bg-white dark:bg-navy-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-navy-800 hover:bg-slate-50'
                     }`}
                   >
@@ -243,7 +243,7 @@ export const AIQuizGeneratorPage = () => {
                     onClick={() => setQuestionCount(count)}
                     className={`py-2 px-3 rounded-xl text-xs font-semibold text-center transition-all border btn-command ${
                       questionCount === count
-                        ? 'bg-cyan-500 text-navy-950 font-bold border-cyan-500 shadow-sm'
+                        ? 'bg-blue-600 text-white dark:bg-cyan-500 dark:text-navy-950 font-bold border-blue-600 dark:border-cyan-500 shadow-sm'
                         : 'bg-white dark:bg-navy-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-navy-800 hover:bg-slate-50'
                     }`}
                   >
@@ -405,8 +405,8 @@ export const AIQuizGeneratorPage = () => {
                     <div
                       className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 font-mono ${
                         isSelected
-                          ? 'bg-cyan-500 text-navy-950'
-                          : 'bg-slate-100 dark:bg-navy-800 text-slate-500'
+                          ? 'bg-blue-600 text-white dark:bg-cyan-500 dark:text-navy-950'
+                          : 'bg-slate-100 dark:bg-navy-800 text-slate-500 dark:text-slate-400'
                       }`}
                     >
                       {letter}
