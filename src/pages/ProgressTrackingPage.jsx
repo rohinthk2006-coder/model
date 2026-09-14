@@ -89,7 +89,7 @@ export const ProgressTrackingPage = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg transition-all btn-command ${
                   timeFilter === tf
-                    ? 'bg-emerald-600 text-white shadow-sm font-bold'
+                    ? 'bg-blue-600 dark:bg-emerald-600 text-white shadow-sm font-bold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -102,7 +102,7 @@ export const ProgressTrackingPage = () => {
             onClick={() => addToast('Official Trajectory Report exported in PDF format', 'success')}
             className="px-4 py-2 rounded-xl bg-white dark:bg-navy-900 hover:bg-slate-50 dark:hover:bg-navy-800 border border-slate-200 dark:border-navy-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all flex items-center gap-2 shadow-sm btn-command"
           >
-            <Download className="w-3.5 h-3.5 text-cyan-500" />
+            <Download className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-500" />
             <span className="hidden sm:inline">Export Report</span>
           </button>
         </div>
