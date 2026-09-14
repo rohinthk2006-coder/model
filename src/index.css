@@ -24,11 +24,11 @@
   /* Bright theme: Crisp White with Blue atmospheric ambient glow */
   body, .bg-slate-50 {
     overflow-x: hidden;
-    background-color: #f8fafc;
+    background-color: #ffffff;
     background-image: 
-      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(59, 130, 246, 0.12) 0%, rgba(219, 234, 254, 0.4) 30%, transparent 70%),
-      radial-gradient(ellipse 60% 45% at 90% 35%, rgba(6, 182, 212, 0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 45% at 10% 75%, rgba(37, 99, 235, 0.06) 0%, transparent 55%);
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(59, 130, 246, 0.10) 0%, rgba(219, 234, 254, 0.45) 30%, transparent 70%),
+      radial-gradient(ellipse 60% 45% at 90% 35%, rgba(37, 99, 235, 0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 45% at 10% 75%, rgba(29, 78, 216, 0.05) 0%, transparent 55%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -70,8 +70,8 @@
   /* Bright theme: White cards with blue border and ambient glow */
   .command-card {
     background: #ffffff;
-    border: 1px solid rgba(191, 219, 254, 0.85);
-    box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.07), 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(191, 219, 254, 0.95);
+    box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -84,8 +84,8 @@
 
   .command-card-hover:hover {
     transform: translateY(-2px);
-    border-color: rgba(59, 130, 246, 0.45);
-    box-shadow: 0 8px 30px -4px rgba(59, 130, 246, 0.18), 0 0 16px 0 rgba(191, 219, 254, 0.4);
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 8px 30px -4px rgba(37, 99, 235, 0.18), 0 0 16px 0 rgba(191, 219, 254, 0.5);
   }
 
   .dark .command-card-hover:hover {
@@ -95,11 +95,11 @@
 
   /* Bright theme: Frosted white with blue border */
   .glass-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(191, 219, 254, 0.85);
-    box-shadow: 0 8px 30px -4px rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(191, 219, 254, 0.95);
+    box-shadow: 0 8px 30px -4px rgba(37, 99, 235, 0.09);
   }
 
   /* Dark mode: Frosted dark black glass with green border */
@@ -111,12 +111,14 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.65), 0 0 16px -2px rgba(16, 185, 129, 0.08);
   }
 
+  /* Pure blue gradient text for Bright theme */
   .ai-gradient-text {
-    background: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #10b981 100%);
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
+  /* Green gradient text for Dark mode */
   .dark .ai-gradient-text {
     background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #06b6d4 100%);
     -webkit-background-clip: text;
@@ -127,17 +129,22 @@
     position: relative;
   }
 
+  /* Pure blue glowing border for Bright theme */
   .ai-glow-border::after {
     content: '';
     position: absolute;
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.6), rgba(29, 78, 216, 0.3), rgba(16, 185, 129, 0.5));
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.7), rgba(29, 78, 216, 0.4), rgba(96, 165, 250, 0.6));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+  }
+
+  .dark .ai-glow-border::after {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.6), rgba(29, 78, 216, 0.3), rgba(16, 185, 129, 0.5));
   }
 
   /* High performance button active state */
@@ -160,12 +167,12 @@
 
   /* Bright theme scrollbar: Translucent blue */
   ::-webkit-scrollbar-thumb {
-    background: rgba(147, 197, 253, 0.5);
+    background: rgba(147, 197, 253, 0.6);
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(59, 130, 246, 0.75);
+    background: rgba(59, 130, 246, 0.85);
   }
 
   /* Dark mode scrollbar: Translucent emerald green */
@@ -175,5 +182,172 @@
 
   .dark ::-webkit-scrollbar-thumb:hover {
     background: rgba(52, 211, 153, 0.65);
+  }
+
+  /* ========================================================= */
+  /* Brightness Theme: Strict White and Blue Theme Enforcement */
+  /* ========================================================= */
+
+  /* In brightness theme (not dark), enforce blue buttons and backgrounds */
+  html:not(.dark) .bg-emerald-600,
+  html:not(.dark) .bg-emerald-500,
+  html:not(.dark) .bg-teal-600,
+  html:not(.dark) .bg-teal-500,
+  html:not(.dark) .bg-cyan-600,
+  html:not(.dark) .bg-cyan-500,
+  html:not(.dark) .bg-amber-500,
+  html:not(.dark) .bg-amber-600 {
+    background-color: #2563eb !important;
+  }
+
+  html:not(.dark) .bg-emerald-700,
+  html:not(.dark) .bg-teal-700,
+  html:not(.dark) .bg-cyan-700 {
+    background-color: #1d4ed8 !important;
+  }
+
+  html:not(.dark) .bg-emerald-400,
+  html:not(.dark) .bg-teal-400,
+  html:not(.dark) .bg-cyan-400 {
+    background-color: #3b82f6 !important;
+  }
+
+  html:not(.dark) .bg-emerald-50,
+  html:not(.dark) .bg-teal-50,
+  html:not(.dark) .bg-cyan-50,
+  html:not(.dark) .bg-amber-50 {
+    background-color: #eff6ff !important;
+  }
+
+  html:not(.dark) .bg-emerald-100,
+  html:not(.dark) .bg-teal-100,
+  html:not(.dark) .bg-cyan-100 {
+    background-color: #dbeafe !important;
+  }
+
+  html:not(.dark) [class*="bg-emerald-500/"],
+  html:not(.dark) [class*="bg-teal-500/"],
+  html:not(.dark) [class*="bg-cyan-500/"],
+  html:not(.dark) [class*="bg-amber-500/"],
+  html:not(.dark) [class*="bg-emerald-600/"],
+  html:not(.dark) [class*="bg-teal-600/"],
+  html:not(.dark) [class*="bg-cyan-600/"] {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+  }
+
+  html:not(.dark) .hover\:bg-emerald-500:hover,
+  html:not(.dark) .hover\:bg-emerald-600:hover,
+  html:not(.dark) .hover\:bg-teal-500:hover,
+  html:not(.dark) .hover\:bg-teal-600:hover,
+  html:not(.dark) .hover\:bg-cyan-500:hover,
+  html:not(.dark) .hover\:bg-cyan-600:hover {
+    background-color: #1d4ed8 !important;
+  }
+
+  html:not(.dark) .hover\:bg-emerald-50:hover,
+  html:not(.dark) .hover\:bg-teal-50:hover,
+  html:not(.dark) .hover\:bg-cyan-50:hover {
+    background-color: #eff6ff !important;
+  }
+
+  /* In brightness theme, enforce blue text colors */
+  html:not(.dark) .text-emerald-500,
+  html:not(.dark) .text-emerald-600,
+  html:not(.dark) .text-emerald-700,
+  html:not(.dark) .text-teal-500,
+  html:not(.dark) .text-teal-600,
+  html:not(.dark) .text-teal-700,
+  html:not(.dark) .text-cyan-500,
+  html:not(.dark) .text-cyan-600,
+  html:not(.dark) .text-cyan-700,
+  html:not(.dark) .text-amber-500,
+  html:not(.dark) .text-amber-600 {
+    color: #2563eb !important;
+  }
+
+  html:not(.dark) .text-emerald-400,
+  html:not(.dark) .text-teal-400,
+  html:not(.dark) .text-cyan-400 {
+    color: #3b82f6 !important;
+  }
+
+  html:not(.dark) .text-emerald-300,
+  html:not(.dark) .text-teal-300,
+  html:not(.dark) .text-cyan-300 {
+    color: #2563eb !important;
+  }
+
+  /* In brightness theme, enforce blue border colors */
+  html:not(.dark) .border-emerald-200,
+  html:not(.dark) .border-teal-200,
+  html:not(.dark) .border-cyan-200,
+  html:not(.dark) .border-amber-200 {
+    border-color: #bfdbfe !important;
+  }
+
+  html:not(.dark) .border-emerald-300,
+  html:not(.dark) .border-emerald-400,
+  html:not(.dark) .border-emerald-500,
+  html:not(.dark) .border-teal-500,
+  html:not(.dark) .border-cyan-400,
+  html:not(.dark) .border-cyan-500 {
+    border-color: #60a5fa !important;
+  }
+
+  html:not(.dark) [class*="border-emerald-500/"],
+  html:not(.dark) [class*="border-teal-500/"],
+  html:not(.dark) [class*="border-cyan-500/"],
+  html:not(.dark) [class*="border-emerald-400/"],
+  html:not(.dark) [class*="border-cyan-400/"] {
+    border-color: rgba(59, 130, 246, 0.35) !important;
+  }
+
+  /* In brightness theme, enforce blue gradients */
+  html:not(.dark) .from-emerald-700,
+  html:not(.dark) .from-emerald-600,
+  html:not(.dark) .from-emerald-500 {
+    --tw-gradient-from: #1d4ed8 var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(29 78 216 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  html:not(.dark) .via-emerald-600,
+  html:not(.dark) .via-teal-400,
+  html:not(.dark) .via-teal-500 {
+    --tw-gradient-to: rgb(37 99 235 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), #2563eb var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+  }
+
+  html:not(.dark) .to-teal-400,
+  html:not(.dark) .to-teal-500,
+  html:not(.dark) .to-teal-600,
+  html:not(.dark) .to-emerald-400,
+  html:not(.dark) .to-emerald-500,
+  html:not(.dark) .to-emerald-600 {
+    --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position) !important;
+  }
+
+  /* In brightness theme, enforce blue glows */
+  html:not(.dark) .shadow-green-glow,
+  html:not(.dark) .shadow-green-glow-lg,
+  html:not(.dark) .shadow-cyan-glow,
+  html:not(.dark) .shadow-cyan-glow-lg {
+    box-shadow: 0 0 25px -2px rgba(59, 130, 246, 0.35) !important;
+  }
+
+  html:not(.dark) [class*="shadow-emerald-"],
+  html:not(.dark) [class*="shadow-teal-"] {
+    --tw-shadow-color: rgba(37, 99, 235, 0.3) !important;
+    box-shadow: 0 8px 20px -3px rgba(37, 99, 235, 0.25) !important;
+  }
+
+  html:not(.dark) .ring-emerald-500,
+  html:not(.dark) .focus\:ring-emerald-500:focus,
+  html:not(.dark) .focus\:ring-cyan-500\/50:focus {
+    --tw-ring-color: rgba(59, 130, 246, 0.5) !important;
+  }
+
+  html:not(.dark) .focus\:border-cyan-500:focus {
+    border-color: #3b82f6 !important;
   }
 }
