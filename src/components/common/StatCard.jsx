@@ -25,20 +25,20 @@ export const StatCard = ({
 
   const colorMap = {
     blue: {
-      iconBg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-      bar: 'bg-emerald-500',
+      iconBg: 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+      bar: 'bg-blue-600 dark:bg-emerald-500',
     },
     cyan: {
-      iconBg: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20',
-      bar: 'bg-teal-500',
+      iconBg: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-teal-500/10 dark:text-teal-400 dark:border-teal-500/20',
+      bar: 'bg-blue-500 dark:bg-teal-500',
     },
     emerald: {
-      iconBg: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
-      bar: 'bg-emerald-500',
+      iconBg: 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20',
+      bar: 'bg-blue-600 dark:bg-emerald-500',
     },
     amber: {
-      iconBg: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-      bar: 'bg-amber-500',
+      iconBg: 'bg-blue-50 text-blue-800 border-blue-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20',
+      bar: 'bg-blue-700 dark:bg-amber-500',
     },
   };
 
@@ -59,7 +59,7 @@ export const StatCard = ({
               <span
                 className={`text-[11px] font-bold px-2 py-0.5 rounded-md border ${
                   trendPositive
-                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
+                    ? 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20'
                     : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20'
                 }`}
               >

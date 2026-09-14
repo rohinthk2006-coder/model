@@ -62,7 +62,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
         {/* Sidebar Header */}
         <div className="h-16 px-4 border-b border-slate-200 dark:border-navy-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 flex items-center justify-center shadow-green-glow text-white font-bold text-sm shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 via-blue-600 to-blue-500 dark:from-emerald-700 dark:via-emerald-600 dark:to-teal-400 flex items-center justify-center shadow-blue-glow dark:shadow-green-glow text-white font-bold text-sm shrink-0">
               GL
             </div>
             {!isCollapsed && (
@@ -70,7 +70,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 <span className="font-extrabold text-sm tracking-tight text-slate-900 dark:text-white truncate block">
                   GovLearn AI
                 </span>
-                <span className="block text-[9px] uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold truncate">
+                <span className="block text-[9px] uppercase tracking-widest text-blue-600 dark:text-emerald-400 font-bold truncate">
                   {userRole === 'manager' ? 'Executive Portal' : 'Employee Workspace'}
                 </span>
               </div>
@@ -105,7 +105,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
           isCollapsed ? 'p-2 flex flex-col items-center' : 'p-3.5'
         }`}>
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-lg overflow-hidden bg-emerald-600 border border-emerald-500/30 shrink-0">
+            <div className="w-9 h-9 rounded-lg overflow-hidden bg-blue-600 dark:bg-emerald-600 border border-blue-400/40 dark:border-emerald-500/30 shrink-0">
               <img
                 src={currentUser.avatarUrl}
                 alt={currentUser.name}
@@ -126,11 +126,11 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
           {!isCollapsed && userRole === 'employee' && (
             <div className="mt-2.5 pt-2 border-t border-slate-200 dark:border-navy-800 flex items-center justify-between text-[11px]">
-              <div className="flex items-center gap-1 text-amber-500 font-bold">
-                <Flame className="w-3 h-3 fill-amber-500" />
+              <div className="flex items-center gap-1 text-blue-600 dark:text-amber-500 font-bold">
+                <Flame className="w-3 h-3 fill-blue-600 dark:fill-amber-500" />
                 <span>{currentUser.streak || 7}d Streak</span>
               </div>
-              <div className="text-emerald-600 dark:text-emerald-400 font-bold">
+              <div className="text-blue-600 dark:text-emerald-400 font-bold">
                 Score: {currentUser.skillScore}%
               </div>
             </div>
@@ -158,7 +158,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                     isCollapsed ? 'justify-center py-2.5' : 'justify-between px-3 py-2.5'
                   } rounded-xl text-xs font-medium transition-all group relative ${
                     isActive
-                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25 font-semibold'
+                      ? 'bg-blue-600 dark:bg-emerald-600 text-white shadow-md shadow-blue-600/25 dark:shadow-emerald-600/25 font-semibold'
                       : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-navy-800 hover:text-slate-900 dark:hover:text-white'
                   }`
                 }
@@ -171,7 +171,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                         className={`w-4 h-4 shrink-0 transition-colors ${
                           isActive
                             ? 'text-white'
-                            : 'text-slate-400 group-hover:text-cyan-500'
+                            : 'text-slate-400 group-hover:text-blue-600 dark:group-hover:text-cyan-500'
                         }`}
                       />
                       {!isCollapsed && <span className="truncate">{item.label}</span>}
@@ -182,7 +182,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                         className={`text-[10px] font-bold px-1.5 py-0.2 rounded-md ${
                           isActive
                             ? 'bg-white/20 text-white'
-                            : 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20'
+                            : 'bg-blue-50 text-blue-600 border border-blue-200 dark:bg-cyan-500/15 dark:text-cyan-400 dark:border-cyan-500/20'
                         }`}
                       >
                         {item.badge}
@@ -191,7 +191,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
                     {/* Tooltip on collapsed desktop view */}
                     {isCollapsed && (
-                      <div className="absolute left-full ml-2 px-2.5 py-1 bg-navy-950 text-white text-[11px] rounded-lg shadow-lg border border-cyan-500/30 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50">
+                      <div className="absolute left-full ml-2 px-2.5 py-1 bg-navy-950 text-white text-[11px] rounded-lg shadow-lg border border-blue-500/30 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50">
                         {item.label}
                       </div>
                     )}
@@ -249,9 +249,9 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
         {/* Karmayogi Integration Indicator */}
         {!isCollapsed ? (
-          <div className="p-3 m-3 rounded-xl bg-gradient-to-r from-blue-900/20 to-cyan-900/15 border border-blue-500/20 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-cyan-600 dark:text-cyan-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          <div className="p-3 m-3 rounded-xl bg-blue-50/80 border border-blue-200 dark:bg-gradient-to-r dark:from-blue-900/20 dark:to-cyan-900/15 dark:border-blue-500/20 text-center">
+            <div className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-blue-600 dark:text-cyan-400">
+              <span className="w-2 h-2 rounded-full bg-blue-500 dark:bg-emerald-400 animate-ping" />
               iGOT Karmayogi Synced
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
@@ -260,7 +260,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
           </div>
         ) : (
           <div className="p-2 mb-3 mx-auto">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 block animate-pulse" title="iGOT Synced" />
+            <span className="w-2.5 h-2.5 rounded-full bg-blue-500 dark:bg-emerald-400 block animate-pulse" title="iGOT Synced" />
           </div>
         )}
       </aside>
