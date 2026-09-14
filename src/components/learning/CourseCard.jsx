@@ -26,26 +26,26 @@ export const CourseCard = ({ course }) => {
   const getCategoryIcon = (category) => {
     switch (category?.toLowerCase()) {
       case 'cloud':
-        return <Cloud className="w-5 h-5 text-cyan-500" />;
+        return <Cloud className="w-5 h-5 text-blue-500 dark:text-cyan-500" />;
       case 'security':
-        return <Shield className="w-5 h-5 text-blue-500" />;
+        return <Shield className="w-5 h-5 text-blue-600 dark:text-blue-500" />;
       case 'data':
-        return <BarChart className="w-5 h-5 text-indigo-500" />;
+        return <BarChart className="w-5 h-5 text-blue-700 dark:text-indigo-500" />;
       case 'artificial intelligence':
-        return <Cpu className="w-5 h-5 text-cyan-400" />;
+        return <Cpu className="w-5 h-5 text-blue-500 dark:text-cyan-400" />;
       default:
-        return <FileText className="w-5 h-5 text-emerald-500" />;
+        return <FileText className="w-5 h-5 text-blue-600 dark:text-emerald-500" />;
     }
   };
 
   const getDifficultyBadge = (level) => {
     switch (level?.toLowerCase()) {
       case 'beginner':
-        return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
+        return 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20';
       case 'intermediate':
-        return 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20';
+        return 'bg-blue-50 text-blue-800 border-blue-200 dark:bg-teal-500/10 dark:text-teal-400 dark:border-teal-500/20';
       case 'advanced':
-        return 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20';
+        return 'bg-blue-100/60 text-blue-900 border-blue-300 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20';
       default:
         return 'bg-slate-500/10 text-slate-600 border-slate-500/20';
     }
@@ -97,8 +97,8 @@ export const CourseCard = ({ course }) => {
 
             <div className="flex flex-wrap items-center gap-1.5 justify-end">
               {course.isAiRecommended && (
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 font-mono uppercase">
-                  <Sparkles className="w-3 h-3 text-emerald-400" />
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-500/30 font-mono uppercase">
+                  <Sparkles className="w-3 h-3 text-blue-600 dark:text-emerald-400" />
                   AI RECOMMENDED
                 </span>
               )}
@@ -124,14 +124,14 @@ export const CourseCard = ({ course }) => {
           <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-navy-800/80">
             <button
               onClick={() => setShowExplanation(!showExplanation)}
-              className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
+              className="text-[11px] font-semibold text-blue-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
             >
               <HelpCircle className="w-3 h-3" />
               <span>Why this course?</span>
             </button>
 
             {showExplanation && (
-              <div className="mt-2 p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed animate-fade-in">
+              <div className="mt-2 p-2.5 rounded-xl bg-blue-50 border border-blue-200 text-[11px] text-slate-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-slate-200 leading-relaxed animate-fade-in">
                 {whyReason}
               </div>
             )}
@@ -160,8 +160,8 @@ export const CourseCard = ({ course }) => {
             <span
               className={
                 isCompleted
-                  ? 'text-emerald-600 dark:text-emerald-400 font-mono'
-                  : 'text-emerald-600 dark:text-emerald-400 font-mono'
+                  ? 'text-blue-600 dark:text-emerald-400 font-mono'
+                  : 'text-blue-600 dark:text-emerald-400 font-mono'
               }
             >
               {course.progress}%
@@ -171,8 +171,8 @@ export const CourseCard = ({ course }) => {
             <div
               className={`h-full rounded-full transition-all duration-700 ease-out ${
                 isCompleted
-                  ? 'bg-emerald-500'
-                  : 'bg-gradient-to-r from-emerald-600 to-teal-400'
+                  ? 'bg-blue-600 dark:bg-emerald-500'
+                  : 'bg-gradient-to-r from-blue-600 to-blue-400 dark:from-emerald-600 dark:to-teal-400'
               }`}
               style={{ width: `${course.progress}%` }}
             />
@@ -190,7 +190,7 @@ export const CourseCard = ({ course }) => {
           <button
             onClick={handleContinueLearning}
             disabled={isLoadingContinue}
-            className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm btn-command disabled:opacity-75"
+            className="w-full py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm btn-command disabled:opacity-75"
           >
             {isLoadingContinue ? (
               <>
@@ -199,7 +199,7 @@ export const CourseCard = ({ course }) => {
               </>
             ) : isCompleted ? (
               <>
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-blue-200 dark:text-emerald-300" />
                 <span>Review</span>
               </>
             ) : (
