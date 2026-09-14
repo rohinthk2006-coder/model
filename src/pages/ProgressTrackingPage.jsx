@@ -172,7 +172,7 @@ export const ProgressTrackingPage = () => {
                 Daily active hours logged vs recommended target (1.2 hrs/day)
               </p>
             </div>
-            <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 font-mono">
+            <span className="text-xs font-bold text-blue-600 dark:text-cyan-400 font-mono">
               7.8h Logged
             </span>
           </div>
@@ -191,7 +191,7 @@ export const ProgressTrackingPage = () => {
                 Overall score vs Technical core growth from January to June
               </p>
             </div>
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+            <span className="text-xs font-bold text-blue-600 dark:text-emerald-400">
               +13% 6-Month Lift
             </span>
           </div>
@@ -204,7 +204,7 @@ export const ProgressTrackingPage = () => {
       <div className="command-card rounded-2xl p-6 border border-slate-200 dark:border-navy-800 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-cyan-500" />
+            <Calendar className="w-4 h-4 text-blue-600 dark:text-cyan-500" />
             <h3 className="font-bold text-base text-slate-900 dark:text-white font-display">
               Weekly Learning Activity Timeline
             </h3>
@@ -223,7 +223,7 @@ export const ProgressTrackingPage = () => {
                   {item.day}
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-emerald-500 shrink-0" />
                   <span className="font-semibold text-slate-900 dark:text-slate-100">
                     {item.title}
                   </span>
@@ -235,8 +235,8 @@ export const ProgressTrackingPage = () => {
                 <span
                   className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${
                     item.badgeColor === 'emerald'
-                      ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
-                      : 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20'
+                      ? 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20'
+                      : 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-cyan-500/10 dark:text-cyan-400 dark:border-cyan-500/20'
                   }`}
                 >
                   {item.badge}
