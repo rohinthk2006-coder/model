@@ -140,12 +140,12 @@ export const ProfilePage = () => {
       <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-navy-800 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-cyan-500" />
+            <Award className="w-4 h-4 text-blue-600 dark:text-cyan-500" />
             <h3 className="font-bold text-base text-slate-900 dark:text-white">
               Recognitions & Competency Badges
             </h3>
           </div>
-          <span className="text-xs text-cyan-600 dark:text-cyan-400 font-bold">
+          <span className="text-xs text-blue-600 dark:text-cyan-400 font-bold">
             4 Verified Credentials
           </span>
         </div>
@@ -195,7 +195,7 @@ export const ProfilePage = () => {
               className="p-4 rounded-xl bg-white dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs"
             >
               <div className="flex items-start gap-3">
-                <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
+                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 dark:bg-emerald-500/10 dark:text-emerald-400 shrink-0 mt-0.5">
                   <FileCheck className="w-5 h-5" />
                 </div>
                 <div>
@@ -222,7 +222,7 @@ export const ProfilePage = () => {
 
                 <button
                   onClick={() => handleDownloadCert(cert)}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm btn-command"
+                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm btn-command"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download PDF</span>
@@ -235,8 +235,8 @@ export const ProfilePage = () => {
 
       {/* Certificate Preview Modal */}
       {selectedCert && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/75 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-xl bg-white dark:bg-navy-900 rounded-2xl shadow-2xl border-2 border-emerald-500/40 p-6 sm:p-8 space-y-6 text-slate-900 dark:text-white text-center relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-navy-950/75 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-xl bg-white dark:bg-navy-900 rounded-2xl shadow-2xl border-2 border-blue-400 dark:border-emerald-500/40 p-6 sm:p-8 space-y-6 text-slate-900 dark:text-white text-center relative">
             <button
               onClick={() => setSelectedCert(null)}
               className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
@@ -245,7 +245,7 @@ export const ProfilePage = () => {
             </button>
 
             <div className="space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-blue-600 dark:text-emerald-400 font-bold">
                 Government of India • National Capacity Building Commission
               </span>
               <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
@@ -255,7 +255,7 @@ export const ProfilePage = () => {
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 space-y-2">
               <p className="text-xs text-slate-500">This is to certify that</p>
-              <h3 className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
+              <h3 className="text-lg font-bold text-blue-600 dark:text-emerald-400">
                 {currentUser.name}
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-300">
@@ -287,7 +287,7 @@ export const ProfilePage = () => {
                   handleDownloadCert(selectedCert);
                   setSelectedCert(null);
                 }}
-                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm flex items-center gap-1.5 btn-command"
+                className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-bold shadow-sm flex items-center gap-1.5 btn-command"
               >
                 <Download className="w-4 h-4" />
                 <span>Download Official Copy</span>
