@@ -56,7 +56,7 @@ export const PersonalizedLearningPage = () => {
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Your Personalized Learning Path
             </h1>
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
+            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-cyan-500/10 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/20">
               AI-Curated
             </span>
           </div>
@@ -67,7 +67,7 @@ export const PersonalizedLearningPage = () => {
 
         <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
           <span className="flex items-center gap-1.5">
-            <GraduationCap className="w-4 h-4 text-blue-500" />
+            <GraduationCap className="w-4 h-4 text-blue-600 dark:text-blue-500" />
             <span>{courses.length} Available Curricula</span>
           </span>
         </div>
@@ -83,7 +83,7 @@ export const PersonalizedLearningPage = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by topic, competency, or keyword (e.g. Cloud, CERT-In, MeghRaj)..."
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -115,7 +115,7 @@ export const PersonalizedLearningPage = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedCategory === cat
-                  ? 'bg-emerald-600 text-white shadow-sm'
+                  ? 'bg-blue-600 dark:bg-emerald-600 text-white shadow-sm'
                   : 'bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-navy-800'
               }`}
             >
@@ -130,7 +130,7 @@ export const PersonalizedLearningPage = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
+              <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-200 dark:bg-cyan-500/10 dark:text-cyan-500 dark:border-cyan-500/20">
                 <Sparkles className="w-4 h-4 animate-pulse" />
               </div>
               <div>
@@ -142,7 +142,7 @@ export const PersonalizedLearningPage = () => {
                 </p>
               </div>
             </div>
-            <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400">
+            <span className="text-xs font-semibold text-blue-600 dark:text-cyan-400">
               {recommendedCourses.length} prioritized
             </span>
           </div>
