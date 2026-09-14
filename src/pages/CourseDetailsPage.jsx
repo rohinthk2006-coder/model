@@ -69,8 +69,8 @@ export const CourseDetailsPage = () => {
         </Link>
 
         {course.isAiRecommended && (
-          <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
-            <Sparkles className="w-3 h-3 text-cyan-400" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-cyan-500/10 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/20">
+            <Sparkles className="w-3 h-3 text-blue-600 dark:text-cyan-400" />
             AI Recommended Learning Path
           </span>
         )}
@@ -81,7 +81,7 @@ export const CourseDetailsPage = () => {
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div className="space-y-2 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-emerald-500/10 dark:text-emerald-400 border border-blue-200 dark:border-emerald-500/20">
                 {course.category}
               </span>
               <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-300">
@@ -112,12 +112,12 @@ export const CourseDetailsPage = () => {
             <div className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Course Progress
             </div>
-            <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400">
+            <div className="text-3xl font-black text-blue-600 dark:text-emerald-400">
               {course.progress}%
             </div>
             <div className="w-full bg-slate-200 dark:bg-navy-800 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-gradient-to-r from-emerald-600 to-teal-400 h-full rounded-full transition-all duration-500"
+                className="bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-emerald-600 dark:to-teal-400 h-full rounded-full transition-all duration-500"
                 style={{ width: `${course.progress}%` }}
               />
             </div>
@@ -152,7 +152,7 @@ export const CourseDetailsPage = () => {
               {/* Center Play Button Overlay */}
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-16 h-16 rounded-2xl bg-emerald-600/80 hover:bg-emerald-500 text-white flex items-center justify-center shadow-green-glow transition-all transform hover:scale-105 z-10"
+                className="w-16 h-16 rounded-2xl bg-blue-600/90 hover:bg-blue-500 text-white flex items-center justify-center shadow-blue-500/30 dark:shadow-green-glow transition-all transform hover:scale-105 z-10"
               >
                 {isPlaying ? (
                   <Pause className="w-7 h-7" />
@@ -236,8 +236,8 @@ export const CourseDetailsPage = () => {
                 onClick={() => handleToggleModule(activeModule.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                   isModuleDone
-                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
-                    : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
+                    ? 'bg-blue-50 text-blue-700 dark:bg-emerald-500/15 dark:text-emerald-400 border border-blue-200 dark:border-emerald-500/30'
+                    : 'bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white shadow-sm'
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
@@ -246,7 +246,7 @@ export const CourseDetailsPage = () => {
 
               <Link
                 to="/quiz"
-                className="px-3.5 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-bold border border-cyan-500/30 transition-all flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-cyan-500/10 dark:hover:bg-cyan-500/20 dark:text-cyan-400 text-xs font-bold border border-blue-200 dark:border-cyan-500/30 transition-all flex items-center gap-1.5"
               >
                 <HelpCircle className="w-3.5 h-3.5" />
                 <span>Take AI Quiz</span>
