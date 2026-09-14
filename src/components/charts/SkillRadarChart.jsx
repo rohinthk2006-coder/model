@@ -9,14 +9,18 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import { useApp } from '../../context/AppContext';
 import { radarSkillData } from '../../data/mockSkills';
 
 export const SkillRadarChart = ({ data = radarSkillData, showBenchmark = true }) => {
+  const { theme } = useApp();
+  const isBright = theme !== 'dark';
+
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white/95 dark:bg-navy-900/95 backdrop-blur-md p-3 rounded-xl shadow-xl border border-slate-200 dark:border-navy-700 text-xs text-slate-800 dark:text-slate-100">
-          <p className="font-bold text-sm text-cyan-600 dark:text-cyan-400 mb-1">
+        <div className="bg-white/95 dark:bg-navy-900/95 backdrop-blur-md p-3 rounded-xl shadow-xl border border-blue-200 dark:border-navy-700 text-xs text-slate-800 dark:text-slate-100">
+          <p className="font-bold text-sm text-blue-600 dark:text-cyan-400 mb-1">
             {payload[0].payload.skill}
           </p>
           <div className="space-y-1">
@@ -76,9 +80,9 @@ export const SkillRadarChart = ({ data = radarSkillData, showBenchmark = true })
           <Radar
             name="Your Proficiency"
             dataKey="score"
-            stroke="#06b6d4"
+            stroke={isBright ? '#2563eb' : '#06b6d4'}
             strokeWidth={2.5}
-            fill="#06b6d4"
+            fill={isBright ? '#3b82f6' : '#06b6d4'}
             fillOpacity={0.35}
           />
           <Legend
