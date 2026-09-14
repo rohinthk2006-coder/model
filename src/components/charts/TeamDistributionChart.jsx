@@ -14,6 +14,7 @@ import {
   LineChart,
   Line,
 } from 'recharts';
+import { useApp } from '../../context/AppContext';
 import {
   courseCompletionBreakdown,
   teamSkillDistribution,
@@ -21,6 +22,10 @@ import {
 } from '../../data/mockEmployees';
 
 export const CourseCompletionDonut = () => {
+  const { theme } = useApp();
+  const isBright = theme !== 'dark';
+  const brightColors = ['#1d4ed8', '#2563eb', '#60a5fa', '#93c5fd'];
+
   return (
     <div className="w-full h-64 flex flex-col items-center justify-center">
       <ResponsiveContainer width="100%" height="80%">
@@ -35,27 +40,27 @@ export const CourseCompletionDonut = () => {
             dataKey="value"
           >
             {courseCompletionBreakdown.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
+              <Cell key={`cell-${index}`} fill={isBright ? brightColors[index % brightColors.length] : entry.color} />
             ))}
           </Pie>
           <Tooltip
             formatter={(val) => [`${val}%`, 'Employees']}
             contentStyle={{
-              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              backgroundColor: isBright ? '#ffffff' : 'rgba(15, 23, 42, 0.9)',
               borderRadius: '12px',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              color: '#fff',
+              border: isBright ? '1px solid #bfdbfe' : '1px solid rgba(255, 255, 255, 0.1)',
+              color: isBright ? '#1e293b' : '#fff',
               fontSize: '12px',
             }}
           />
         </PieChart>
       </ResponsiveContainer>
       <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
-        {courseCompletionBreakdown.map((item) => (
+        {courseCompletionBreakdown.map((item, index) => (
           <div key={item.name} className="flex items-center gap-1.5">
             <span
               className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: item.color }}
+              style={{ backgroundColor: isBright ? brightColors[index % brightColors.length] : item.color }}
             />
             <span>{item.name} ({item.value}%)</span>
           </div>
@@ -66,6 +71,9 @@ export const CourseCompletionDonut = () => {
 };
 
 export const TeamSkillBarChart = () => {
+  const { theme } = useApp();
+  const isBright = theme !== 'dark';
+
   return (
     <div className="w-full h-64">
       <ResponsiveContainer width="100%" height="100%">
@@ -75,10 +83,10 @@ export const TeamSkillBarChart = () => {
           <YAxis domain={[0, 100]} tick={{ fill: '#64748b', fontSize: 10 }} unit="%" />
           <Tooltip
             contentStyle={{
-              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              backgroundColor: isBright ? '#ffffff' : 'rgba(15, 23, 42, 0.9)',
               borderRadius: '12px',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              color: '#fff',
+              border: isBright ? '1px solid #bfdbfe' : '1px solid rgba(255, 255, 255, 0.1)',
+              color: isBright ? '#1e293b' : '#fff',
               fontSize: '11px',
             }}
           />
@@ -92,6 +100,9 @@ export const TeamSkillBarChart = () => {
 };
 
 export const TeamActivityLineChart = () => {
+  const { theme } = useApp();
+  const isBright = theme !== 'dark';
+
   return (
     <div className="w-full h-64">
       <ResponsiveContainer width="100%" height="100%">
@@ -101,10 +112,10 @@ export const TeamActivityLineChart = () => {
           <YAxis tick={{ fill: '#64748b', fontSize: 11 }} />
           <Tooltip
             contentStyle={{
-              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              backgroundColor: isBright ? '#ffffff' : 'rgba(15, 23, 42, 0.9)',
               borderRadius: '12px',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              color: '#fff',
+              border: isBright ? '1px solid #bfdbfe' : '1px solid rgba(255, 255, 255, 0.1)',
+              color: isBright ? '#1e293b' : '#fff',
               fontSize: '11px',
             }}
           />
@@ -113,18 +124,18 @@ export const TeamActivityLineChart = () => {
             type="monotone"
             dataKey="totalHours"
             name="Monthly Hours Logged"
-            stroke="#06b6d4"
+            stroke={isBright ? "#1d4ed8" : "#06b6d4"}
             strokeWidth={3}
-            dot={{ r: 4, fill: '#06b6d4' }}
+            dot={{ r: 4, fill: isBright ? '#1d4ed8' : '#06b6d4' }}
           />
           <Line
             type="monotone"
             dataKey="activeUsers"
             name="Active Learners"
-            stroke="#10b981"
+            stroke={isBright ? "#3b82f6" : "#10b981"}
             strokeWidth={2}
             strokeDasharray="4 4"
-            dot={{ r: 3, fill: '#10b981' }}
+            dot={{ r: 3, fill: isBright ? '#3b82f6' : '#10b981' }}
           />
         </LineChart>
       </ResponsiveContainer>
