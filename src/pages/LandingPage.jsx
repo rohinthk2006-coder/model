@@ -142,7 +142,7 @@ export const LandingPage = () => {
       <header className="sticky top-0 z-30 bg-white/85 dark:bg-navy-900/85 backdrop-blur-md border-b border-slate-200/80 dark:border-navy-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-400 flex items-center justify-center shadow-green-glow text-white font-black text-lg">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-blue-500 dark:from-emerald-700 dark:via-emerald-600 dark:to-teal-400 flex items-center justify-center shadow-blue-glow dark:shadow-green-glow text-white font-black text-lg">
               G
             </div>
             <div>
@@ -150,7 +150,7 @@ export const LandingPage = () => {
                 <span className="font-extrabold text-base tracking-tight text-slate-900 dark:text-white">
                   GovLearn
                 </span>
-                <span className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded tracking-wide uppercase">
+                <span className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-emerald-500 dark:to-teal-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded tracking-wide uppercase">
                   AI
                 </span>
               </div>
@@ -161,16 +161,16 @@ export const LandingPage = () => {
           </div>
 
           <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-600 dark:text-slate-300">
-            <a href="#story-experience" className="hover:text-emerald-500 transition-colors">
+            <a href="#story-experience" className="hover:text-blue-600 dark:hover:text-emerald-500 transition-colors">
               Platform Journey
             </a>
-            <a href="#why-govlearn" className="hover:text-emerald-500 transition-colors">
+            <a href="#why-govlearn" className="hover:text-blue-600 dark:hover:text-emerald-500 transition-colors">
               Capabilities
             </a>
-            <a href="#how-it-works" className="hover:text-emerald-500 transition-colors">
+            <a href="#how-it-works" className="hover:text-blue-600 dark:hover:text-emerald-500 transition-colors">
               Workflow
             </a>
-            <a href="#karmayogi" className="hover:text-emerald-500 transition-colors">
+            <a href="#karmayogi" className="hover:text-blue-600 dark:hover:text-emerald-500 transition-colors">
               iGOT Integration
             </a>
           </nav>
@@ -186,19 +186,19 @@ export const LandingPage = () => {
               {theme === 'dark' ? (
                 <Sun className="w-4 h-4 text-amber-400 hover:rotate-45 transition-transform" />
               ) : (
-                <Moon className="w-4 h-4 text-emerald-600 hover:-rotate-12 transition-transform" />
+                <Moon className="w-4 h-4 text-blue-600 dark:text-emerald-600 hover:-rotate-12 transition-transform" />
               )}
             </button>
 
             <Link
               to="/login"
-              className="text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-emerald-500 px-3 py-1.5 transition-colors"
+              className="text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-emerald-500 px-3 py-1.5 transition-colors"
             >
               Sign In
             </Link>
             <Link
               to="/dashboard"
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-1.5 btn-command"
+              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-blue-600/20 dark:shadow-emerald-600/20 transition-all flex items-center gap-1.5 btn-command"
             >
               <span>Explore Dashboard</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -210,15 +210,15 @@ export const LandingPage = () => {
       {/* Cinematic Hero Section */}
       <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
         {/* Subtle animated background grid & ambient light lines */}
-        <div className="absolute inset-0 opacity-20 dark:opacity-25 pointer-events-none bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:28px_28px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-emerald-600/15 via-teal-400/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 opacity-20 dark:opacity-25 pointer-events-none bg-[radial-gradient(#3b82f6_1px,transparent_1px)] dark:bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:28px_28px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-blue-600/15 via-blue-400/10 to-transparent dark:from-emerald-600/15 dark:via-teal-400/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* Left Hero Content: Staggered Staged Reveal */}
             <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-semibold shadow-sm animate-fade-in">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-500/30 text-xs font-semibold shadow-sm animate-fade-in">
+                <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-emerald-500" />
                 <span>Smart India Hackathon 2026 • Problem Statement SIH26101</span>
               </div>
 
@@ -234,7 +234,7 @@ export const LandingPage = () => {
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
                 <Link
                   to="/dashboard"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-green-glow transition-all flex items-center gap-2 group btn-command"
+                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-emerald-600 dark:to-teal-600 dark:hover:from-emerald-500 dark:hover:to-teal-500 text-white font-bold text-sm shadow-blue-glow dark:shadow-green-glow transition-all flex items-center gap-2 group btn-command"
                 >
                   <span>Explore Dashboard</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -249,7 +249,7 @@ export const LandingPage = () => {
               </div>
 
               <div className="pt-3 text-xs font-medium text-slate-500 dark:text-slate-400 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400">
+                <span className="flex items-center gap-1 text-blue-600 dark:text-emerald-400">
                   <CheckCircle2 className="w-3.5 h-3.5" /> Role-Based Public Sector Upskilling
                 </span>
                 <span>•</span>
