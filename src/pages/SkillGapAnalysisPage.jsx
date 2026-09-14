@@ -302,10 +302,10 @@ export const SkillGapAnalysisPage = () => {
       {/* Two Defined Sections: "Your Strengths" and "Skills to Improve" */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Your Strengths Section */}
-        <div className="command-card rounded-2xl p-6 border border-emerald-500/20 bg-gradient-to-br from-white via-emerald-500/5 to-white dark:from-navy-900 dark:via-emerald-950/10 dark:to-navy-900">
+        <div className="command-card rounded-2xl p-6 border border-blue-200 dark:border-emerald-500/20 bg-gradient-to-br from-white via-blue-50/30 to-white dark:from-navy-900 dark:via-emerald-950/10 dark:to-navy-900">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-emerald-500/10 border border-blue-200 dark:border-emerald-500/20 flex items-center justify-center text-blue-600 dark:text-emerald-400">
                 <Award className="w-4 h-4" />
               </div>
               <div>
@@ -317,7 +317,7 @@ export const SkillGapAnalysisPage = () => {
                 </p>
               </div>
             </div>
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+            <span className="text-xs font-bold text-blue-600 dark:text-emerald-400 bg-blue-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded-full border border-blue-200 dark:border-emerald-500/20">
               2 Competencies
             </span>
           </div>
@@ -333,10 +333,10 @@ export const SkillGapAnalysisPage = () => {
                     {strength.name}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-emerald-500/10 text-blue-600 dark:text-emerald-400 border border-blue-200 dark:border-emerald-500/20">
                       {strength.badge}
                     </span>
-                    <span className="font-mono font-black text-emerald-600 dark:text-emerald-400 text-sm">
+                    <span className="font-mono font-black text-blue-600 dark:text-emerald-400 text-sm">
                       {strength.score}%
                     </span>
                   </div>
@@ -347,7 +347,7 @@ export const SkillGapAnalysisPage = () => {
                 </p>
 
                 <div className="pt-2 border-t border-slate-100 dark:border-navy-800 text-[11px] text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-emerald-500" />
                   <span>{strength.recentMilestone}</span>
                 </div>
               </div>
