@@ -82,15 +82,15 @@ export const SkillGapAnalysisPage = () => {
       </div>
 
       {/* AI ANALYZED Status Indicator Bar (Requirement #7) */}
-      <div className="command-card rounded-2xl p-4 border border-cyan-500/30 flex flex-wrap items-center justify-between gap-3 text-xs bg-slate-50/70 dark:bg-navy-900/70">
+      <div className="command-card rounded-2xl p-4 border border-blue-200 dark:border-cyan-500/30 flex flex-wrap items-center justify-between gap-3 text-xs bg-white dark:bg-navy-900/70">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500">
+          <div className="p-2 rounded-xl bg-blue-50 dark:bg-emerald-500/10 text-blue-600 dark:text-emerald-500">
             <CheckCircle2 className="w-4 h-4" />
           </div>
           <div>
             <p className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
               <span>Competency Gap Model Calibrated</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 dark:bg-emerald-500/15 text-blue-600 dark:text-emerald-400 font-bold border border-blue-200 dark:border-emerald-500/20">
                 ACTIVE
               </span>
             </p>
@@ -168,38 +168,38 @@ export const SkillGapAnalysisPage = () => {
       </div>
 
       {/* AI RECOMMENDATION CARD */}
-      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-navy-950 via-navy-900 to-emerald-950/50 text-white border border-emerald-500/40 shadow-green-glow overflow-hidden">
-        <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 dark:from-navy-950 dark:via-navy-900 dark:to-emerald-950/50 text-white border border-blue-400/30 dark:border-emerald-500/40 shadow-blue-500/20 dark:shadow-green-glow overflow-hidden">
+        <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-white/10 dark:bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold font-mono">
-                <Sparkles className="w-3 h-3 text-emerald-300 animate-spin" style={{ animationDuration: '4s' }} />
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 dark:bg-emerald-500/20 text-white dark:text-emerald-300 border border-white/30 dark:border-emerald-400/30 text-xs font-bold font-mono">
+                <Sparkles className="w-3 h-3 text-blue-200 dark:text-emerald-300 animate-spin" style={{ animationDuration: '4s' }} />
                 RECOMMENDED FOCUS
               </span>
-              <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+              <span className="text-[11px] font-semibold text-white/90 dark:text-emerald-400 bg-white/10 dark:bg-emerald-500/10 px-2 py-0.5 rounded-full border border-white/20 dark:border-emerald-500/20">
                 High Impact
               </span>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-white/90 dark:text-slate-200 leading-relaxed font-sans">
               Based on your current performance, completing <strong>Cloud Fundamentals</strong> and{' '}
               <strong>Cybersecurity Essentials</strong> could significantly improve your overall skill profile.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-1">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-blue-100 dark:text-slate-400 pt-1">
               <span>Potential Score Lift: <strong>78% → 89%</strong></span>
               <span>•</span>
               <span>Estimated Commitment: <strong>10 hours</strong></span>
               <span>•</span>
-              <span className="text-emerald-300">CERT-In Compliance Aligned</span>
+              <span className="text-white dark:text-emerald-300">CERT-In Compliance Aligned</span>
             </div>
           </div>
 
           <button
             onClick={() => navigate('/learning')}
-            className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-2 shrink-0 group btn-command"
+            className="px-5 py-3 rounded-xl bg-white hover:bg-blue-50 text-blue-700 dark:bg-gradient-to-r dark:from-emerald-500 dark:to-teal-600 dark:hover:from-emerald-400 dark:hover:to-teal-500 dark:text-white text-xs font-bold shadow-md dark:shadow-green-glow transition-all flex items-center gap-2 shrink-0 group btn-command"
           >
             <span>View Recommended Learning</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
