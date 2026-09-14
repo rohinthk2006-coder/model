@@ -1,18 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Shield, Cloud, Database, Cpu, FileText, MessageSquare, Sparkles } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
 
 export const AICoreVisual = () => {
   const containerRef = useRef(null);
+  const { theme } = useApp();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeNode, setActiveNode] = useState(null);
 
+  const isBright = theme !== 'dark';
+
   const nodes = [
-    { id: 1, name: 'Digital Governance', score: '86%', angle: 0, icon: FileText, color: '#10B981' },
-    { id: 2, name: 'Cybersecurity', score: '61%', angle: 60, icon: Shield, color: '#F59E0B' },
-    { id: 3, name: 'Data Analytics', score: '72%', angle: 120, icon: Database, color: '#06B6D4' },
-    { id: 4, name: 'Cloud Computing', score: '54%', angle: 180, icon: Cloud, color: '#3B82F6' },
-    { id: 5, name: 'Communication', score: '82%', angle: 240, icon: MessageSquare, color: '#10B981' },
-    { id: 6, name: 'AI Fundamentals', score: '68%', angle: 300, icon: Cpu, color: '#8B5CF6' },
+    { id: 1, name: 'Digital Governance', score: '86%', angle: 0, icon: FileText, color: isBright ? '#2563EB' : '#10B981' },
+    { id: 2, name: 'Cybersecurity', score: '61%', angle: 60, icon: Shield, color: isBright ? '#1D4ED8' : '#F59E0B' },
+    { id: 3, name: 'Data Analytics', score: '72%', angle: 120, icon: Database, color: isBright ? '#3B82F6' : '#06B6D4' },
+    { id: 4, name: 'Cloud Computing', score: '54%', angle: 180, icon: Cloud, color: isBright ? '#60A5FA' : '#3B82F6' },
+    { id: 5, name: 'Communication', score: '82%', angle: 240, icon: MessageSquare, color: isBright ? '#2563EB' : '#10B981' },
+    { id: 6, name: 'AI Fundamentals', score: '68%', angle: 300, icon: Cpu, color: isBright ? '#1E40AF' : '#8B5CF6' },
   ];
 
   const handleMouseMove = (e) => {
@@ -38,8 +42,8 @@ export const AICoreVisual = () => {
       className="relative w-full max-w-[480px] sm:max-w-[540px] aspect-square mx-auto flex items-center justify-center select-none"
     >
       {/* Background Ambient Radial Glow */}
-      <div className="absolute w-72 h-72 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 blur-3xl pointer-events-none" />
-      <div className="absolute w-56 h-56 rounded-full bg-teal-600/15 dark:bg-teal-600/20 blur-2xl pointer-events-none" />
+      <div className="absolute w-72 h-72 rounded-full bg-blue-500/10 dark:bg-emerald-500/15 blur-3xl pointer-events-none" />
+      <div className="absolute w-56 h-56 rounded-full bg-blue-600/10 dark:bg-teal-600/20 blur-2xl pointer-events-none" />
 
       {/* SVG Layer for Orbits, Scanning Sweep, and Neural Vectors */}
       <svg
@@ -48,20 +52,20 @@ export const AICoreVisual = () => {
       >
         <defs>
           <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="#3B82F6" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#10B981" stopOpacity="0.4" />
+            <stop offset="0%" stopColor={isBright ? "#3B82F6" : "#06B6D4"} stopOpacity="0.4" />
+            <stop offset="50%" stopColor="#2563EB" stopOpacity="0.15" />
+            <stop offset="100%" stopColor={isBright ? "#1D4ED8" : "#10B981"} stopOpacity="0.4" />
           </linearGradient>
 
           <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.8" />
+            <stop offset="0%" stopColor={isBright ? "#3B82F6" : "#06B6D4"} stopOpacity="0.8" />
             <stop offset="60%" stopColor="#1D4ED8" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#0B132B" stopOpacity="0" />
+            <stop offset="100%" stopColor={isBright ? "#FFFFFF" : "#0B132B"} stopOpacity="0" />
           </radialGradient>
 
           <linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+            <stop offset="0%" stopColor={isBright ? "#3B82F6" : "#06B6D4"} stopOpacity="0.25" />
+            <stop offset="100%" stopColor={isBright ? "#2563EB" : "#06B6D4"} stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -72,7 +76,7 @@ export const AICoreVisual = () => {
           r="185"
           fill="none"
           stroke="currentColor"
-          className="text-slate-300/40 dark:text-navy-700/60"
+          className="text-blue-200/50 dark:text-navy-700/60"
           strokeWidth="1"
           strokeDasharray="2 6"
         />
@@ -101,7 +105,7 @@ export const AICoreVisual = () => {
           r="110"
           fill="none"
           stroke="currentColor"
-          className="text-cyan-500/30"
+          className="text-blue-400/30 dark:text-cyan-500/30"
           strokeWidth="1"
           strokeDasharray="6 8"
           style={{
@@ -139,8 +143,8 @@ export const AICoreVisual = () => {
                 y1={200 + mousePos.y * 4}
                 x2={nodeX}
                 y2={nodeY}
-                stroke={isHovered ? '#06B6D4' : 'currentColor'}
-                className={isHovered ? 'text-cyan-400' : 'text-slate-400/25 dark:text-navy-700/80'}
+                stroke={isHovered ? (isBright ? '#2563EB' : '#06B6D4') : 'currentColor'}
+                className={isHovered ? (isBright ? 'text-blue-600' : 'text-cyan-400') : 'text-blue-300/40 dark:text-navy-700/80'}
                 strokeWidth={isHovered ? 2 : 1}
                 strokeDasharray={isHovered ? 'none' : '3 3'}
               />
@@ -149,7 +153,7 @@ export const AICoreVisual = () => {
                 cx={(200 + nodeX) / 2}
                 cy={(200 + nodeY) / 2}
                 r="1.5"
-                fill="#06B6D4"
+                fill={isBright ? "#2563EB" : "#06B6D4"}
                 className="animate-ping"
                 style={{ animationDuration: '3s' }}
               />
@@ -164,20 +168,20 @@ export const AICoreVisual = () => {
           transform: `translate(${mousePos.x * 6}px, ${mousePos.y * 6}px)`,
           transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
-        className="relative z-20 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-gradient-to-tr from-navy-950 via-blue-950 to-navy-900 dark:from-navy-900 dark:via-blue-900/60 dark:to-navy-950 border border-cyan-400/40 shadow-cyan-glow flex flex-col items-center justify-center p-3 text-center cursor-pointer group"
+        className="relative z-20 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white dark:bg-navy-950 border border-blue-400/60 dark:border-cyan-400/40 shadow-blue-glow dark:shadow-cyan-glow flex flex-col items-center justify-center p-3 text-center cursor-pointer group"
       >
         <div className="relative">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/30">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-500 dark:from-cyan-500 dark:to-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/30">
             <Sparkles className="w-4 h-4 text-white animate-spin" style={{ animationDuration: '8s' }} />
           </div>
-          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-cyan-400 ring-2 ring-navy-900 animate-pulse" />
+          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-blue-500 dark:bg-cyan-400 ring-2 ring-white dark:ring-navy-900 animate-pulse" />
         </div>
 
         <div className="mt-1.5">
-          <span className="text-[10px] font-mono tracking-widest text-cyan-400 font-extrabold uppercase">
+          <span className="text-[10px] font-mono tracking-widest text-blue-600 dark:text-cyan-400 font-extrabold uppercase">
             GovLearn AI
           </span>
-          <span className="block text-[8px] font-mono text-slate-400 tracking-wider">
+          <span className="block text-[8px] font-mono text-slate-500 dark:text-slate-400 tracking-wider">
             CORE ACTIVE
           </span>
         </div>
@@ -208,8 +212,8 @@ export const AICoreVisual = () => {
             <div
               className={`flex items-center gap-2 p-2 sm:p-2.5 rounded-xl transition-all duration-200 ${
                 isHovered
-                  ? 'bg-white dark:bg-navy-800 border-cyan-400 shadow-cyan-glow scale-105'
-                  : 'bg-white/90 dark:bg-navy-900/90 border-slate-200 dark:border-navy-700/80 hover:border-cyan-500/50'
+                  ? 'bg-white dark:bg-navy-800 border-blue-500 dark:border-cyan-400 shadow-blue-glow dark:shadow-cyan-glow scale-105'
+                  : 'bg-white/95 dark:bg-navy-900/90 border-blue-200 dark:border-navy-700/80 hover:border-blue-400 dark:hover:border-cyan-500/50'
               } border shadow-sm backdrop-blur-md`}
             >
               <div
