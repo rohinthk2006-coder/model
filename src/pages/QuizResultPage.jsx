@@ -86,7 +86,7 @@ export const QuizResultPage = () => {
                   cx="60"
                   cy="60"
                   r="52"
-                  className="text-cyan-500 transition-all duration-300 ease-out"
+                  className="text-blue-600 dark:text-cyan-500 transition-all duration-300 ease-out"
                   strokeWidth="9"
                   strokeDasharray={circleCircumference}
                   strokeDashoffset={strokeDashoffset}
@@ -100,7 +100,7 @@ export const QuizResultPage = () => {
                 <span className="text-4xl font-black text-slate-900 dark:text-white tracking-tight font-display">
                   {animatedScore}%
                 </span>
-                <span className="text-[10px] uppercase font-bold text-cyan-600 dark:text-cyan-400 tracking-wider font-mono">
+                <span className="text-[10px] uppercase font-bold text-blue-600 dark:text-cyan-400 tracking-wider font-mono">
                   {finalScore >= 75 ? 'Proficient' : 'Needs Review'}
                 </span>
               </div>
@@ -108,7 +108,7 @@ export const QuizResultPage = () => {
 
             <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-2 text-center">
               Standard Target: 75% • Performance:{' '}
-              <strong className="text-emerald-500">Strong</strong>
+              <strong className="text-blue-600 dark:text-emerald-500">Strong</strong>
             </p>
           </div>
 
@@ -124,32 +124,32 @@ export const QuizResultPage = () => {
 
               <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 text-center">
                 <div className="text-[10px] font-bold text-slate-400 uppercase font-mono">Accuracy</div>
-                <div className="text-lg sm:text-xl font-black text-emerald-500 mt-0.5 font-display">
+                <div className="text-lg sm:text-xl font-black text-blue-600 dark:text-emerald-500 mt-0.5 font-display">
                   {finalScore}%
                 </div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-800 text-center">
                 <div className="text-[10px] font-bold text-slate-400 uppercase font-mono">Performance</div>
-                <div className="text-lg sm:text-xl font-black text-cyan-500 mt-0.5 font-display">
+                <div className="text-lg sm:text-xl font-black text-blue-600 dark:text-cyan-500 mt-0.5 font-display">
                   Strong
                 </div>
               </div>
             </div>
 
             {/* Performance Analysis Bullet Points */}
-            <div className="p-4 rounded-xl bg-emerald-50/60 dark:bg-navy-900/60 border border-emerald-100 dark:border-navy-800 space-y-2 text-xs">
+            <div className="p-4 rounded-xl bg-blue-50/70 dark:bg-navy-900/60 border border-blue-100 dark:border-navy-800 space-y-2 text-xs">
               <div className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                <TrendingUp className="w-4 h-4 text-cyan-500" />
+                <TrendingUp className="w-4 h-4 text-blue-600 dark:text-cyan-500" />
                 <span>Performance Analysis:</span>
               </div>
               <ul className="space-y-1.5 text-slate-600 dark:text-slate-300">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-emerald-500 shrink-0 mt-0.5" />
                   <span>Strong understanding of basic statutory concepts and encryption purposes.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <XCircle className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                  <XCircle className="w-3.5 h-3.5 text-blue-400 dark:text-amber-500 shrink-0 mt-0.5" />
                   <span>Needs improvement in advanced security practices and rapid 6-hour CERT-In escalation protocols.</span>
                 </li>
               </ul>
@@ -158,14 +158,14 @@ export const QuizResultPage = () => {
         </div>
 
         {/* AI Recommendation Card */}
-        <div className="p-5 rounded-xl bg-gradient-to-r from-navy-950 via-navy-900 to-blue-950 text-white border border-cyan-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
+        <div className="p-5 rounded-xl bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-800 dark:from-navy-950 dark:via-navy-900 dark:to-blue-950 text-white border border-blue-400/30 dark:border-cyan-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center shrink-0">
-              <Sparkles className="w-5 h-5 text-cyan-300" />
+            <div className="w-9 h-9 rounded-xl bg-white/15 dark:bg-cyan-500/20 border border-white/20 dark:border-cyan-400/30 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 text-white dark:text-cyan-300" />
             </div>
             <div>
-              <div className="text-xs font-bold text-cyan-300 font-mono">AI REMEDIATION RECOMMENDATION</div>
-              <p className="text-xs text-slate-200 mt-0.5">
+              <div className="text-xs font-bold text-blue-100 dark:text-cyan-300 font-mono">AI REMEDIATION RECOMMENDATION</div>
+              <p className="text-xs text-white/90 dark:text-slate-200 mt-0.5">
                 “Review Module 3 before attempting the advanced assessment.”
               </p>
             </div>
@@ -173,7 +173,7 @@ export const QuizResultPage = () => {
 
           <Link
             to="/learning/cybersecurity-essentials"
-            className="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-navy-950 text-xs font-bold transition-all shrink-0 btn-command"
+            className="px-4 py-2 rounded-xl bg-white text-blue-700 hover:bg-blue-50 dark:bg-cyan-500 dark:text-navy-950 dark:hover:bg-cyan-400 text-xs font-bold transition-all shrink-0 btn-command shadow-sm"
           >
             Review Module 3
           </Link>
