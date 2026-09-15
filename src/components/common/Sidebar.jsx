@@ -17,20 +17,26 @@ import {
   ChevronLeft,
   ChevronsLeft,
   ChevronsRight,
+  Briefcase,
+  FileSearch,
+  CalendarCheck,
 } from 'lucide-react';
 
 export const Sidebar = ({ isOpen, onClose }) => {
-  const { userRole, currentUser, sidebarCollapsed, toggleSidebarCollapsed } = useApp();
+  const { userRole, currentUser, sidebarCollapsed, toggleSidebarCollapsed, t } = useApp();
   const navigate = useNavigate();
   const isCollapsed = sidebarCollapsed;
 
   const employeeNavItems = [
-    { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/learning', label: 'My Learning', icon: BookOpen },
+    { to: '/dashboard', label: t('dashboard', 'Dashboard'), icon: LayoutDashboard },
+    { to: '/jobs', label: t('governmentJobs', 'Government Jobs'), icon: Briefcase, badge: 'NEW' },
+    { to: '/analyzer', label: t('notificationAnalyzer', 'Notification Analyzer'), icon: FileSearch, badge: 'AI' },
+    { to: '/study-plan', label: t('studyPlan', 'AI Study Plan'), icon: CalendarCheck },
+    { to: '/learning', label: t('myLearning', 'My Learning'), icon: BookOpen },
     { to: '/skills', label: 'Skill Analysis', icon: Sparkles, badge: 'AI' },
-    { to: '/quiz', label: 'AI Quiz', icon: HelpCircle },
-    { to: '/progress', label: 'Progress', icon: TrendingUp },
-    { to: '/profile', label: 'Profile', icon: User },
+    { to: '/quiz', label: t('aiQuiz', 'AI Mock Tests'), icon: HelpCircle },
+    { to: '/progress', label: t('progress', 'Progress & GovReady'), icon: TrendingUp },
+    { to: '/profile', label: t('profile', 'Profile'), icon: User },
   ];
 
   const managerNavItems = [
@@ -42,6 +48,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
   ];
 
   const navItems = userRole === 'manager' ? managerNavItems : employeeNavItems;
+
 
   return (
     <>
