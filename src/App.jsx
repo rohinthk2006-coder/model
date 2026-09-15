@@ -16,6 +16,9 @@ import { ProgressTrackingPage } from './pages/ProgressTrackingPage';
 import { ManagerDashboard } from './pages/ManagerDashboard';
 import { ManagerSkillGapPage } from './pages/ManagerSkillGapPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { GovJobMatchPage } from './pages/GovJobMatchPage';
+import { NotificationAnalyzerPage } from './pages/NotificationAnalyzerPage';
+import { StudyPlanPage } from './pages/StudyPlanPage';
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
           {/* Authenticated Application Layout */}
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<EmployeeDashboard />} />
+            <Route path="/jobs" element={<GovJobMatchPage />} />
+            <Route path="/analyzer" element={<NotificationAnalyzerPage />} />
+            <Route path="/study-plan" element={<StudyPlanPage />} />
             <Route path="/skills" element={<SkillGapAnalysisPage />} />
             <Route path="/learning" element={<PersonalizedLearningPage />} />
             <Route path="/learning/:id" element={<CourseDetailsPage />} />
