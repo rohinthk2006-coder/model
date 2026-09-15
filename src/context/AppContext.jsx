@@ -1,11 +1,12 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { mockCourses as initialCourses } from '../data/mockCourses';
 import { initialNotifications } from '../data/mockNotifications';
+import { authApi, coursesApi, notificationsApi } from '../services/api';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [userRole, setUserRole] = useState(() => {
+  const [userRole, setUserRoleState] = useState(() => {
     return localStorage.getItem('govlearn_role') || 'employee';
   });
 
@@ -16,7 +17,8 @@ export const AppProvider = ({ children }) => {
   const [courses, setCourses] = useState(initialCourses);
   const [notifications, setNotifications] = useState(initialNotifications);
   const [toasts, setToasts] = useState([]);
-  
+  const [activeCertificate, setActiveCertificate] = useState(null);
+
   // AI Simulation Modal State
   const [aiModalOpen, setAiModalOpen] = useState(false);
   const [aiModalSteps, setAiModalSteps] = useState([]);
@@ -43,6 +45,41 @@ export const AppProvider = ({ children }) => {
     userAnswers: {},
   });
 
+  // Sync with backend on initial load
+  useEffect(() => {
+    let isMounted = true;
+
+    async function syncBackend() {
+      try {
+        const [meRes, coursesRes, notifRes] = await Promise.all([
+          authApi.getMe(),
+          coursesApi.getAll(),
+          notificationsApi.getAll(),
+        ]);
+
+        if (isMounted) {
+          if (meRes?.role) {
+            setUserRoleState(meRes.role);
+          }
+          if (coursesRes?.courses && coursesRes.courses.length > 0) {
+            setCourses(coursesRes.courses);
+          }
+          if (notifRes?.notifications && notifRes.notifications.length > 0) {
+            setNotifications(notifRes.notifications);
+          }
+        }
+      } catch (err) {
+        console.warn('Initial backend sync failed, running with local state:', err);
+      }
+    }
+
+    syncBackend();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   // Keep dark class on <html> synced
   useEffect(() => {
     const root = document.documentElement;
@@ -63,6 +100,15 @@ export const AppProvider = ({ children }) => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const setUserRole = async (newRole) => {
+    setUserRoleState(newRole);
+    try {
+      await authApi.switchRole(newRole);
+    } catch (err) {
+      console.warn('Backend role switch failed:', err);
+    }
+  };
+
   const addToast = (message, type = 'info', duration = 4000) => {
     const id = Date.now() + Math.random();
     setToasts((prev) => [...prev, { id, message, type }]);
@@ -77,23 +123,34 @@ export const AppProvider = ({ children }) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
-  const markNotificationAsRead = (id) => {
+  const markNotificationAsRead = async (id) => {
     setNotifications((prev) =>
       prev.map((n) => (n.id === id ? { ...n, unread: false } : n))
     );
+    try {
+      await notificationsApi.markRead(id);
+    } catch (err) {
+      console.warn('Backend markRead failed:', err);
+    }
   };
 
-  const markAllNotificationsAsRead = () => {
+  const markAllNotificationsAsRead = async () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, unread: false })));
     addToast('All notifications marked as read', 'success');
+    try {
+      await notificationsApi.markAllRead();
+    } catch (err) {
+      console.warn('Backend markAllRead failed:', err);
+    }
   };
 
-  const toggleModuleComplete = (courseId, moduleId) => {
+  const toggleModuleComplete = async (courseId, moduleId) => {
+    // 1. Optimistically update local state immediately
     setCourses((prevCourses) =>
       prevCourses.map((course) => {
         if (course.id !== courseId) return course;
         const updatedModules = course.modules.map((m) =>
-          m.id === moduleId ? { ...m, completed: !m.completed } : m
+          m.id === Number(moduleId) ? { ...m, completed: !m.completed } : m
         );
         const completedCount = updatedModules.filter((m) => m.completed).length;
         const newProgress = Math.round((completedCount / updatedModules.length) * 100);
@@ -104,9 +161,29 @@ export const AppProvider = ({ children }) => {
         };
       })
     );
+
+    // 2. Persist to backend and check if certificate was unlocked
+    try {
+      const res = await coursesApi.toggleModule(courseId, moduleId);
+      if (res?.course) {
+        setCourses((prevCourses) =>
+          prevCourses.map((c) => (c.id === courseId ? res.course : c))
+        );
+      }
+      if (res?.certificate) {
+        setActiveCertificate(res.certificate);
+        addToast(
+          `Achievement Unlocked: Official Certificate issued for "${res.course?.title || 'Course'}"!`,
+          'success',
+          6000
+        );
+      }
+    } catch (err) {
+      console.warn('Module toggle sync to backend failed, using local calculation:', err);
+    }
   };
 
-  // Simulated AI workflow
+  // Simulated / Deep AI workflow
   const triggerAiSimulation = (title, steps, onFinished) => {
     setAiModalTitle(title || 'GovLearn AI Neural Engine');
     setAiModalSteps(
@@ -185,6 +262,8 @@ export const AppProvider = ({ children }) => {
         setActiveQuizConfig,
         quizResult,
         setQuizResult,
+        activeCertificate,
+        setActiveCertificate,
         aiModalOpen,
         aiModalSteps,
         aiCurrentStep,

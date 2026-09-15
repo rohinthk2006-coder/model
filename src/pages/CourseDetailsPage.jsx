@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import { CertificateModal } from '../components/learning/CertificateModal';
+import { coursesApi } from '../services/api';
 import {
   Play,
   Pause,
@@ -24,7 +26,7 @@ import {
 export const CourseDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { courses, toggleModuleComplete, addToast } = useApp();
+  const { courses, toggleModuleComplete, addToast, currentUser } = useApp();
 
   const course = courses.find((c) => c.id === id) || courses[0];
   const [selectedModuleId, setSelectedModuleId] = useState(() => {
@@ -37,6 +39,34 @@ export const CourseDetailsPage = () => {
   const [videoSpeed, setVideoSpeed] = useState('1.0x');
   const [userNote, setUserNote] = useState('');
   const [activeTab, setActiveTab] = useState('lecture'); // 'lecture', 'notes', 'resources'
+  const [showCertificateModal, setShowCertificateModal] = useState(false);
+  const [certificateData, setCertificateData] = useState(null);
+
+  const handleOpenCertificate = async () => {
+    try {
+      const res = await coursesApi.getCertificate(course.id);
+      if (res?.certificate) {
+        setCertificateData(res.certificate);
+      } else {
+        // Generate on-the-fly certificate if 100% complete
+        setCertificateData({
+          id: `cert-${Date.now()}`,
+          courseId: course.id,
+          title: course.title,
+          issuer: 'GovLearn AI / CBC Knowledge Hub',
+          recipientName: currentUser?.name || 'Civil Service Officer',
+          recipientId: currentUser?.employeeId || 'GOV-USER-8921',
+          issueDate: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+          certId: `GL-CERT-2026-${(course.category || 'GOV').slice(0, 4).toUpperCase()}-9412`,
+          verificationHash: '0x8892fa4b8e21c33f7d1a90bc129e01124d',
+          qrPayload: `https://govlearn.gov.in/verify/GL-CERT-2026?course=${course.id}`,
+        });
+      }
+      setShowCertificateModal(true);
+    } catch (err) {
+      console.warn('Failed to load certificate:', err);
+    }
+  };
 
   const activeModule =
     course.modules.find((m) => m.id === selectedModuleId) || course.modules[0];
@@ -124,6 +154,15 @@ export const CourseDetailsPage = () => {
             <div className="text-[10px] text-slate-400">
               {course.modules.filter((m) => m.completed).length} of {course.modules.length} modules completed
             </div>
+            {course.progress === 100 && (
+              <button
+                onClick={handleOpenCertificate}
+                className="w-full mt-2 px-3 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-navy-950 font-bold text-xs shadow-md flex items-center justify-center gap-1.5 transition-all"
+              >
+                <Award className="w-3.5 h-3.5" />
+                <span>View Certificate</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -442,6 +481,13 @@ export const CourseDetailsPage = () => {
           </div>
         </div>
       </div>
+
+      {showCertificateModal && (
+        <CertificateModal
+          certificate={certificateData}
+          onClose={() => setShowCertificateModal(false)}
+        />
+      )}
     </div>
   );
 };

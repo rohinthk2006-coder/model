@@ -1,0 +1,1471 @@
+{
+  "activeRole": "employee",
+  "users": {
+    "employee": {
+      "id": "emp-user-1",
+      "name": "Rajesh Verma",
+      "designation": "Senior Section Officer (e-Governance)",
+      "department": "Ministry of Electronics & IT (MeitY)",
+      "cadre": "Central Secretariat Service (CSS)",
+      "employeeId": "GOV-IT-2024-8921",
+      "role": "employee",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "skillScore": 78,
+      "coursesCompleted": 13,
+      "learningHours": 34.5,
+      "streak": 7,
+      "preferences": {
+        "emailNotifications": true,
+        "aiRecommendations": true,
+        "digestFrequency": "weekly",
+        "darkMode": true
+      }
+    },
+    "manager": {
+      "id": "mgr-user-1",
+      "name": "Dr. Sunita Rao",
+      "designation": "Director (Capacity Building & IT Governance)",
+      "department": "Ministry of Electronics & IT (MeitY)",
+      "cadre": "Senior Administrative Grade (SAG)",
+      "employeeId": "GOV-DIR-2021-0042",
+      "role": "manager",
+      "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+      "skillScore": 92,
+      "preferences": {
+        "emailNotifications": true,
+        "aiRecommendations": true,
+        "digestFrequency": "daily",
+        "darkMode": true
+      }
+    }
+  },
+  "courses": [
+    {
+      "id": "cloud-fundamentals",
+      "title": "Cloud Computing Fundamentals",
+      "category": "Cloud",
+      "level": "Intermediate",
+      "duration": "6 hours",
+      "progress": 60,
+      "enrolledDate": "2026-08-15",
+      "estimatedTimeLeft": "3.9 hours",
+      "isAiRecommended": true,
+      "aiReason": "Directly addresses your 21% skill gap in Cloud Computing & MeghRaj cloud architectures.",
+      "description": "Master the principles of government cloud computing, national data sovereignty frameworks (MeghRaj), cloud migration strategies, multi-tenant security, and service delivery models for public infrastructure.",
+      "instructor": "Dr. Neha Kulkarni, National Informatics Centre (NIC)",
+      "learningObjectives": [
+        "Understand MeghRaj GI Cloud guidelines and procurement protocols on GeM",
+        "Architect resilient public sector cloud infrastructures with hybrid deployments",
+        "Implement government data residency and compliance auditing controls",
+        "Optimize cost structures and avoid vendor lock-in for ministry applications",
+        "Evaluate disaster recovery and business continuity setups for citizen services"
+      ],
+      "modules": [
+        {
+          "id": 1,
+          "title": "Module 1 — Introduction to GovCloud & MeghRaj",
+          "duration": "45 mins",
+          "completed": true,
+          "summary": "Overview of India’s GI Cloud initiative, primary objectives, and cloud deployment models for government departments.",
+          "content": "MeghRaj (GI Cloud) is the Government of India initiative to accelerate delivery of e-services in the country while optimizing ICT spending. The architecture ensures data sovereignty, shared infrastructure efficiency, and scalable digital public goods.",
+          "videoTimestamp": "08:24 / 14:30"
+        },
+        {
+          "id": 2,
+          "title": "Module 2 — Core Cloud Concepts & Architecture",
+          "duration": "1 hr 15 mins",
+          "completed": true,
+          "summary": "Deep dive into IaaS, PaaS, SaaS in public administration, virtual private clouds, and multi-zone availability.",
+          "content": "Understanding how virtual private clouds isolate sensitive departmental workloads while sharing resilient backbone infrastructure under the National Data Centre (NDC) umbrella.",
+          "videoTimestamp": "22:15 / 35:00"
+        },
+        {
+          "id": 3,
+          "title": "Module 3 — Practical Applications in Public Infrastructure",
+          "duration": "1 hr 30 mins",
+          "completed": true,
+          "isCurrent": true,
+          "summary": "Migrating legacy client-server workflows to cloud-native microservices with containerization (Docker, Kubernetes).",
+          "content": "Hands-on breakdown of migrating a legacy file tracking system to cloud-native microservices using NIC container registry and automated CI/CD pipelines compliant with government security baselines.",
+          "videoTimestamp": "04:12 / 28:45"
+        },
+        {
+          "id": 4,
+          "title": "Module 4 — Governance Use Cases & Data Sovereignty",
+          "duration": "1 hr 15 mins",
+          "completed": false,
+          "summary": "Complying with DPDP Act 2023, data localization mandates, cross-border restrictions, and audit logs.",
+          "content": "Reviewing statutory compliance requirements under the Digital Personal Data Protection Act 2023 for cloud-stored citizen telemetry and public benefit disbursement records.",
+          "videoTimestamp": "00:00 / 32:10"
+        },
+        {
+          "id": 5,
+          "title": "Module 5 — Comprehensive Assessment & Capstone",
+          "duration": "45 mins",
+          "completed": false,
+          "summary": "Final AI-proctored evaluation validating practical knowledge of government cloud governance.",
+          "content": "A comprehensive 25-question scenario-based assessment evaluating cloud sizing, MeghRaj compliance verification, and disaster recovery SLA planning.",
+          "videoTimestamp": "00:00 / 45:00"
+        }
+      ]
+    },
+    {
+      "id": "cybersecurity-essentials",
+      "title": "Cybersecurity Essentials for Public Servants",
+      "category": "Security",
+      "level": "Beginner",
+      "duration": "4 hours",
+      "progress": 100,
+      "enrolledDate": "2026-08-20",
+      "estimatedTimeLeft": "3.2 hours",
+      "isAiRecommended": true,
+      "aiReason": "Critical for CERT-In incident reporting compliance and defense against targeted cyber espionage.",
+      "description": "Equip government officials with essential defensive capabilities: identifying spear-phishing campaigns, securing confidential dispatches, endpoint hygiene, and mandatory CERT-In reporting protocols.",
+      "instructor": "Shri R. Ramanathan, Cyber Security Division, MeitY",
+      "learningObjectives": [
+        "Identify and neutralize social engineering and phishing tactics targeting government staff",
+        "Follow CERT-In mandatory cyber incident reporting directions within 6 hours",
+        "Implement multi-factor authentication (MFA) and cryptographic digital signatures (e-Sign)",
+        "Manage classified and confidential documents under Central Secretariat Manual of Office Procedure"
+      ],
+      "modules": [
+        {
+          "id": 1,
+          "title": "Module 1 — Threat Landscape in Government Ecosystems",
+          "duration": "45 mins",
+          "completed": true,
+          "summary": "Common attack vectors against government departments: APTs, ransomware, phishing, and insider threats.",
+          "content": "Government departments are prime targets for Advanced Persistent Threats (APTs). Recognizing sophisticated spear-phishing emails disguised as official memos is the first line of national cyber defense.",
+          "videoTimestamp": "12:10 / 18:00"
+        },
+        {
+          "id": 2,
+          "title": "Module 2 — Core Defensive Protocols & CERT-In Guidelines",
+          "duration": "50 mins",
+          "completed": true,
+          "isCurrent": true,
+          "summary": "Statutory compliance requirements under the CERT-In Directions 2022 and incident categorization.",
+          "content": "Step-by-step procedure for capturing forensic logs, isolating affected endpoints, and submitting formal incident notifications to the Indian Computer Emergency Response Team (CERT-In).",
+          "videoTimestamp": "06:45 / 24:00"
+        },
+        {
+          "id": 3,
+          "title": "Module 3 — Secure Communications & Data Encryption",
+          "duration": "1 hr",
+          "completed": true,
+          "summary": "End-to-end encryption, digital certificates (NIC-CA), and secure messaging platforms (Sandes).",
+          "content": "Deep dive into utilizing official communication channels like Sandes and Kavach authentication, ensuring no official correspondence is leaked via consumer cloud channels.",
+          "videoTimestamp": "00:00 / 30:00"
+        },
+        {
+          "id": 4,
+          "title": "Module 4 — Digital Personal Data Protection & Privacy",
+          "duration": "50 mins",
+          "completed": true,
+          "summary": "Handling citizen identity tokens, Aadhaar data vaults, and redaction protocols.",
+          "content": "Best practices for handling sensitive personal data in citizen-facing schemes, ensuring data minimization and strict purpose limitation.",
+          "videoTimestamp": "00:00 / 25:00"
+        },
+        {
+          "id": 5,
+          "title": "Module 5 — Practical Cyber Drill & Knowledge Check",
+          "duration": "35 mins",
+          "completed": true,
+          "summary": "Interactive simulation testing your response to a simulated phishing outbreak.",
+          "content": "Hands-on simulation: evaluate 5 suspicious communications, identify red flags, and trigger appropriate departmental alerts.",
+          "videoTimestamp": "00:00 / 35:00"
+        }
+      ]
+    },
+    {
+      "id": "data-analytics-governance",
+      "title": "Data Analytics for Governance",
+      "category": "Data",
+      "level": "Intermediate",
+      "duration": "8 hours",
+      "progress": 65,
+      "enrolledDate": "2026-07-28",
+      "estimatedTimeLeft": "2.8 hours",
+      "isAiRecommended": false,
+      "aiReason": "Enhances policy forecasting and predictive service delivery across district administrations.",
+      "description": "Transform raw departmental records into actionable governance intelligence. Learn KPI dashboarding, data cleaning, public scheme impact evaluation, and open government data (OGD) publishing standards.",
+      "instructor": "Prof. Arvind Swaminathan, NITI Aayog Analytics Advisor",
+      "learningObjectives": [
+        "Extract, clean, and analyze administrative datasets using open tools",
+        "Build executive KPI monitoring dashboards for mission-mode projects",
+        "Apply predictive statistical modeling for welfare beneficiary targeting",
+        "Ensure data ethics, de-identification, and OGD compliance"
+      ],
+      "modules": [
+        {
+          "id": 1,
+          "title": "Module 1 — Introduction to Evidence-Based Policymaking",
+          "duration": "1 hr 15 mins",
+          "completed": true,
+          "summary": "The shift from intuitive governance to data-driven public administration in India.",
+          "content": "Exploring how data-driven feedback loops dramatically improve beneficiary delivery efficiency in direct benefit transfer (DBT) schemes.",
+          "videoTimestamp": "15:00 / 15:00"
+        },
+        {
+          "id": 2,
+          "title": "Module 2 — Administrative Data Cleaning & Validation",
+          "duration": "1 hr 45 mins",
+          "completed": true,
+          "summary": "Handling missing values, deduplication, and standardizing district/tehsil codes (LGD).",
+          "content": "Using the Local Government Directory (LGD) coding standards to harmonize heterogeneous state and central datasets.",
+          "videoTimestamp": "25:00 / 25:00"
+        },
+        {
+          "id": 3,
+          "title": "Module 3 — KPI Dashboards & Executive Reporting",
+          "duration": "2 hrs",
+          "completed": true,
+          "summary": "Designing clear, clutter-free dashboards for ministers and departmental secretaries.",
+          "content": "Principles of executive visualization: lead vs lag indicators, drill-down geographic maps, and outlier detection.",
+          "videoTimestamp": "30:00 / 30:00"
+        },
+        {
+          "id": 4,
+          "title": "Module 4 — Predictive Modeling for Public Scheme Delivery",
+          "duration": "1 hr 45 mins",
+          "completed": false,
+          "isCurrent": true,
+          "summary": "Anticipating seasonal bottlenecks and optimizing inventory allocation in civil supplies.",
+          "content": "Implementing straightforward regression and moving-average time-series forecasts to anticipate seasonal supply requirements in essential services.",
+          "videoTimestamp": "10:20 / 32:00"
+        },
+        {
+          "id": 5,
+          "title": "Module 5 — Final Project & Capstone Assessment",
+          "duration": "1 hr 15 mins",
+          "completed": false,
+          "summary": "Design a comprehensive monitoring framework for a simulated district health scheme.",
+          "content": "Synthesizing all learned skills: deliver a mock dashboard mockup and policy recommendation memo based on a 10,000-record sample dataset.",
+          "videoTimestamp": "00:00 / 40:00"
+        }
+      ]
+    },
+    {
+      "id": "ai-fundamentals",
+      "title": "AI Fundamentals for Public Administration",
+      "category": "Artificial Intelligence",
+      "level": "Beginner",
+      "duration": "5 hours",
+      "progress": 80,
+      "enrolledDate": "2026-07-10",
+      "estimatedTimeLeft": "1.0 hour",
+      "isAiRecommended": true,
+      "aiReason": "Recommended to prepare for national AI deployments under the IndiaAI Mission.",
+      "description": "An essential primer on artificial intelligence, machine learning, natural language processing, and generative AI specifically structured for civil servants and government personnel.",
+      "instructor": "Dr. Amitabh Ghosh, IndiaAI Mission Directorate",
+      "learningObjectives": [
+        "Grasp core principles of ML, Large Language Models (LLMs), and computer vision",
+        "Evaluate appropriate governance use cases for AI chatbots, document summarization, and OCR",
+        "Identify bias, hallucination risks, and algorithmic accountability in public decisions",
+        "Implement prompt engineering techniques for drafting official memos and citizen communications"
+      ],
+      "modules": [
+        {
+          "id": 1,
+          "title": "Module 1 — Foundations of AI & Machine Learning",
+          "duration": "50 mins",
+          "completed": true,
+          "summary": "Demystifying AI terminology: from rule-based algorithms to deep learning.",
+          "content": "Understand what modern AI systems can and cannot do. Demystifying the difference between deterministic software and probabilistic generative models.",
+          "videoTimestamp": "20:00 / 20:00"
+        },
+        {
+          "id": 2,
+          "title": "Module 2 — Generative AI & Public Sector Productivity",
+          "duration": "1 hr",
+          "completed": true,
+          "summary": "Effective prompting, automated speech-to-text for parliamentary records, and translation (Bhashini).",
+          "content": "Leveraging Project Bhashini for instant translation of government notifications into 22 scheduled Indian languages.",
+          "videoTimestamp": "25:00 / 25:00"
+        },
+        {
+          "id": 3,
+          "title": "Module 3 — Responsible AI, Ethics & Bias in Public Delivery",
+          "duration": "1 hr 10 mins",
+          "completed": true,
+          "summary": "Mitigating algorithmic discrimination and ensuring transparency in citizen welfare scoring.",
+          "content": "Ensuring human-in-the-loop validation whenever automated algorithmic filters are utilized for citizen entitlements or tender evaluations.",
+          "videoTimestamp": "28:00 / 28:00"
+        },
+        {
+          "id": 4,
+          "title": "Module 4 — Implementing AI in Your Department",
+          "duration": "1 hr",
+          "completed": true,
+          "summary": "Standard operating procedures for AI vendor procurement and security sandboxes.",
+          "content": "Framework for formulating RFPs for AI vendor procurement, setting strict data confidentiality and benchmark testing criteria.",
+          "videoTimestamp": "30:00 / 30:00"
+        },
+        {
+          "id": 5,
+          "title": "Module 5 — AI Mastery Evaluation",
+          "duration": "1 hr",
+          "completed": false,
+          "isCurrent": true,
+          "summary": "Final assessment covering prompt safety, algorithmic ethics, and public AI deployment.",
+          "content": "Demonstrate competency in evaluating an AI project proposal for a municipal citizen grievance classification chatbot.",
+          "videoTimestamp": "05:00 / 35:00"
+        }
+      ]
+    },
+    {
+      "id": "dpdp-act-compliance",
+      "title": "Digital Personal Data Protection Act 2023 Compliance",
+      "category": "Governance",
+      "level": "Intermediate",
+      "duration": "3 hours",
+      "progress": 100,
+      "enrolledDate": "2026-06-01",
+      "completedDate": "2026-06-15",
+      "estimatedTimeLeft": "0 hours",
+      "isAiRecommended": false,
+      "aiReason": "Mandatory statutory compliance training for all Section Officers and above.",
+      "description": "Comprehensive statutory training on the rights, obligations, and penalties under the DPDP Act 2023 for central and state government data fiduciaries.",
+      "instructor": "Legal Cell, Ministry of Law & Justice",
+      "learningObjectives": [
+        "Master citizen consent frameworks and legitimate use exemptions for government functions",
+        "Establish Data Protection Board compliance mechanisms",
+        "Implement mandatory breach notification protocols within designated timelines"
+      ],
+      "modules": [
+        {
+          "id": 1,
+          "title": "Module 1 — Overview of Statutory Framework",
+          "duration": "35 mins",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Module 2 — Government as Data Fiduciary",
+          "duration": "45 mins",
+          "completed": true
+        },
+        {
+          "id": 3,
+          "title": "Module 3 — Breach Notification Protocols",
+          "duration": "50 mins",
+          "completed": true
+        },
+        {
+          "id": 4,
+          "title": "Module 4 — Assessment & Certification",
+          "duration": "30 mins",
+          "completed": true
+        }
+      ]
+    }
+  ],
+  "employees": [
+    {
+      "id": "emp-101",
+      "name": "Arun Kumar",
+      "email": "arun.kumar@meity.gov.in",
+      "employeeId": "GOV-IT-2023-4102",
+      "department": "IT",
+      "designation": "Senior Technical Officer",
+      "skillScore": 82,
+      "coursesCompleted": 14,
+      "learningStatus": "On Track",
+      "statusColor": "emerald",
+      "primarySkillGap": "Cloud Orchestration",
+      "lastActive": "Today, 10:15 AM",
+      "weeklyHours": 4.5,
+      "streak": 12,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 85
+        },
+        {
+          "skill": "Cyber",
+          "score": 80
+        },
+        {
+          "skill": "Data",
+          "score": 82
+        },
+        {
+          "skill": "Cloud",
+          "score": 72
+        },
+        {
+          "skill": "Comm",
+          "score": 88
+        },
+        {
+          "skill": "AI",
+          "score": 85
+        }
+      ]
+    },
+    {
+      "id": "emp-102",
+      "name": "Priya S",
+      "email": "priya.s@meity.gov.in",
+      "employeeId": "GOV-HR-2022-8924",
+      "department": "HR",
+      "designation": "Assistant Director (Personnel)",
+      "skillScore": 76,
+      "coursesCompleted": 11,
+      "learningStatus": "On Track",
+      "statusColor": "emerald",
+      "primarySkillGap": "Data Analytics",
+      "lastActive": "Yesterday",
+      "weeklyHours": 3.2,
+      "streak": 5,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 88
+        },
+        {
+          "skill": "Cyber",
+          "score": 68
+        },
+        {
+          "skill": "Data",
+          "score": 64
+        },
+        {
+          "skill": "Cloud",
+          "score": 55
+        },
+        {
+          "skill": "Comm",
+          "score": 92
+        },
+        {
+          "skill": "AI",
+          "score": 70
+        }
+      ]
+    },
+    {
+      "id": "emp-103",
+      "name": "Rahul K",
+      "email": "rahul.k@meity.gov.in",
+      "employeeId": "GOV-FIN-2024-1109",
+      "department": "Finance",
+      "designation": "Section Officer (Budget & Accounts)",
+      "skillScore": 61,
+      "coursesCompleted": 7,
+      "learningStatus": "Needs Attention",
+      "statusColor": "amber",
+      "primarySkillGap": "Cybersecurity & Cloud",
+      "lastActive": "3 days ago",
+      "weeklyHours": 1,
+      "streak": 0,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 78
+        },
+        {
+          "skill": "Cyber",
+          "score": 48
+        },
+        {
+          "skill": "Data",
+          "score": 75
+        },
+        {
+          "skill": "Cloud",
+          "score": 42
+        },
+        {
+          "skill": "Comm",
+          "score": 70
+        },
+        {
+          "skill": "AI",
+          "score": 52
+        }
+      ]
+    },
+    {
+      "id": "emp-104",
+      "name": "Meena R",
+      "email": "meena.r@meity.gov.in",
+      "employeeId": "GOV-ADM-2021-3381",
+      "department": "Administration",
+      "designation": "Under Secretary (General Admin)",
+      "skillScore": 88,
+      "coursesCompleted": 16,
+      "learningStatus": "Excellent",
+      "statusColor": "cyan",
+      "primarySkillGap": "None (Advanced Tier)",
+      "lastActive": "Today, 08:45 AM",
+      "weeklyHours": 5.8,
+      "streak": 19,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 95
+        },
+        {
+          "skill": "Cyber",
+          "score": 82
+        },
+        {
+          "skill": "Data",
+          "score": 84
+        },
+        {
+          "skill": "Cloud",
+          "score": 78
+        },
+        {
+          "skill": "Comm",
+          "score": 94
+        },
+        {
+          "skill": "AI",
+          "score": 85
+        }
+      ]
+    },
+    {
+      "id": "emp-105",
+      "name": "Vikram Singh",
+      "email": "vikram.singh@meity.gov.in",
+      "employeeId": "GOV-POL-2023-7721",
+      "department": "Policy & Planning",
+      "designation": "Research Officer",
+      "skillScore": 70,
+      "coursesCompleted": 9,
+      "learningStatus": "On Track",
+      "statusColor": "emerald",
+      "primarySkillGap": "Cloud Computing",
+      "lastActive": "Today, 11:30 AM",
+      "weeklyHours": 2.8,
+      "streak": 4,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 82
+        },
+        {
+          "skill": "Cyber",
+          "score": 62
+        },
+        {
+          "skill": "Data",
+          "score": 76
+        },
+        {
+          "skill": "Cloud",
+          "score": 50
+        },
+        {
+          "skill": "Comm",
+          "score": 80
+        },
+        {
+          "skill": "AI",
+          "score": 70
+        }
+      ]
+    },
+    {
+      "id": "emp-106",
+      "name": "Sunita Patel",
+      "email": "sunita.patel@meity.gov.in",
+      "employeeId": "GOV-EGOV-2024-5512",
+      "department": "Operations",
+      "designation": "Junior Secretariat Assistant",
+      "skillScore": 58,
+      "coursesCompleted": 5,
+      "learningStatus": "Critical Gap",
+      "statusColor": "rose",
+      "primarySkillGap": "Cybersecurity Fundamentals",
+      "lastActive": "5 days ago",
+      "weeklyHours": 0.5,
+      "streak": 0,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 68
+        },
+        {
+          "skill": "Cyber",
+          "score": 45
+        },
+        {
+          "skill": "Data",
+          "score": 50
+        },
+        {
+          "skill": "Cloud",
+          "score": 40
+        },
+        {
+          "skill": "Comm",
+          "score": 72
+        },
+        {
+          "skill": "AI",
+          "score": 44
+        }
+      ]
+    },
+    {
+      "id": "emp-107",
+      "name": "Ananya Roy",
+      "email": "ananya.roy@meity.gov.in",
+      "employeeId": "GOV-INF-2022-9901",
+      "department": "IT",
+      "designation": "Systems Analyst",
+      "skillScore": 85,
+      "coursesCompleted": 15,
+      "learningStatus": "Excellent",
+      "statusColor": "cyan",
+      "primarySkillGap": "AI Governance",
+      "lastActive": "Today, 01:20 PM",
+      "weeklyHours": 6,
+      "streak": 15,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 84
+        },
+        {
+          "skill": "Cyber",
+          "score": 89
+        },
+        {
+          "skill": "Data",
+          "score": 86
+        },
+        {
+          "skill": "Cloud",
+          "score": 88
+        },
+        {
+          "skill": "Comm",
+          "score": 80
+        },
+        {
+          "skill": "AI",
+          "score": 73
+        }
+      ]
+    },
+    {
+      "id": "emp-108",
+      "name": "Devendra Joshi",
+      "email": "devendra.j@meity.gov.in",
+      "employeeId": "GOV-CIT-2023-2219",
+      "department": "Citizen Services",
+      "designation": "Desk Officer (Grievance Portal)",
+      "skillScore": 64,
+      "coursesCompleted": 8,
+      "learningStatus": "Needs Attention",
+      "statusColor": "amber",
+      "primarySkillGap": "Data Analytics & AI",
+      "lastActive": "Yesterday",
+      "weeklyHours": 1.5,
+      "streak": 1,
+      "radar": [
+        {
+          "skill": "Gov",
+          "score": 80
+        },
+        {
+          "skill": "Cyber",
+          "score": 58
+        },
+        {
+          "skill": "Data",
+          "score": 55
+        },
+        {
+          "skill": "Cloud",
+          "score": 52
+        },
+        {
+          "skill": "Comm",
+          "score": 78
+        },
+        {
+          "skill": "AI",
+          "score": 51
+        }
+      ]
+    }
+  ],
+  "teamStats": {
+    "totalEmployees": 48,
+    "activeLearners": 39,
+    "averageSkillScore": 74,
+    "skillGapsIdentified": 17,
+    "monthlyTrainingHoursCompleted": 284,
+    "mandatoryComplianceRate": 91
+  },
+  "teamSkillGaps": [
+    {
+      "skill": "Cloud Computing",
+      "gapPercentage": 42,
+      "affectedCount": 20,
+      "priority": "High",
+      "benchmark": 80,
+      "currentAvg": 58
+    },
+    {
+      "skill": "Cybersecurity",
+      "gapPercentage": 37,
+      "affectedCount": 18,
+      "priority": "High",
+      "benchmark": 85,
+      "currentAvg": 62
+    },
+    {
+      "skill": "AI Fundamentals",
+      "gapPercentage": 31,
+      "affectedCount": 15,
+      "priority": "Medium",
+      "benchmark": 75,
+      "currentAvg": 64
+    },
+    {
+      "skill": "Data Analytics",
+      "gapPercentage": 28,
+      "affectedCount": 13,
+      "priority": "Medium",
+      "benchmark": 75,
+      "currentAvg": 69
+    },
+    {
+      "skill": "Digital Governance",
+      "gapPercentage": 14,
+      "affectedCount": 7,
+      "priority": "Low",
+      "benchmark": 85,
+      "currentAvg": 82
+    }
+  ],
+  "teamSkillDistribution": [
+    {
+      "skill": "Digital Governance",
+      "teamScore": 82,
+      "departmentBenchmark": 80
+    },
+    {
+      "skill": "Cybersecurity",
+      "teamScore": 62,
+      "departmentBenchmark": 85
+    },
+    {
+      "skill": "Data Analytics",
+      "teamScore": 69,
+      "departmentBenchmark": 75
+    },
+    {
+      "skill": "Cloud Computing",
+      "teamScore": 58,
+      "departmentBenchmark": 80
+    },
+    {
+      "skill": "Communication",
+      "teamScore": 79,
+      "departmentBenchmark": 75
+    },
+    {
+      "skill": "AI Fundamentals",
+      "teamScore": 64,
+      "departmentBenchmark": 75
+    }
+  ],
+  "courseCompletionBreakdown": [
+    {
+      "name": "Completed",
+      "value": 48,
+      "color": "#10B981"
+    },
+    {
+      "name": "In Progress",
+      "value": 34,
+      "color": "#2563EB"
+    },
+    {
+      "name": "Needs Attention",
+      "value": 12,
+      "color": "#F59E0B"
+    },
+    {
+      "name": "Not Started",
+      "value": 6,
+      "color": "#94A3B8"
+    }
+  ],
+  "monthlyLearningActivity": [
+    {
+      "month": "Jan",
+      "totalHours": 190,
+      "activeUsers": 28
+    },
+    {
+      "month": "Feb",
+      "totalHours": 215,
+      "activeUsers": 32
+    },
+    {
+      "month": "Mar",
+      "totalHours": 240,
+      "activeUsers": 35
+    },
+    {
+      "month": "Apr",
+      "totalHours": 230,
+      "activeUsers": 33
+    },
+    {
+      "month": "May",
+      "totalHours": 265,
+      "activeUsers": 37
+    },
+    {
+      "month": "Jun",
+      "totalHours": 284,
+      "activeUsers": 39
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1789356809986",
+      "title": "Course Completed & Certificate Issued",
+      "message": "Congratulations! You completed \"Cybersecurity Essentials for Public Servants\". Your verifiable GovLearn AI Certificate (GL-CERT-2026-SECU-5448) is now available in your profile.",
+      "category": "course",
+      "timestamp": "Just now",
+      "unread": true,
+      "link": "/profile"
+    },
+    {
+      "id": "notif-1789356758961",
+      "title": "Executive Capacity Nudge",
+      "message": "Reminder from Directorate: Please complete quarterly upskilling. Please update your learning log to preserve departmental compliance.",
+      "category": "system",
+      "timestamp": "Just now",
+      "unread": true,
+      "link": "/learning"
+    },
+    {
+      "id": "notif-1789356758941",
+      "title": "New Training Mandate Assigned",
+      "message": "Director Dr. Sunita Rao assigned you \"Cloud Computing Fundamentals\". Completion deadline: 2026-10-15.",
+      "category": "course",
+      "timestamp": "Just now",
+      "unread": true,
+      "link": "/learning/cloud-fundamentals"
+    },
+    {
+      "id": "notif-1",
+      "title": "AI Skill Gap Detected",
+      "message": "AI identified 2 new skill gaps in Cloud Architecture & CERT-In Compliance.",
+      "category": "ai",
+      "timestamp": "15 mins ago",
+      "unread": true,
+      "link": "/skills"
+    },
+    {
+      "id": "notif-2",
+      "title": "Course In-Progress Reminder",
+      "message": "Your Cybersecurity Essentials course is 20% complete. Continue today to preserve your 7-day streak.",
+      "category": "course",
+      "timestamp": "2 hours ago",
+      "unread": true,
+      "link": "/learning/cybersecurity-essentials"
+    },
+    {
+      "id": "notif-3",
+      "title": "Assessment Score Logged",
+      "message": "You scored 82% in your latest AI-generated assessment on Governance Cryptography.",
+      "category": "quiz",
+      "timestamp": "Yesterday",
+      "unread": false,
+      "link": "/quiz/result"
+    },
+    {
+      "id": "notif-4",
+      "title": "New Learning Path Available",
+      "message": "New personalized learning path: \"Digital Personal Data Protection Act 2023\" published under Karmayogi.",
+      "category": "karmayogi",
+      "timestamp": "2 days ago",
+      "unread": true,
+      "link": "/learning"
+    },
+    {
+      "id": "notif-5",
+      "title": "iGOT Karmayogi Sync Completed",
+      "message": "Bi-directional competency credits synced successfully with the National Civil Services Registry.",
+      "category": "system",
+      "timestamp": "3 days ago",
+      "unread": false,
+      "link": "/profile"
+    }
+  ],
+  "quizQuestionBank": {
+    "Cybersecurity": {
+      "MCQ": [
+        {
+          "id": "cs-1",
+          "question": "What is the primary purpose of encryption?",
+          "options": [
+            "Data compression",
+            "Data protection",
+            "Data deletion",
+            "Network acceleration"
+          ],
+          "correctIndex": 1,
+          "explanation": "Encryption converts plain readable data into unreadable ciphertext to protect sensitive information from unauthorized access and interception.",
+          "governanceContext": "Required under CERT-In guidelines for all departmental communications involving classified dispatches."
+        },
+        {
+          "id": "cs-2",
+          "question": "Under CERT-In directions, within what timeframe must cybersecurity incidents be reported by government entities?",
+          "options": [
+            "Within 6 hours of noticing the incident",
+            "Within 24 hours of confirmation",
+            "Within 3 working days",
+            "Only during annual security audits"
+          ],
+          "correctIndex": 0,
+          "explanation": "CERT-In mandatory directions mandate that all specified cyber incidents must be reported to CERT-In within 6 hours of noticing them.",
+          "governanceContext": "Direction No. 20(3)/2022-CERT-In issued under Section 70B of IT Act 2000."
+        },
+        {
+          "id": "cs-3",
+          "question": "Which of the following represents the most secure approach for authenticating government personnel accessing remote portals?",
+          "options": [
+            "Single static 8-character password",
+            "Multi-Factor Authentication (MFA) with hardware token or e-Pramaan",
+            "Sharing departmental admin credentials across shift operators",
+            "Password saved in browser auto-fill"
+          ],
+          "correctIndex": 1,
+          "explanation": "Multi-Factor Authentication (MFA) requires two or more verification factors, dramatically reducing unauthorized account compromises.",
+          "governanceContext": "Enforced on all e-Office, SPARROW, and PFMS access."
+        },
+        {
+          "id": "cs-4",
+          "question": "What is a \"Spear Phishing\" attack?",
+          "options": [
+            "A random spam email sent to millions of public email addresses",
+            "A highly targeted fraudulent message crafted specifically for a chosen individual or office",
+            "An attack using physical electromagnetic pulses",
+            "A hardware failure in network switches"
+          ],
+          "correctIndex": 1,
+          "explanation": "Spear phishing targets specific officers using customized details gathered from public directories or organizational charts.",
+          "governanceContext": "Commonly seen in spoofed notifications disguised as official gazettes or deputation orders."
+        },
+        {
+          "id": "cs-5",
+          "question": "Which official Indian government instant messaging app is approved for secure inter-departmental communication?",
+          "options": [
+            "WhatsApp Messenger",
+            "Sandes (Government Instant Messaging System)",
+            "Telegram Channels",
+            "WeChat"
+          ],
+          "correctIndex": 1,
+          "explanation": "Sandes is developed by the National Informatics Centre (NIC) specifically for secure, sovereign government employee communication.",
+          "governanceContext": "Mandated by Ministry of Electronics & IT for internal dispatches."
+        }
+      ],
+      "True/False": [
+        {
+          "id": "cs-tf-1",
+          "question": "Official government files may be uploaded to third-party personal cloud services like Google Drive or Dropbox without departmental authorization.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correctIndex": 1,
+          "explanation": "False. Uploading official government records to unauthorized commercial clouds violates the Central Secretariat Security Manual and Data Sovereignty rules.",
+          "governanceContext": "Strictly prohibited under Government Email & Cloud Security Policies."
+        },
+        {
+          "id": "cs-tf-2",
+          "question": "Digital signatures generated through NIC-CA or e-Sign possess legal validity equivalent to handwritten signatures under the Information Technology Act 2000.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correctIndex": 0,
+          "explanation": "True. Section 5 of the Information Technology Act 2000 confers legal recognition to electronic and digital signatures.",
+          "governanceContext": "Fundamental backbone of e-Office and electronic file movement."
+        }
+      ]
+    },
+    "Cloud Computing": {
+      "MCQ": [
+        {
+          "id": "cc-1",
+          "question": "What is the primary initiative by the Government of India for providing cloud infrastructure to ministries and departments?",
+          "options": [
+            "Digital India Bhashini",
+            "GI Cloud (MeghRaj)",
+            "DigiLocker",
+            "UMANG App"
+          ],
+          "correctIndex": 1,
+          "explanation": "GI Cloud, branded as \"MeghRaj\", is the initiative aimed at accelerating delivery of e-services in the country while optimizing ICT spending.",
+          "governanceContext": "Managed by National Informatics Centre (NIC) under MeitY."
+        },
+        {
+          "id": "cc-2",
+          "question": "Which cloud deployment model is most suitable for hosting sensitive citizen biometric authentication data?",
+          "options": [
+            "Unencrypted Public Multi-Tenant Cloud",
+            "Sovereign Private Cloud / Government Dedicated Cloud",
+            "Community Blog Cloud",
+            "Unmanaged Hybrid Peer-to-Peer network"
+          ],
+          "correctIndex": 1,
+          "explanation": "Dedicated government clouds with strict data residency within India ensure biometric and citizen privacy boundaries.",
+          "governanceContext": "UIDAI and Aadhaar data residency requirements."
+        },
+        {
+          "id": "cc-3",
+          "question": "What does \"Data Sovereignty\" in government cloud adoption dictate?",
+          "options": [
+            "Data can be hosted anywhere in the world without restriction",
+            "Data is subject to the laws and governance structures of the nation where it is physically stored",
+            "Only cloud providers own the stored public records",
+            "Data cannot be accessed by authorized judicial bodies"
+          ],
+          "correctIndex": 1,
+          "explanation": "Data sovereignty establishes that digital data stored within India is subject exclusively to Indian legal jurisdiction and constitutional protections.",
+          "governanceContext": "DPDP Act 2023 and National Data Governance Framework."
+        },
+        {
+          "id": "cc-4",
+          "question": "What is the main benefit of adopting Infrastructure as a Service (IaaS) for departmental software deployments?",
+          "options": [
+            "Eliminating the need to design software logic",
+            "Rapid elasticity and scaling without purchasing physical on-premise hardware",
+            "Automatic manual paper printouts",
+            "Bypassing all financial audit requirements"
+          ],
+          "correctIndex": 1,
+          "explanation": "IaaS allows departments to spin up computational servers and storage on-demand, reducing capital expenditures and deployment lead times.",
+          "governanceContext": "GeM Cloud procurement framework."
+        },
+        {
+          "id": "cc-5",
+          "question": "In cloud disaster recovery, what does \"RPO\" (Recovery Point Objective) measure?",
+          "options": [
+            "The maximum acceptable age of files that must be recovered from backup storage for normal operations to resume",
+            "The total salary of cloud administrators",
+            "The electric power rating of the data center",
+            "The number of citizen complaints handled per day"
+          ],
+          "correctIndex": 0,
+          "explanation": "RPO defines the maximum tolerable period in which data might be lost due to a major incident before backup recovery.",
+          "governanceContext": "Essential metric in critical infrastructure SLAs (NIC/MeitY)."
+        }
+      ],
+      "True/False": [
+        {
+          "id": "cc-tf-1",
+          "question": "Government departments are mandated to procure cloud services through the Government e-Marketplace (GeM) using empaneled Cloud Service Providers (CSPs).",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correctIndex": 0,
+          "explanation": "True. MeitY empanelled CSPs can be directly provisioned through GeM under standardized SLA schedules.",
+          "governanceContext": "Rule 149 of General Financial Rules (GFR) 2017."
+        }
+      ]
+    },
+    "Data Analytics": {
+      "MCQ": [
+        {
+          "id": "da-1",
+          "question": "What standard directory code is used to uniquely identify states, districts, sub-districts, and villages across Indian governance systems?",
+          "options": [
+            "PIN Code exclusively",
+            "Local Government Directory (LGD) Code",
+            "Vehicle Registration Code",
+            "GST Identification Number"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Local Government Directory (LGD) maintained by Ministry of Panchayati Raj assigns persistent spatial identity codes across India.",
+          "governanceContext": "Critical for interoperability between Central and State DBT portals."
+        },
+        {
+          "id": "da-2",
+          "question": "In public policy evaluation, what distinguishes a \"Lead Indicator\" from a \"Lag Indicator\"?",
+          "options": [
+            "Lead indicators forecast future trends, while lag indicators reflect historical outcomes",
+            "Lead indicators are only recorded by the Prime Minister Office",
+            "Lag indicators are always inaccurate",
+            "There is no functional distinction"
+          ],
+          "correctIndex": 0,
+          "explanation": "Lead indicators (e.g., vaccine appointments booked) predict future outcomes, whereas lag indicators (e.g., mortality rate reduction) confirm completed achievements.",
+          "governanceContext": "NITI Aayog Aspirational Districts monitoring framework."
+        },
+        {
+          "id": "da-3",
+          "question": "Which portal serves as the official single-point open repository for publishing government datasets for public research and analytics in India?",
+          "options": [
+            "data.gov.in (Open Government Data - OGD India)",
+            "google.com",
+            "wikipedia.org",
+            "pib.gov.in"
+          ],
+          "correctIndex": 0,
+          "explanation": "data.gov.in is the national portal designed to promote transparency, innovation, and evidence-based analysis by sharing anonymized public datasets.",
+          "governanceContext": "National Data Sharing and Accessibility Policy (NDSAP)."
+        }
+      ],
+      "True/False": [
+        {
+          "id": "da-tf-1",
+          "question": "Before publishing departmental administrative data on open platforms, personally identifiable information (PII) must be scrubbed or de-identified.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correctIndex": 0,
+          "explanation": "True. Anonymization and differential privacy safeguards are legally required to prevent citizen de-anonymization.",
+          "governanceContext": "DPDP Act 2023 compliance."
+        }
+      ]
+    },
+    "AI Fundamentals": {
+      "MCQ": [
+        {
+          "id": "ai-1",
+          "question": "What is the name of the national digital public infrastructure initiative providing AI-based speech and language translation across Indian languages?",
+          "options": [
+            "Project Bhashini (National Language Translation Mission)",
+            "UPI Pay",
+            "DigiYatra",
+            "CoWIN"
+          ],
+          "correctIndex": 0,
+          "explanation": "Project Bhashini aims to transcend language barriers using AI models for speech-to-speech, text-to-speech, and neural machine translation in 22 scheduled languages.",
+          "governanceContext": "Spearheaded by Digital India Bhashini Division (MeitY)."
+        },
+        {
+          "id": "ai-2",
+          "question": "What risk occurs when a Generative AI model produces convincing, authoritative sounding text that is factually false?",
+          "options": [
+            "Overclocking",
+            "Hallucination",
+            "Bandwidth throttle",
+            "Cache miss"
+          ],
+          "correctIndex": 1,
+          "explanation": "AI hallucination refers to instances where generative models fabricate incorrect facts with high confidence, necessitating human review in government decisions.",
+          "governanceContext": "NITI Aayog Responsible AI Principles."
+        },
+        {
+          "id": "ai-3",
+          "question": "Why is \"Human-in-the-Loop\" (HITL) mandatory when using AI systems for citizen welfare eligibility assessments?",
+          "options": [
+            "To ensure computers consume less electricity",
+            "To maintain constitutional accountability, prevent algorithmic bias, and protect natural justice",
+            "Because AI cannot process numerical scores",
+            "To slow down service delivery"
+          ],
+          "correctIndex": 1,
+          "explanation": "Administrative actions impacting citizen rights and entitlements must retain human officer accountability to adhere to natural justice and due process.",
+          "governanceContext": "Supreme Court jurisprudence on automated administrative action."
+        }
+      ],
+      "True/False": [
+        {
+          "id": "ai-tf-1",
+          "question": "Confidential draft cabinet notes and inter-ministerial correspondence may be pasted directly into commercial public AI chatbots like ChatGPT.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correctIndex": 1,
+          "explanation": "False. Submitting official non-public drafts to commercial external LLMs can breach data residency, Official Secrets provisions, and government information security guidelines.",
+          "governanceContext": "Cabinet Secretariat Advisory on AI usage."
+        }
+      ]
+    },
+    "Digital Governance": {
+      "MCQ": [
+        {
+          "id": "dg-1",
+          "question": "Which mission-mode platform has transformed file movement and paperless operations across central government ministries?",
+          "options": [
+            "e-Office by NIC",
+            "WhatsApp Business",
+            "PaperTrail Express",
+            "Postal Docket System"
+          ],
+          "correctIndex": 0,
+          "explanation": "e-Office enables efficient, paperless, auditable, and transparent file management across central and state secretariats.",
+          "governanceContext": "DARPG Department of Administrative Reforms & Public Grievances."
+        },
+        {
+          "id": "dg-2",
+          "question": "What is the role of the DigiLocker platform in the India Stack ecosystem?",
+          "options": [
+            "Gaming console streaming",
+            "Providing citizens with a secure cloud repository for verified digital documents with legal parity to physical originals",
+            "Hosting social media videos",
+            "Managing central tax budgets"
+          ],
+          "correctIndex": 1,
+          "explanation": "DigiLocker issues and stores verifiable digital credentials (driving licenses, marksheets, caste certificates) directly from the issuer repository.",
+          "governanceContext": "Rule 9A of Information Technology (Preservation and Retention of Information) Rules."
+        }
+      ],
+      "True/False": [
+        {
+          "id": "dg-tf-1",
+          "question": "The National Programme for Civil Services Capacity Building (NPCSCB) is anchored by the iGOT Karmayogi digital learning platform.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "correctIndex": 0,
+          "explanation": "True. Mission Karmayogi operates through iGOT Karmayogi to deliver role-based, continuous competency-linked training.",
+          "governanceContext": "Capacity Building Commission (CBC) mandate."
+        }
+      ]
+    }
+  },
+  "radarSkillData": [
+    {
+      "skill": "Digital Governance",
+      "score": 86,
+      "benchmark": 75,
+      "fullMark": 100
+    },
+    {
+      "skill": "Cybersecurity",
+      "score": 61,
+      "benchmark": 80,
+      "fullMark": 100
+    },
+    {
+      "skill": "Data Analytics",
+      "score": 72,
+      "benchmark": 70,
+      "fullMark": 100
+    },
+    {
+      "skill": "Cloud Computing",
+      "score": 54,
+      "benchmark": 75,
+      "fullMark": 100
+    },
+    {
+      "skill": "Communication",
+      "score": 82,
+      "benchmark": 70,
+      "fullMark": 100
+    },
+    {
+      "skill": "AI Fundamentals",
+      "score": 68,
+      "benchmark": 75,
+      "fullMark": 100
+    }
+  ],
+  "strengthsList": [
+    {
+      "name": "Digital Governance",
+      "score": 86,
+      "badge": "Mastery",
+      "color": "emerald",
+      "description": "Expertise in government workflows, e-Office compliance, citizen service delivery protocols, and RTI digital compliance.",
+      "recentMilestone": "Completed Advanced e-Governance Architecture assessment (94%)"
+    },
+    {
+      "name": "Communication",
+      "score": 82,
+      "badge": "Proficient",
+      "color": "emerald",
+      "description": "Strong inter-departmental memo drafting, parliamentary question response framing, and public stakeholder communication.",
+      "recentMilestone": "Certified in Official Communication & Briefing Standards"
+    }
+  ],
+  "skillsToImprove": [
+    {
+      "name": "Cloud Computing",
+      "score": 54,
+      "benchmark": 75,
+      "gap": -21,
+      "severity": "High Priority",
+      "color": "rose",
+      "description": "Knowledge gap in GovCloud (MeghRaj), cloud security policies, multi-tenant public sector architectures, and SaaS procurement.",
+      "recommendedCourseId": "cloud-fundamentals",
+      "recommendedCourseTitle": "Cloud Computing Fundamentals",
+      "targetHours": "6 hours"
+    },
+    {
+      "name": "Cybersecurity",
+      "score": 61,
+      "benchmark": 80,
+      "gap": -19,
+      "severity": "Moderate Priority",
+      "color": "amber",
+      "description": "Needs reinforcement in CERT-In security guidelines, cyber incident reporting protocols, phishing defenses, and data encryption.",
+      "recommendedCourseId": "cybersecurity-essentials",
+      "recommendedCourseTitle": "Cybersecurity Essentials",
+      "targetHours": "4 hours"
+    },
+    {
+      "name": "AI Fundamentals",
+      "score": 68,
+      "benchmark": 75,
+      "gap": -7,
+      "severity": "Moderate Priority",
+      "color": "cyan",
+      "description": "Developing familiarity with generative AI ethics, automated citizen service chatbots, and AI decision-support governance.",
+      "recommendedCourseId": "ai-fundamentals",
+      "recommendedCourseTitle": "AI Fundamentals",
+      "targetHours": "5 hours"
+    }
+  ],
+  "historicalSkillProgress": [
+    {
+      "month": "Jan",
+      "overall": 65,
+      "technical": 58,
+      "governance": 78
+    },
+    {
+      "month": "Feb",
+      "overall": 68,
+      "technical": 60,
+      "governance": 80
+    },
+    {
+      "month": "Mar",
+      "overall": 70,
+      "technical": 62,
+      "governance": 82
+    },
+    {
+      "month": "Apr",
+      "overall": 73,
+      "technical": 64,
+      "governance": 84
+    },
+    {
+      "month": "May",
+      "overall": 75,
+      "technical": 67,
+      "governance": 85
+    },
+    {
+      "month": "Jun",
+      "overall": 78,
+      "technical": 71,
+      "governance": 86
+    }
+  ],
+  "quizHistory": [
+    {
+      "id": "quiz-hist-1",
+      "topic": "Cybersecurity",
+      "difficulty": "Medium",
+      "score": 82,
+      "correctCount": 4,
+      "totalCount": 5,
+      "timeSpent": "04:18",
+      "timestamp": "2026-09-12 11:30",
+      "feedback": "Strong understanding of CERT-In directives. Focus more on endpoint forensics."
+    },
+    {
+      "id": "quiz-hist-2",
+      "topic": "Cloud Computing",
+      "difficulty": "Intermediate",
+      "score": 65,
+      "correctCount": 3,
+      "totalCount": 5,
+      "timeSpent": "05:02",
+      "timestamp": "2026-09-08 14:15",
+      "feedback": "Good grasp of MeghRaj principles; review VPC data localization under DPDP Act."
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-1",
+      "courseId": "dpdp-act-2023",
+      "title": "Digital Personal Data Protection Act 2023 Compliance",
+      "issuer": "GovLearn AI / CBC Knowledge Hub",
+      "recipientName": "Rajesh Verma",
+      "recipientId": "GOV-IT-2024-8921",
+      "issueDate": "15 June 2026",
+      "certId": "GL-CERT-2026-DPDP-9812",
+      "verificationHash": "0x8892fa4b8e21c33f7d1a90bc129e01124d",
+      "qrPayload": "https://govlearn.gov.in/verify/GL-CERT-2026-DPDP-9812?hash=0x8892fa4b"
+    },
+    {
+      "id": "cert-2",
+      "courseId": "advanced-egov-arch",
+      "title": "Advanced e-Governance Systems Architecture",
+      "issuer": "GovLearn AI / National Informatics Centre",
+      "recipientName": "Rajesh Verma",
+      "recipientId": "GOV-IT-2024-8921",
+      "issueDate": "28 April 2026",
+      "certId": "GL-CERT-NIC-EGOV-4412",
+      "verificationHash": "0x3341bc990184b23df8120e88914c8109a2",
+      "qrPayload": "https://govlearn.gov.in/verify/GL-CERT-NIC-EGOV-4412?hash=0x3341bc99"
+    },
+    {
+      "id": "cert-1789356809978",
+      "courseId": "cybersecurity-essentials",
+      "title": "Cybersecurity Essentials for Public Servants",
+      "issuer": "GovLearn AI / CBC Knowledge Hub",
+      "recipientName": "Rajesh Verma",
+      "recipientId": "GOV-IT-2024-8921",
+      "issueDate": "14 September 2026",
+      "certId": "GL-CERT-2026-SECU-5448",
+      "verificationHash": "0x160bc0d2c5daf1c1ae1df2687c568c7f290ef556db4e89232368178277e0d378",
+      "qrPayload": "https://govlearn.gov.in/verify/GL-CERT-2026-SECU-5448?hash=0x160bc0d2"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "assign-1789356758941",
+      "employeeId": "emp-101",
+      "employeeName": "Arun Kumar",
+      "courseId": "cloud-fundamentals",
+      "courseTitle": "Cloud Computing Fundamentals",
+      "assignedBy": "Dr. Sunita Rao (Director)",
+      "assignedDate": "2026-09-14",
+      "deadline": "2026-10-15",
+      "status": "Assigned"
+    },
+    {
+      "id": "assign-1",
+      "employeeId": "emp-102",
+      "employeeName": "Priya Sharma",
+      "courseId": "cybersecurity-essentials",
+      "courseTitle": "Cybersecurity Essentials for Public Servants",
+      "assignedBy": "Dr. Sunita Rao",
+      "assignedDate": "2026-09-10",
+      "deadline": "2026-09-30",
+      "status": "In Progress"
+    }
+  ],
+  "nudges": [
+    {
+      "id": "nudge-1789356758960",
+      "employeeId": "emp-101",
+      "employeeName": "Arun Kumar",
+      "sentBy": "Dr. Sunita Rao",
+      "timestamp": "2026-09-14T03:32:38.960Z",
+      "reason": "Please complete quarterly upskilling"
+    }
+  ]
+}

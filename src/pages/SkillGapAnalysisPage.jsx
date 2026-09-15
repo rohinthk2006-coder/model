@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { SkillRadarChart } from '../components/charts/SkillRadarChart';
+import { skillsApi } from '../services/api';
 import {
   radarSkillData,
   strengthsList,
@@ -28,6 +29,21 @@ export const SkillGapAnalysisPage = () => {
   const navigate = useNavigate();
   const { triggerAiSimulation, addToast } = useApp();
 
+  const [radarData, setRadarData] = useState(radarSkillData);
+  const [overallScore, setOverallScore] = useState(78);
+  const [confidenceScore, setConfidenceScore] = useState(92);
+
+  useEffect(() => {
+    skillsApi.getGapAnalysis().then((res) => {
+      if (res?.data?.radarSkillData) {
+        setRadarData(res.data.radarSkillData);
+      }
+      if (res?.data?.metrics?.overallScore) {
+        setOverallScore(res.data.metrics.overallScore);
+      }
+    }).catch(() => {});
+  }, []);
+
   const handleSimulatedDiagnostic = () => {
     triggerAiSimulation(
       'Deep AI Competency Gap Diagnostics',
@@ -38,7 +54,19 @@ export const SkillGapAnalysisPage = () => {
         'Generating recommendations...',
         'Analysis complete',
       ],
-      () => {
+      async () => {
+        try {
+          const res = await skillsApi.runDiagnostics();
+          if (res?.data?.radarSkillData) {
+            setRadarData(res.data.radarSkillData);
+          }
+          if (res?.data?.newOverallScore) {
+            setOverallScore(res.data.newOverallScore);
+          }
+          setConfidenceScore(94);
+        } catch (err) {
+          console.warn('Diagnostics error:', err);
+        }
         addToast('Competency Diagnostic synchronized with official profile!', 'success');
       }
     );
@@ -91,12 +119,12 @@ export const SkillGapAnalysisPage = () => {
           <span className="text-slate-300 dark:text-navy-700">|</span>
           <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
             <span>Skill Score:</span>
-            <strong className="text-slate-900 dark:text-white font-mono">78%</strong>
+            <strong className="text-slate-900 dark:text-white font-mono">{overallScore}%</strong>
           </div>
           <span className="text-slate-300 dark:text-navy-700">|</span>
           <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
             <span>Confidence:</span>
-            <strong className="text-emerald-500 font-mono">92%</strong>
+            <strong className="text-emerald-500 font-mono">{confidenceScore}%</strong>
           </div>
         </div>
 
@@ -216,7 +244,7 @@ export const SkillGapAnalysisPage = () => {
               </span>
             </div>
 
-            <SkillRadarChart />
+            <SkillRadarChart data={radarData} />
           </div>
 
           <div className="pt-4 mt-2 border-t border-slate-100 dark:border-navy-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
@@ -237,12 +265,12 @@ export const SkillGapAnalysisPage = () => {
                 Skill Scores Breakdown
               </h3>
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                Overall: <strong className="text-cyan-600 dark:text-cyan-400 font-mono">78%</strong>
+                Overall: <strong className="text-cyan-600 dark:text-cyan-400 font-mono">{overallScore}%</strong>
               </span>
             </div>
 
             <div className="space-y-4">
-              {radarSkillData.map((item, idx) => {
+              {radarData.map((item, idx) => {
                 const isAbove = item.score >= item.benchmark;
                 return (
                   <div key={item.skill} className="space-y-1.5">

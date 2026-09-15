@@ -6,6 +6,7 @@ import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
 import { ToastContainer } from './ToastContainer';
 import { AIProcessingModal } from './AIProcessingModal';
+import { AICopilotDrawer } from './AICopilotDrawer';
 import { ChevronRight, Home, Shield, Award } from 'lucide-react';
 
 export const AppLayout = () => {
@@ -110,6 +111,7 @@ export const AppLayout = () => {
       {/* Global Interactive Modals & Toasts */}
       <AIProcessingModal />
       <ToastContainer />
+      <AICopilotDrawer />
     </div>
   );
 };

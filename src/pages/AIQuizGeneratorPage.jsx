@@ -2,22 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { quizQuestionBank } from '../data/mockQuizzes';
+import { quizApi } from '../services/api';
 import {
   Sparkles,
-  HelpCircle,
-  Clock,
   CheckCircle2,
   ChevronRight,
   ChevronLeft,
   Loader2,
-  BrainCircuit,
   Sliders,
-  Award,
-  AlertCircle,
-  Zap,
-  BookOpen,
-  Cpu,
-  Check,
+  BrainCircuit,
 } from 'lucide-react';
 
 export const AIQuizGeneratorPage = () => {
@@ -61,6 +54,14 @@ export const AIQuizGeneratorPage = () => {
     'Digital Governance',
   ];
 
+  const handleSelectAnswer = (optionIndex) => {
+    setUserAnswers((prev) => ({
+      ...prev,
+      [currentQuestionIndex]: optionIndex,
+    }));
+    setShowImmediateFeedback(true);
+  };
+
   // Keyboard friendly shortcuts (A, B, C, D or 1, 2, 3, 4)
   useEffect(() => {
     if (quizState !== 'active') return;
@@ -86,43 +87,46 @@ export const AIQuizGeneratorPage = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [quizState, currentQuestionIndex, activeQuestions.length]);
 
-  const handleGenerateQuiz = () => {
+  const handleGenerateQuiz = async () => {
     setQuizState('generating');
     setGenerationPhase(0);
 
+    // Concurrently fetch dynamic quiz from backend
+    const apiPromise = quizApi.generate({
+      topic,
+      difficulty,
+      questionCount: Number(questionCount),
+      questionType,
+    });
+
     let phase = 0;
-    const interval = setInterval(() => {
+    const interval = setInterval(async () => {
       phase++;
       if (phase < generationStages.length) {
         setGenerationPhase(phase);
       } else {
         clearInterval(interval);
-        setTimeout(() => {
-          const topicBank = quizQuestionBank[topic] || quizQuestionBank.Cybersecurity;
-          const questionsList = topicBank[questionType] || topicBank.MCQ;
-          const selected = questionsList.slice(0, Number(questionCount));
+        try {
+          const apiRes = await apiPromise;
+          const questions = apiRes?.questions && apiRes.questions.length > 0
+            ? apiRes.questions
+            : (quizQuestionBank[topic] || quizQuestionBank.Cybersecurity)[questionType]?.slice(0, Number(questionCount)) || [];
 
-          setActiveQuestions(selected);
+          setActiveQuestions(questions);
           setCurrentQuestionIndex(0);
           setUserAnswers({});
           setTimerSeconds(Number(questionCount) * 60);
           setQuizState('active');
           setActiveQuizConfig({ topic, difficulty, questionCount, questionType });
-          addToast(`AI Quiz generated successfully (${selected.length} questions)!`, 'success');
-        }, 500);
+          addToast(`AI Quiz generated successfully (${questions.length} questions)!`, 'success');
+        } catch (err) {
+          console.warn('Backend quiz gen error, using local fallback:', err);
+        }
       }
     }, 450);
   };
 
-  const handleSelectAnswer = (optionIndex) => {
-    setUserAnswers((prev) => ({
-      ...prev,
-      [currentQuestionIndex]: optionIndex,
-    }));
-    setShowImmediateFeedback(true);
-  };
-
-  const handleSubmitQuiz = () => {
+  const handleSubmitQuiz = async () => {
     let correct = 0;
     activeQuestions.forEach((q, idx) => {
       if (userAnswers[idx] === q.correctIndex) {
@@ -130,7 +134,7 @@ export const AIQuizGeneratorPage = () => {
       }
     });
 
-    const total = activeQuestions.length;
+    const total = activeQuestions.length || 1;
     const calculatedScore = Math.round((correct / total) * 100);
 
     const timeSpentSeconds = Number(questionCount) * 60 - timerSeconds;
@@ -138,16 +142,46 @@ export const AIQuizGeneratorPage = () => {
     const secs = timeSpentSeconds % 60;
     const timeSpentStr = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
-    setQuizResult({
-      score: calculatedScore,
-      correctCount: correct,
-      totalCount: total,
-      timeSpent: timeSpentStr,
-      topic,
-      difficulty,
-      questions: activeQuestions,
-      userAnswers,
-    });
+    // Submit to backend evaluation API
+    try {
+      const evalRes = await quizApi.evaluate({
+        topic,
+        difficulty,
+        questions: activeQuestions,
+        userAnswers,
+        timeSpent: timeSpentStr,
+      });
+
+      if (evalRes?.result) {
+        setQuizResult({
+          ...evalRes.result,
+          questions: activeQuestions,
+          userAnswers,
+        });
+      } else {
+        setQuizResult({
+          score: calculatedScore,
+          correctCount: correct,
+          totalCount: total,
+          timeSpent: timeSpentStr,
+          topic,
+          difficulty,
+          questions: activeQuestions,
+          userAnswers,
+        });
+      }
+    } catch (err) {
+      setQuizResult({
+        score: calculatedScore,
+        correctCount: correct,
+        totalCount: total,
+        timeSpent: timeSpentStr,
+        topic,
+        difficulty,
+        questions: activeQuestions,
+        userAnswers,
+      });
+    }
 
     addToast(`Assessment complete! Score: ${calculatedScore}%`, 'info');
     navigate('/quiz/result');

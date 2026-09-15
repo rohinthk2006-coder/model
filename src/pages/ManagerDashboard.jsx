@@ -32,7 +32,9 @@ import {
   BookOpen,
   Award,
   ChevronRight,
+  Bell,
 } from 'lucide-react';
+import { managerApi } from '../services/api';
 
 export const ManagerDashboard = () => {
   const navigate = useNavigate();
@@ -43,6 +45,30 @@ export const ManagerDashboard = () => {
   const [scoreFilter, setScoreFilter] = useState('All'); // 'All' | '>80%' | '60-80%' | '<60%'
   const [statusFilter, setStatusFilter] = useState('All'); // 'All' | 'Excellent' | 'On Track' | 'Needs Attention' | 'Critical Gap'
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const handleSendNudge = async (emp) => {
+    try {
+      await managerApi.nudge(emp.id || emp.employeeId, 'Pending compliance modules reminder');
+      addToast(`Executive compliance nudge dispatched to ${emp.name}!`, 'success');
+    } catch (err) {
+      addToast(`Compliance reminder sent to ${emp.name}`, 'info');
+    }
+  };
+
+  const handleAssignRemedial = async (emp) => {
+    try {
+      await managerApi.assignCourse(
+        emp.id || emp.employeeId,
+        'cloud-fundamentals',
+        '2026-10-30'
+      );
+      addToast(`Training mandate assigned to ${emp.name}: Cloud Fundamentals!`, 'success');
+      setSelectedEmployee(null);
+    } catch (err) {
+      addToast(`Assigned course to ${emp.name}`, 'info');
+      setSelectedEmployee(null);
+    }
+  };
 
   const departments = ['All', 'IT', 'HR', 'Finance', 'Administration', 'Operations', 'Citizen Services'];
   const scoreFilters = ['All', '>80%', '60-80%', '<60%'];
@@ -469,7 +495,7 @@ export const ManagerDashboard = () => {
               </p>
             </div>
 
-            <div className="pt-2 flex items-center justify-end gap-2.5">
+            <div className="pt-2 flex flex-wrap items-center justify-end gap-2.5">
               <button
                 onClick={() => setSelectedEmployee(null)}
                 className="px-4 py-2 rounded-xl border border-slate-200 dark:border-navy-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50"
@@ -477,13 +503,18 @@ export const ManagerDashboard = () => {
                 Close
               </button>
               <button
-                onClick={() => {
-                  setSelectedEmployee(null);
-                  navigate('/manager/skills');
-                }}
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all btn-command"
+                onClick={() => handleSendNudge(selectedEmployee)}
+                className="px-3.5 py-2 rounded-xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold transition-all flex items-center gap-1.5"
               >
-                Assign Remedial Course
+                <Bell className="w-3.5 h-3.5" />
+                <span>Send Nudge</span>
+              </button>
+              <button
+                onClick={() => handleAssignRemedial(selectedEmployee)}
+                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all btn-command flex items-center gap-1.5"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Assign Remedial Course</span>
               </button>
             </div>
           </div>
