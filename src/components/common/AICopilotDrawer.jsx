@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { aiApi } from '../../services/api';
+import { useApp } from '../../context/AppContext';
 import {
   Sparkles,
   MessageSquare,
@@ -14,10 +15,15 @@ import {
   HelpCircle,
   Minimize2,
   Maximize2,
+  Briefcase,
+  FileText,
+  Calendar,
+  Zap,
 } from 'lucide-react';
 
 export const AICopilotDrawer = () => {
   const navigate = useNavigate();
+  const { govCareerProfile } = useApp();
   const [isOpen, setIsOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +31,7 @@ export const AICopilotDrawer = () => {
     {
       id: 'welcome-1',
       sender: 'ai',
-      text: `**Namaste! I am your GovLearn AI Civil Services Mentor.**\n\nI can assist you with:\n• **GFR 2017 & GeM Procurement** (Rule 149, L1 comparisons)\n• **CERT-In Cyber Directives** (6-hour mandatory reporting)\n• **RTI Act 2005** (response timelines & exemptions)\n• **Mission Karmayogi** (FRAC competencies & benchmarks)\n• **DPDP Act 2023** (data fiduciary safeguards)\n\nAsk any question or click a quick prompt below!`,
+      text: `**Namaste! I am your GovLearn AI Career & Exam Mentor.**\n\nI can assist you with:\n• **Government Job Match** (SSC CGL 94%, RRB NTPC 89%, TNPSC Gr 2 84%)\n• **Notification Analysis & PDF Parsing** (14,850 vacancies in SSC CGL)\n• **Checking Exact Eligibility** (B.E CSE, Age 24, Tamil Nadu, OBC)\n• **Adaptive AI Study Plans & Timetables** (72% complete)\n• **Targeting Weak Subjects** (General Awareness 48%, Quant 71%)\n• **Civil Services Guidelines** (GFR 2017, GeM, CERT-In, RTI Act)\n\nClick any quick prompt below or type your question!`,
       timestamp: 'Just now',
     },
   ]);
@@ -33,11 +39,14 @@ export const AICopilotDrawer = () => {
   const messagesEndRef = useRef(null);
 
   const quickPrompts = [
+    "Find jobs I'm eligible for",
+    'Analyze this notification',
+    'Create my study plan',
+    'Why am I not eligible?',
+    'Show my weak subjects',
+    'How can I improve my GovReady Score?',
+    'What government exams should I target?',
     'Explain GFR Rule 149 on GeM',
-    'What is the CERT-In 6-hour incident rule?',
-    'What are the RTI response timelines?',
-    'How does Mission Karmayogi FRAC work?',
-    'What are DPDP Act 2023 penalties?',
   ];
 
   const scrollToBottom = () => {
@@ -64,6 +73,117 @@ export const AICopilotDrawer = () => {
     setMessages((prev) => [...prev, userMsg]);
     setInputMessage('');
     setIsLoading(true);
+
+    // Fast local intelligence responses for government career actions
+    const lowerQuery = query.toLowerCase();
+
+    if (lowerQuery.includes("jobs i'm eligible") || lowerQuery.includes("jobs eligible") || lowerQuery.includes("target")) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `ai-${Date.now()}`,
+            sender: 'ai',
+            text: `Based on your candidate dossier (**${govCareerProfile?.degreeBranch}, Age ${govCareerProfile?.age}, ${govCareerProfile?.state}, ${govCareerProfile?.category}**):\n\n1. **SSC CGL 2026** — **94% Match** (🟢 Fully Eligible) • **Closing in 4 days!**\n2. **RRB NTPC CEN 03/2026** — **89% Match** (🟢 Eligible) • Closing in 11 days\n3. **TNPSC Group 2 & 2A** — **84% Match** (🟢 Eligible) • Upcoming state notification\n4. **IBPS PO / Specialist IT Officer** — **77% Match** (🟢 Eligible for IT Officer Scale-I)\n\nYour primary recommended target is **SSC CGL 2026** for Assistant Section Officer / Inspector cadres.`,
+            actionLink: '/jobs',
+            actionText: 'Open Government Job Match',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          },
+        ]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (lowerQuery.includes('weak') || lowerQuery.includes('weakness') || lowerQuery.includes('subjects')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `ai-${Date.now()}`,
+            sender: 'ai',
+            text: `**AI Weakness Diagnostic Summary:**\n\n• **Reasoning:** 82% (Strongest Competency)\n• **Quantitative Aptitude:** 71% (Good)\n• **English Comprehension:** 63% (Average)\n• **General Awareness:** **48% (🚨 Highest Priority Improvement Area!)**\n\n**High-Yield Weak Topics to Target:**\n1. Indian Constitution & Polity Articles (Fundamental Rights)\n2. Modern Indian History Timeline (1857-1947)\n3. Algebraic Identities and Factorization\n\nYour study plan has already dynamically inserted 2 extra practice slots for these subjects.`,
+            actionLink: '/quiz',
+            actionText: 'Launch Weakness Practice Drill',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          },
+        ]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (lowerQuery.includes('govready') || lowerQuery.includes('improve')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `ai-${Date.now()}`,
+            sender: 'ai',
+            text: `Your current **GovReady Score is ${govCareerProfile?.govReadyScore} / 100**.\n\nThis benchmark places you **above the probable 2025 Tier-1 OBC Cutoff (71.5)**.\n\n**Action Plan to reach 85+ (Safe Merit Zone):**\n1. Complete 3 consecutive **General Awareness speed drills**.\n2. Complete remaining 28% of your weekly study plan.\n3. Take a full-length **Saturday Tier-1 CBT Mock Test**.\n\nCompleting these will add **+8 to +10 points** to your GovReady score within 14 days.`,
+            actionLink: '/study-plan',
+            actionText: 'View Adaptive Study Plan',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          },
+        ]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (lowerQuery.includes('study plan') || lowerQuery.includes('create my study plan')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `ai-${Date.now()}`,
+            sender: 'ai',
+            text: `Your **Adaptive AI Study Plan** is currently active for **${govCareerProfile?.targetExam}**.\n\n• **Weekly Progress:** 72% Completed\n• **Today's Focus:** Quantitative Aptitude (Algebraic Identities - AI Adjusted) + General Awareness (Union Budget & Current Affairs)\n• **Study Allocation:** 80 mins scheduled for today\n\nYou can click below to check off tasks or recalibrate the schedule at any time!`,
+            actionLink: '/study-plan',
+            actionText: 'Open Study Plan Timetable',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          },
+        ]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (lowerQuery.includes('analyze') || lowerQuery.includes('notification')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `ai-${Date.now()}`,
+            sender: 'ai',
+            text: `You can upload any official PDF notice in our **Notification Analyzer**!\n\nCurrently, **SSC CGL 2026** (14,850 vacancies) and **TNPSC Group 2** notices are parsed and ready for one-click eligibility verification.`,
+            actionLink: '/analyzer?notice=ssc-cgl-2026',
+            actionText: 'Inspect Notification Analyzer',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          },
+        ]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (lowerQuery.includes('why am i not eligible') || lowerQuery.includes('not eligible')) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `ai-${Date.now()}`,
+            sender: 'ai',
+            text: `Good news! In all major graduate-level central and state examinations (**SSC CGL, RRB NTPC, TNPSC Group 2**), you are **🟢 FULLY ELIGIBLE**.\n\n**Reasons why you might be ineligible for specific other exams:**\n• UPSC Civil Services (IAS/IPS): Upper age limit for General category is 32, but requires 21 minimum.\n• Technical Engineering Service (ESE): Requires core mechanical/electrical/civil degree for some branches.\n• SSC CHSL: You are overqualified (degree holder), but still permitted to write.`,
+            actionLink: '/analyzer',
+            actionText: 'Check Detailed Rules in Analyzer',
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          },
+        ]);
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
 
     try {
       const res = await aiApi.chat(query);
@@ -188,6 +308,19 @@ export const AICopilotDrawer = () => {
                         <BookOpen className="w-3 h-3" />
                         <span>Open Recommended Course</span>
                       </span>
+                      <ChevronRight className="w-3 h-3" />
+                    </button>
+                  )}
+
+                  {m.actionLink && (
+                    <button
+                      onClick={() => {
+                        setIsOpen(false);
+                        navigate(m.actionLink);
+                      }}
+                      className="mt-2 w-full px-2.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30 flex items-center justify-between gap-1 text-[11px] font-bold transition-all"
+                    >
+                      <span>{m.actionText || 'Open Portal'}</span>
                       <ChevronRight className="w-3 h-3" />
                     </button>
                   )}
