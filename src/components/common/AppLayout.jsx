@@ -20,11 +20,14 @@ export const AppLayout = () => {
 
     const routeNames = {
       dashboard: 'Employee Dashboard',
+      jobs: 'Government Job Match',
+      analyzer: 'AI Notification Analyzer',
+      'study-plan': 'Adaptive AI Study Plan',
       learning: 'Personalized Learning',
       skills: 'AI Skill Gap Analysis',
       quiz: 'AI-Powered Assessment',
       result: 'Assessment Evaluation',
-      progress: 'Progress & Analytics',
+      progress: 'Progress & GovReady',
       profile: 'Official Profile',
       manager: 'Executive Team Overview',
     };
