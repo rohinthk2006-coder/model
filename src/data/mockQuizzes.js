@@ -310,5 +310,217 @@ export const quizQuestionBank = {
         governanceContext: 'Capacity Building Commission (CBC) mandate.'
       }
     ]
+  },
+  'Reasoning': {
+    MCQ: [
+      {
+        id: 'reas-1',
+        question: 'Statements: (1) All Officers are Graduates. (2) Some Graduates are Engineers. Conclusions: (I) Some Engineers are Officers. (II) Some Graduates are Officers.',
+        options: [
+          'Only Conclusion (I) follows',
+          'Only Conclusion (II) follows',
+          'Both Conclusions (I) and (II) follow',
+          'Neither follows'
+        ],
+        correctIndex: 1,
+        explanation: 'Since all Officers are Graduates, the converse "Some Graduates are Officers" is definitely true. However, there is no definite overlap given between Officers and Engineers.',
+        governanceContext: 'SSC CGL Tier-1 Syllogism Standard'
+      },
+      {
+        id: 'reas-2',
+        question: 'In a certain code language, if "CABINET" is written as "DCEMPIV", how will "MINISTRY" be written in that code?',
+        options: [
+          'OKPKVUXA',
+          'OKPLUVZA',
+          'NKPLVUXA',
+          'OMPKWTYB'
+        ],
+        correctIndex: 0,
+        explanation: 'The pattern is sequential forward shift: +1, +2, +3, +4, +5, +6, +7. M(+1)=N, wait: C(+1)=D, A(+2)=C, B(+3)=E, I(+4)=M, N(+2)... Here +1, +2, +3, +4, +2, +3, +2. Specifically, M+2=O, I+2=K, N+2=P, I+2=K, S+3=V, T+1=U, R+6=X, Y+2=A.',
+        governanceContext: 'Staff Selection Commission Coding-Decoding'
+      },
+      {
+        id: 'reas-3',
+        question: 'Pointing to a photograph, a woman says: "He is the only son of the father of my daughter\'s father." How is the person in the photograph related to the woman?',
+        options: ['Brother', 'Husband', 'Brother-in-law', 'Father'],
+        correctIndex: 1,
+        explanation: 'Daughter\'s father = Woman\'s husband. Father of her husband = Father-in-law. Only son of father-in-law = Woman\'s husband.',
+        governanceContext: 'Blood Relations Standard Question'
+      },
+      {
+        id: 'reas-4',
+        question: 'Select the related number from the given alternatives: 14 : 210 :: 18 : ?',
+        options: ['342', '324', '306', '360'],
+        correctIndex: 0,
+        explanation: 'Pattern is n * (n + 1): 14 * 15 = 210. Therefore, 18 * 19 = 342.',
+        governanceContext: 'Number Analogy SSC CGL'
+      },
+      {
+        id: 'reas-5',
+        question: 'Find the odd pair of words from the given alternatives:',
+        options: [
+          'New Delhi : India',
+          'Beijing : China',
+          'Sydney : Australia',
+          'Tokyo : Japan'
+        ],
+        correctIndex: 2,
+        explanation: 'The capital of Australia is Canberra, not Sydney. All other pairs represent Country : Capital City.',
+        governanceContext: 'General Intelligence Classification'
+      }
+    ]
+  },
+  'Quantitative Aptitude': {
+    MCQ: [
+      {
+        id: 'quant-1',
+        question: 'If the price of petrol increases by 25%, by what percentage must a household reduce its consumption so that the total expenditure remains unchanged?',
+        options: ['20%', '25%', '16.66%', '15%'],
+        correctIndex: 0,
+        explanation: 'Reduction % = [R / (100 + R)] * 100 = [25 / 125] * 100 = 1/5 * 100 = 20%.',
+        governanceContext: 'SSC CGL Arithmetic Percentage Standard'
+      },
+      {
+        id: 'quant-2',
+        question: 'A train 180 meters long is traveling at a speed of 54 km/hr. How much time (in seconds) will it take to cross an electric pole?',
+        options: ['10 seconds', '12 seconds', '15 seconds', '18 seconds'],
+        correctIndex: 1,
+        explanation: 'Speed in m/s = 54 * (5/18) = 15 m/s. Time = Distance / Speed = 180 / 15 = 12 seconds.',
+        governanceContext: 'RRB NTPC & SSC Speed, Distance & Time'
+      },
+      {
+        id: 'quant-3',
+        question: 'If x + (1/x) = 4, then what is the value of x^2 + (1/x^2)?',
+        options: ['16', '14', '18', '12'],
+        correctIndex: 1,
+        explanation: '(x + 1/x)^2 = x^2 + 1/x^2 + 2 = 4^2 = 16. Hence x^2 + 1/x^2 = 16 - 2 = 14.',
+        governanceContext: 'Algebraic Identities for SSC Tier-1 & Tier-2'
+      },
+      {
+        id: 'quant-4',
+        question: 'The ratio of ages of two candidates A and B is 3 : 4. Four years ago, the ratio was 5 : 7. What is the present age of candidate B?',
+        options: ['24 years', '32 years', '28 years', '36 years'],
+        correctIndex: 1,
+        explanation: 'Let present ages be 3x and 4x. (3x - 4) / (4x - 4) = 5 / 7 => 21x - 28 = 20x - 20 => x = 8. B\'s age = 4 * 8 = 32 years.',
+        governanceContext: 'Ratio and Proportion Standard'
+      },
+      {
+        id: 'quant-5',
+        question: 'A shopkeeper marks an article 30% above the cost price and allows a discount of 10% on the marked price. What is his net profit percentage?',
+        options: ['17%', '20%', '15%', '18%'],
+        correctIndex: 0,
+        explanation: 'Let CP = 100. MP = 130. SP = 130 * 0.90 = 117. Net Profit = 117 - 100 = 17%.',
+        governanceContext: 'Profit and Loss SSC CGL'
+      }
+    ]
+  },
+  'English Comprehension': {
+    MCQ: [
+      {
+        id: 'eng-1',
+        question: 'Select the most appropriate synonym of the word: "PRUDENT"',
+        options: ['Reckless', 'Cautious and Wise', 'Arrogant', 'Hasty'],
+        correctIndex: 1,
+        explanation: '"Prudent" means acting with or showing care and thought for the future; wise, cautious, or judicious.',
+        governanceContext: 'Vocabulary & Synonyms Standard'
+      },
+      {
+        id: 'eng-2',
+        question: 'Identify the segment in the sentence which contains a grammatical error: "Neither of the two candidates who applied for the post were found eligible."',
+        options: [
+          'Neither of the two candidates',
+          'who applied for the post',
+          'were found eligible',
+          'No error'
+        ],
+        correctIndex: 2,
+        explanation: '"Neither of" is followed by a singular verb. The correct phrase is "was found eligible", not "were".',
+        governanceContext: 'Subject-Verb Agreement Rules'
+      },
+      {
+        id: 'eng-3',
+        question: 'Select the alternative that best expresses the meaning of the idiom: "To burn the midnight oil"',
+        options: [
+          'To cause an accidental fire',
+          'To waste money on expensive lighting',
+          'To work or study late into the night',
+          'To criticize someone harshly'
+        ],
+        correctIndex: 2,
+        explanation: '"To burn the midnight oil" means to study or work until very late at night.',
+        governanceContext: 'Idioms and Phrases'
+      },
+      {
+        id: 'eng-4',
+        question: 'Choose the correct one-word substitute: "A person who is fluent in two languages"',
+        options: ['Polyglot', 'Bilingual', 'Linguist', 'Monoglot'],
+        correctIndex: 1,
+        explanation: 'A person speaking two languages is "Bilingual". Speaking many languages is "Polyglot".',
+        governanceContext: 'One Word Substitution SSC CGL'
+      },
+      {
+        id: 'eng-5',
+        question: 'Select the correctly spelt word:',
+        options: ['Accomodation', 'Accommodation', 'Acommodation', 'Accomadation'],
+        correctIndex: 1,
+        explanation: 'The correct spelling is "Accommodation" with double "c" and double "m".',
+        governanceContext: 'Spelling Correction Section'
+      }
+    ]
+  },
+  'General Awareness': {
+    MCQ: [
+      {
+        id: 'ga-1',
+        question: 'Under which Article of the Constitution of India is the "Right to Constitutional Remedies" guaranteed?',
+        options: ['Article 19', 'Article 21', 'Article 32', 'Article 44'],
+        correctIndex: 2,
+        explanation: 'Article 32 guarantees the Right to Constitutional Remedies, which Dr. B.R. Ambedkar hailed as the "Heart and Soul of the Constitution".',
+        governanceContext: 'Indian Polity & Constitution'
+      },
+      {
+        id: 'ga-2',
+        question: 'In which year did the historic Non-Cooperation Movement launched by Mahatma Gandhi formally withdraw following the Chauri Chaura incident?',
+        options: ['1920', '1922', '1924', '1930'],
+        correctIndex: 1,
+        explanation: 'Mahatma Gandhi called off the Non-Cooperation Movement in February 1922 following violence at Chauri Chaura in Gorakhpur district, Uttar Pradesh.',
+        governanceContext: 'Modern Indian History Freedom Struggle'
+      },
+      {
+        id: 'ga-3',
+        question: 'Which river is known as "Dakshin Ganga" or the Ganges of the South?',
+        options: ['Krishna', 'Godavari', 'Cauvery', 'Mahanadi'],
+        correctIndex: 1,
+        explanation: 'Godavari is often referred to as "Dakshin Ganga" due to its large basin size and religious significance in southern India.',
+        governanceContext: 'Physical Geography of India'
+      },
+      {
+        id: 'ga-4',
+        question: 'Which statutory body in India is responsible for determining the benchmark repo rate under the Monetary Policy Framework?',
+        options: [
+          'NITI Aayog',
+          'Monetary Policy Committee (MPC) of RBI',
+          'Securities and Exchange Board of India (SEBI)',
+          'Finance Commission'
+        ],
+        correctIndex: 1,
+        explanation: 'The 6-member Monetary Policy Committee (MPC) headed by the Governor of RBI fixes the policy repo rate to target inflation.',
+        governanceContext: 'Indian Economy & Banking'
+      },
+      {
+        id: 'ga-5',
+        question: 'What is the chemical name of "Baking Soda" widely tested in general science sections?',
+        options: [
+          'Sodium Carbonate',
+          'Sodium Bicarbonate',
+          'Sodium Hydroxide',
+          'Calcium Carbonate'
+        ],
+        correctIndex: 1,
+        explanation: 'Baking Soda is Sodium Bicarbonate (NaHCO3). Washing Soda is Sodium Carbonate (Na2CO3).',
+        governanceContext: 'General Science 10th Standard'
+      }
+    ]
   }
 };
+
