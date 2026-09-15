@@ -150,12 +150,40 @@ export const QuizResultPage = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <XCircle className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
-                  <span>Needs improvement in advanced security practices and rapid 6-hour CERT-In escalation protocols.</span>
+                  <span>
+                    {quizResult.isGovMock
+                      ? 'Areas for improvement: Static GK (Articles & Modern History timeline) and Advanced Algebraic Identities.'
+                      : 'Needs improvement in advanced security practices and rapid 6-hour CERT-In escalation protocols.'}
+                  </span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+
+        {/* GovReady Score Gain Card if Government Mock */}
+        {quizResult.govReadyGain > 0 && (
+          <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-transparent border border-emerald-500/30 flex items-center justify-between text-xs animate-fade-in">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">🏆</span>
+              <div>
+                <p className="font-extrabold text-emerald-700 dark:text-emerald-300">
+                  GovReady Score Boost: +{quizResult.govReadyGain} Points!
+                </p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Performance in this mock drill successfully updated your government readiness score.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => navigate('/progress')}
+              className="py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition-all"
+            >
+              View GovReady Meter
+            </button>
+          </div>
+        )}
 
         {/* AI Recommendation Card */}
         <div className="p-5 rounded-xl bg-gradient-to-r from-navy-950 via-navy-900 to-blue-950 text-white border border-cyan-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
@@ -164,18 +192,22 @@ export const QuizResultPage = () => {
               <Sparkles className="w-5 h-5 text-cyan-300" />
             </div>
             <div>
-              <div className="text-xs font-bold text-cyan-300 font-mono">AI REMEDIATION RECOMMENDATION</div>
+              <div className="text-xs font-bold text-cyan-300 font-mono">
+                AI ADAPTIVE STUDY PLAN RECOMMENDATION
+              </div>
               <p className="text-xs text-slate-200 mt-0.5">
-                “Review Module 3 before attempting the advanced assessment.”
+                {quizResult.isGovMock
+                  ? `“We have recalibrated your weekly study schedule to target flagged weak topics for ${quizResult.targetExam || 'SSC CGL'}.”`
+                  : '“Review Module 3 before attempting the advanced assessment.”'}
               </p>
             </div>
           </div>
 
           <Link
-            to="/learning/cybersecurity-essentials"
+            to="/study-plan"
             className="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-navy-950 text-xs font-bold transition-all shrink-0 btn-command"
           >
-            Review Module 3
+            Open Adjusted Study Plan
           </Link>
         </div>
 
@@ -186,22 +218,22 @@ export const QuizResultPage = () => {
             className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-navy-700 bg-white dark:bg-navy-900 hover:bg-slate-50 dark:hover:bg-navy-800 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all flex items-center gap-2 btn-command"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Retry Quiz</span>
+            <span>Take Another Mock Test</span>
           </button>
 
           <div className="flex items-center gap-2.5">
             <button
-              onClick={() => addToast('Digital scorecard downloaded to device', 'success')}
+              onClick={() => navigate('/dashboard')}
               className="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-navy-700 bg-white dark:bg-navy-900 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 btn-command"
             >
-              Download Scorecard
+              Career Dashboard
             </button>
 
             <button
-              onClick={() => navigate('/learning')}
+              onClick={() => navigate('/study-plan')}
               className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-sm transition-all flex items-center gap-2 btn-command"
             >
-              <span>Continue Learning</span>
+              <span>View Study Plan</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
