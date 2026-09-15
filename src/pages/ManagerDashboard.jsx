@@ -104,7 +104,7 @@ export const ManagerDashboard = () => {
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight font-display">
               Team Intelligence
             </h1>
-            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-mono">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-emerald-500/10 dark:text-emerald-400 border border-blue-200 dark:border-emerald-500/20 font-mono">
               DIRECTOR COMMAND CENTER
             </span>
           </div>
@@ -116,7 +116,7 @@ export const ManagerDashboard = () => {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => navigate('/manager/skills')}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-1.5 btn-command"
+            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-gradient-to-r dark:from-emerald-600 dark:to-teal-500 dark:hover:from-emerald-500 dark:hover:to-teal-400 text-white text-xs font-bold shadow-sm dark:shadow-green-glow transition-all flex items-center gap-1.5 btn-command"
           >
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Manage Team Skill Gaps</span>
@@ -127,18 +127,18 @@ export const ManagerDashboard = () => {
       {/* Priority Attention Alert Banner (Requirement #12) */}
       <div
         onClick={handlePriorityAttentionClick}
-        className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between gap-4 cursor-pointer hover:bg-amber-500/15 transition-all group"
+        className="p-4 rounded-2xl bg-blue-50/80 dark:bg-amber-500/10 border border-blue-200 dark:border-amber-500/30 flex items-center justify-between gap-4 cursor-pointer hover:bg-blue-100/70 dark:hover:bg-amber-500/15 transition-all group"
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-500 shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-amber-500/20 border border-blue-200 dark:border-amber-500/30 flex items-center justify-center text-blue-600 dark:text-amber-500 shrink-0">
             <AlertCircle className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider font-mono">
+              <span className="text-xs font-bold text-blue-700 dark:text-amber-400 uppercase tracking-wider font-mono">
                 PRIORITY ATTENTION ALERT
               </span>
-              <span className="text-[10px] bg-amber-500/20 px-2 py-0.2 rounded-full font-bold text-amber-700 dark:text-amber-300">
+              <span className="text-[10px] bg-blue-200/70 dark:bg-amber-500/20 px-2 py-0.2 rounded-full font-bold text-blue-800 dark:text-amber-300">
                 Action Required
               </span>
             </div>
@@ -148,7 +148,7 @@ export const ManagerDashboard = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+        <div className="flex items-center gap-1 text-xs font-bold text-blue-700 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
           <span>Filter Roster</span>
           <ChevronRight className="w-4 h-4" />
         </div>
