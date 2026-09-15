@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { mockCourses as initialCourses } from '../data/mockCourses';
 import { initialNotifications } from '../data/mockNotifications';
+import { initialStudyPlan } from '../data/mockGovJobs';
+import { getTranslation } from '../data/translations';
 import { authApi, coursesApi, notificationsApi } from '../services/api';
 
 const AppContext = createContext();
@@ -14,10 +16,64 @@ export const AppProvider = ({ children }) => {
     return localStorage.getItem('govlearn_theme') || 'dark';
   });
 
+  const [language, setLanguageState] = useState(() => {
+    return localStorage.getItem('govlearn_lang') || 'en';
+  });
+
   const [courses, setCourses] = useState(initialCourses);
   const [notifications, setNotifications] = useState(initialNotifications);
   const [toasts, setToasts] = useState([]);
   const [activeCertificate, setActiveCertificate] = useState(null);
+
+  // Government Career Profile & Intelligence State
+  const [govCareerProfile, setGovCareerProfile] = useState(() => {
+    const saved = localStorage.getItem('govlearn_career_profile');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        // fallback
+      }
+    }
+    return {
+      name: 'Rajesh Verma',
+      education: "Bachelor's Degree (B.E / B.Tech)",
+      degreeBranch: 'Computer Science and Engineering (CSE)',
+      age: 24,
+      state: 'Tamil Nadu',
+      category: 'OBC (Non-Creamy Layer)',
+      targetExam: 'SSC CGL 2026',
+      preferredDepartment: 'Central Ministries (MeitY, Finance, Railways, State Secretariat)',
+      preferredJobType: 'Group B Gazetted & Non-Gazetted Posts',
+      experience: '1 Year Software Dev (Eligible for Graduate & IT Officer Cadres)',
+      skills: 'Logical Reasoning, Quantitative Aptitude, Data Analytics, Python, IT Governance',
+      salaryPreference: '₹45,000 - ₹1,42,400 (Level 7 Pay Matrix)',
+      locationPreference: 'Chennai / New Delhi / All-India',
+      govReadyScore: 76,
+      subjectReadiness: {
+        reasoning: 82,
+        quantitative: 71,
+        english: 63,
+        generalAwareness: 48,
+      },
+      weakTopics: [
+        'General Awareness: Indian Constitution & Polity Articles',
+        'General Awareness: Modern Indian History 1857-1947',
+        'English: Reading Comprehension Complex Passages',
+        'Quantitative: Algebraic Identities & Quadratic Roots',
+      ],
+      strongTopics: [
+        'Reasoning: Syllogisms & Venn Diagrams',
+        'Reasoning: Coding-Decoding Patterns',
+        'Quantitative: Percentage & Profit-Loss Calculations',
+        'General Intelligence: Series & Analogies',
+      ],
+      mockTestsCompleted: 4,
+      studyPlanProgress: 72,
+    };
+  });
+
+  const [studyPlan, setStudyPlan] = useState(initialStudyPlan);
 
   // AI Simulation Modal State
   const [aiModalOpen, setAiModalOpen] = useState(false);
@@ -28,10 +84,13 @@ export const AppProvider = ({ children }) => {
 
   // Quiz active session & result
   const [activeQuizConfig, setActiveQuizConfig] = useState({
-    topic: 'Cybersecurity',
+    topic: 'Reasoning',
     difficulty: 'Medium',
     questionCount: 5,
     questionType: 'MCQ',
+    examMode: 'Government Exam Mock Test',
+    targetExam: 'SSC CGL 2026',
+    targetWeakAreas: false,
   });
 
   const [quizResult, setQuizResult] = useState({
@@ -39,11 +98,12 @@ export const AppProvider = ({ children }) => {
     correctCount: 4,
     totalCount: 5,
     timeSpent: '04:18',
-    topic: 'Cybersecurity',
+    topic: 'Reasoning',
     difficulty: 'Medium',
     timestamp: 'Just now',
     userAnswers: {},
   });
+
 
   // Sync with backend on initial load
   useEffect(() => {
@@ -215,6 +275,103 @@ export const AppProvider = ({ children }) => {
     }, stepInterval);
   };
 
+  // Language Switcher Methods
+  const setLanguage = (lang) => {
+    setLanguageState(lang);
+    localStorage.setItem('govlearn_lang', lang);
+  };
+
+  const toggleLanguage = () => {
+    const nextLang = language === 'en' ? 'ta' : 'en';
+    setLanguage(nextLang);
+    addToast(nextLang === 'ta' ? 'தமிழ் மொழிக்கு மாற்றப்பட்டது' : 'Switched to English', 'info', 2500);
+  };
+
+  const t = useCallback(
+    (key, fallback = '') => {
+      return getTranslation(language, key, fallback);
+    },
+    [language]
+  );
+
+  // Government Career Profile Methods
+  const updateGovCareerProfile = (updates) => {
+    setGovCareerProfile((prev) => {
+      const next = { ...prev, ...updates };
+      localStorage.setItem('govlearn_career_profile', JSON.stringify(next));
+      return next;
+    });
+    addToast('Government Career Profile updated successfully', 'success', 3000);
+  };
+
+  const updateGovReadyScore = (delta) => {
+    setGovCareerProfile((prev) => {
+      const newScore = Math.max(0, Math.min(100, prev.govReadyScore + delta));
+      const next = { ...prev, govReadyScore: newScore };
+      localStorage.setItem('govlearn_career_profile', JSON.stringify(next));
+      return next;
+    });
+  };
+
+  // Study Plan Methods
+  const toggleStudyPlanTask = (dayIndex, taskId) => {
+    setStudyPlan((prev) => {
+      const updatedDays = prev.days.map((day, dIdx) => {
+        if (dIdx !== dayIndex) return day;
+        return {
+          ...day,
+          tasks: day.tasks.map((task) =>
+            task.id === taskId ? { ...task, completed: !task.completed } : task
+          ),
+        };
+      });
+
+      // Recalculate completion
+      let totalTasks = 0;
+      let completedTasks = 0;
+      updatedDays.forEach((d) => {
+        d.tasks.forEach((t) => {
+          totalTasks++;
+          if (t.completed) completedTasks++;
+        });
+      });
+      const newProgress = Math.round((completedTasks / totalTasks) * 100);
+
+      return {
+        ...prev,
+        days: updatedDays,
+        overallProgress: newProgress,
+      };
+    });
+  };
+
+  const recalibrateStudyPlan = (onDone) => {
+    triggerAiSimulation(
+      'AI Adaptive Study Plan Calibration',
+      [
+        'Analyzing recent mock test performance vectors...',
+        'Cross-referencing General Awareness (48%) and Quant (54%) score gaps...',
+        'Synthesizing exam weightage from SSC CGL 2026 notification...',
+        'Re-allocating daily preparation slots toward high-yield weak topics...',
+        'Generating optimized study plan for maximum GovReady score gain...',
+      ],
+      () => {
+        setStudyPlan((prev) => ({
+          ...prev,
+          weaknessAlert: {
+            active: true,
+            subject: 'Quantitative Aptitude & General Awareness',
+            message: 'Adaptive AI successfully recalibrated timetable for optimal score acceleration.',
+            autoAdjustment: 'Prioritized 2 additional Arithmetic/Algebra problem sets and 30-min daily Polity & Static GK revisions.',
+          },
+          overallProgress: 75,
+        }));
+        addToast('AI Study Plan successfully adjusted to target your weak subjects!', 'success', 4500);
+        if (onDone) onDone();
+      }
+    );
+  };
+
   const currentUser =
     userRole === 'manager'
       ? {
@@ -249,6 +406,17 @@ export const AppProvider = ({ children }) => {
         currentUser,
         theme,
         toggleTheme,
+        language,
+        setLanguage,
+        toggleLanguage,
+        t,
+        govCareerProfile,
+        updateGovCareerProfile,
+        updateGovReadyScore,
+        studyPlan,
+        setStudyPlan,
+        toggleStudyPlanTask,
+        recalibrateStudyPlan,
         courses,
         setCourses,
         toggleModuleComplete,
@@ -279,6 +447,7 @@ export const AppProvider = ({ children }) => {
     </AppContext.Provider>
   );
 };
+
 
 export const useApp = () => {
   const context = useContext(AppContext);
