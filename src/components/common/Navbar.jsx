@@ -25,6 +25,9 @@ export const Navbar = ({ onToggleSidebar }) => {
     setUserRole,
     theme,
     toggleTheme,
+    language,
+    setLanguage,
+    toggleLanguage,
     notifications,
     markNotificationAsRead,
     markAllNotificationsAsRead,
@@ -195,6 +198,32 @@ export const Navbar = ({ onToggleSidebar }) => {
               }`}
             >
               Manager
+            </button>
+          </div>
+
+          {/* Bilingual Language Selector (English / தமிழ்) */}
+          <div className="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs font-semibold">
+            <button
+              onClick={() => setLanguage('en')}
+              className={`px-2 py-1 rounded-lg transition-all ${
+                language === 'en'
+                  ? 'bg-blue-600 text-white font-bold shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+              title="English interface"
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLanguage('ta')}
+              className={`px-2 py-1 rounded-lg transition-all ${
+                language === 'ta'
+                  ? 'bg-cyan-600 text-white font-bold shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              }`}
+              title="தமிழ் இடைமுகம்"
+            >
+              தமிழ்
             </button>
           </div>
 
