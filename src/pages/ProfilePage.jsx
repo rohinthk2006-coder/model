@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export const ProfilePage = () => {
-  const { currentUser, userRole, addToast } = useApp();
+  const { currentUser, userRole, govCareerProfile, updateGovCareerProfile, addToast } = useApp();
   const [selectedCert, setSelectedCert] = useState(null);
 
   const certificates = [
@@ -132,6 +132,132 @@ export const ProfilePage = () => {
             <p className="font-bold text-emerald-500 flex items-center gap-1 mt-0.5">
               <CheckCircle2 className="w-3.5 h-3.5" /> Synced Today
             </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ------------------------------------------------------------- */}
+      {/* REQUIREMENT #11: GOVERNMENT CAREER PROFILE SECTION */}
+      {/* ------------------------------------------------------------- */}
+      <div className="command-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-white dark:bg-navy-900 shadow-xl space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-navy-800">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-700 to-cyan-500 flex items-center justify-center text-white shadow-blue-glow">
+              <Shield className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-lg font-extrabold text-slate-900 dark:text-white font-display">
+                  Government Career Profile
+                </h2>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
+                  Shared Intelligence State
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Reused across Job Match, Eligibility Checker, Study Plan, Mock Tests, and GovReady Score.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+              GovReady: {govCareerProfile?.govReadyScore || 76} / 100
+            </span>
+          </div>
+        </div>
+
+        {/* Editable Career Profile Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1">
+            <span className="text-slate-400 text-[11px] font-semibold">Target Government Exam:</span>
+            <input
+              type="text"
+              value={govCareerProfile?.targetExam || 'SSC CGL 2026'}
+              onChange={(e) => updateGovCareerProfile({ targetExam: e.target.value })}
+              className="w-full font-bold text-slate-800 dark:text-slate-100 bg-transparent focus:outline-none focus:text-cyan-500 border-b border-dashed border-slate-300 dark:border-navy-700 pb-0.5"
+            />
+            <span className="text-[10px] text-cyan-600 dark:text-cyan-400 block pt-0.5">94% Match Probability</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1">
+            <span className="text-slate-400 text-[11px] font-semibold">Preferred Department:</span>
+            <input
+              type="text"
+              value={govCareerProfile?.preferredDepartment || 'MeitY / Central Secretariats'}
+              onChange={(e) => updateGovCareerProfile({ preferredDepartment: e.target.value })}
+              className="w-full font-bold text-slate-800 dark:text-slate-100 bg-transparent focus:outline-none focus:text-cyan-500 border-b border-dashed border-slate-300 dark:border-navy-700 pb-0.5"
+            />
+            <span className="text-[10px] text-slate-400 block pt-0.5">Central & State Cadres</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1">
+            <span className="text-slate-400 text-[11px] font-semibold">Domicile State:</span>
+            <input
+              type="text"
+              value={govCareerProfile?.state || 'Tamil Nadu'}
+              onChange={(e) => updateGovCareerProfile({ state: e.target.value })}
+              className="w-full font-bold text-slate-800 dark:text-slate-100 bg-transparent focus:outline-none focus:text-cyan-500 border-b border-dashed border-slate-300 dark:border-navy-700 pb-0.5"
+            />
+            <span className="text-[10px] text-emerald-500 block pt-0.5">TNPSC & Central Eligible</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1">
+            <span className="text-slate-400 text-[11px] font-semibold">Education & Degree:</span>
+            <p className="font-bold text-slate-800 dark:text-slate-100">
+              {govCareerProfile?.degreeBranch || 'B.E Computer Science'}
+            </p>
+            <span className="text-[10px] text-slate-400 block pt-0.5">{govCareerProfile?.education}</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1">
+            <span className="text-slate-400 text-[11px] font-semibold">Candidate Age:</span>
+            <p className="font-bold text-slate-800 dark:text-slate-100">
+              {govCareerProfile?.age || 24} Years (DOB Verified)
+            </p>
+            <span className="text-[10px] text-slate-400 block pt-0.5">OBC Non-Creamy Layer</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1">
+            <span className="text-slate-400 text-[11px] font-semibold">Current GovReady Score:</span>
+            <p className="font-black text-cyan-600 dark:text-cyan-400 text-sm">
+              {govCareerProfile?.govReadyScore || 76} / 100
+            </p>
+            <span className="text-[10px] text-emerald-500 block pt-0.5">Passed Diagnostic Tier-1</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/70 border border-slate-200 dark:border-navy-800 space-y-1 col-span-1 sm:col-span-2">
+            <span className="text-slate-400 text-[11px] font-semibold">Primary Career Goal:</span>
+            <input
+              type="text"
+              defaultValue="Securing Group B Assistant Section Officer / Inspector appointment in 2026 recruitment cycle"
+              className="w-full font-bold text-slate-800 dark:text-slate-100 bg-transparent focus:outline-none focus:text-cyan-500 border-b border-dashed border-slate-300 dark:border-navy-700 pb-0.5"
+            />
+            <span className="text-[10px] text-slate-400 block pt-0.5">Target Joining Date: Q1 2027</span>
+          </div>
+        </div>
+
+        {/* Competencies & Skills Tags */}
+        <div className="pt-2">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-2">
+            Active Exam Competencies & Skills:
+          </span>
+          <div className="flex flex-wrap gap-2 text-xs">
+            {(govCareerProfile?.skills?.split(',') || [
+              'Logical Reasoning (82%)',
+              'Quantitative Aptitude (71%)',
+              'English Comprehension (63%)',
+              'General Awareness (48% - Focus Area)',
+              'Data Analytics',
+              'Computer Knowledge',
+            ]).map((skill, idx) => (
+              <span
+                key={idx}
+                className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-navy-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-navy-700 font-semibold"
+              >
+                {skill.trim()}
+              </span>
+            ))}
           </div>
         </div>
       </div>
