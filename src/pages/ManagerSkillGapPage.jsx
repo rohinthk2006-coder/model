@@ -66,7 +66,7 @@ export const ManagerSkillGapPage = () => {
 
         <button
           onClick={() => handleOpenAssign(teamSkillGaps[0])}
-          className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all flex items-center gap-2 shrink-0"
+          className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-bold shadow-sm dark:shadow-emerald-600/20 transition-all flex items-center gap-2 shrink-0 btn-command"
         >
           <Send className="w-3.5 h-3.5" />
           <span>Assign Training</span>
@@ -74,38 +74,38 @@ export const ManagerSkillGapPage = () => {
       </div>
 
       {/* AI RECOMMENDATION CARD (Prominently Required) */}
-      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-navy-900 via-emerald-950/40 to-navy-900 text-white border border-emerald-500/40 shadow-green-glow overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative rounded-2xl p-6 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 dark:from-navy-900 dark:via-emerald-950/40 dark:to-navy-900 text-white border border-blue-400/30 dark:border-emerald-500/40 shadow-blue-500/20 dark:shadow-green-glow overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 dark:bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-300" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 dark:bg-emerald-500/20 text-white dark:text-emerald-300 border border-white/30 dark:border-emerald-400/30 text-xs font-bold font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-blue-200 dark:text-emerald-300" />
                 AI Executive Recommendation
               </span>
-              <span className="text-[11px] font-semibold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full border border-rose-500/20">
+              <span className="text-[11px] font-semibold text-white/90 dark:text-rose-400 bg-white/10 dark:bg-rose-500/10 px-2 py-0.5 rounded-full border border-white/20 dark:border-rose-500/20">
                 Critical Priority
               </span>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-white/95 dark:text-slate-200 leading-relaxed font-normal">
               “Your team has the largest skill gap in <strong>Cloud Computing (42%)</strong>. Consider
               assigning the recommended Cloud Fundamentals learning path.”
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-1">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-blue-100 dark:text-slate-400 pt-1">
               <span>Impacted Personnel: <strong>20 Officers</strong></span>
               <span>•</span>
               <span>Department: <strong>IT & Operations</strong></span>
               <span>•</span>
-              <span className="text-emerald-300">MeghRaj Architecture Standard</span>
+              <span className="text-white dark:text-emerald-300">MeghRaj Architecture Standard</span>
             </div>
           </div>
 
           <button
             onClick={() => handleOpenAssign(teamSkillGaps[0])}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-xs font-bold shadow-green-glow transition-all flex items-center gap-2 shrink-0 group"
+            className="px-6 py-3 rounded-xl bg-white hover:bg-blue-50 text-blue-700 dark:bg-gradient-to-r dark:from-emerald-500 dark:to-teal-600 dark:hover:from-emerald-400 dark:hover:to-teal-500 dark:text-white text-xs font-bold shadow-sm dark:shadow-green-glow transition-all flex items-center gap-2 shrink-0 group btn-command"
           >
             <span>Assign Training</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
