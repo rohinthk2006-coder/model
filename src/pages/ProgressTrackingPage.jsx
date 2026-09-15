@@ -16,6 +16,7 @@ import {
   Filter,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { GovReadyScoreCard } from '../components/government/GovReadyScoreCard';
 
 export const ProgressTrackingPage = () => {
   const { addToast } = useApp();
@@ -107,6 +108,9 @@ export const ProgressTrackingPage = () => {
           </button>
         </div>
       </div>
+
+      {/* GovReady Score & Subject Readiness Embedded Section */}
+      <GovReadyScoreCard compact={false} />
 
       {/* 4 Summary Metric Cards with Count-ups */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
