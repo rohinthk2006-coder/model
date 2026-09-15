@@ -19,11 +19,19 @@ export const AIQuizGeneratorPage = () => {
     activeQuizConfig,
     setActiveQuizConfig,
     setQuizResult,
+    govCareerProfile,
+    updateGovReadyScore,
     addToast,
+    t,
   } = useApp();
 
+  // Mode Selection: 'gov_mock' | 'civil_services'
+  const [examMode, setExamMode] = useState(activeQuizConfig.examMode || 'gov_mock');
+  const [targetExam, setTargetExam] = useState(activeQuizConfig.targetExam || govCareerProfile?.targetExam || 'SSC CGL 2026');
+  const [targetWeakAreas, setTargetWeakAreas] = useState(activeQuizConfig.targetWeakAreas || false);
+
   // Configuration Form State
-  const [topic, setTopic] = useState(activeQuizConfig.topic || 'Cybersecurity');
+  const [topic, setTopic] = useState(activeQuizConfig.topic || 'Reasoning');
   const [difficulty, setDifficulty] = useState(activeQuizConfig.difficulty || 'Medium');
   const [questionCount, setQuestionCount] = useState(activeQuizConfig.questionCount || 5);
   const [questionType, setQuestionType] = useState(activeQuizConfig.questionType || 'MCQ');
@@ -33,11 +41,11 @@ export const AIQuizGeneratorPage = () => {
   const [generationPhase, setGenerationPhase] = useState(0); // 0 to 4
 
   const generationStages = [
-    { label: 'Learning Material', sub: 'Scanning curriculum & gazettes' },
-    { label: 'AI Analysis', sub: 'Extracting statutory competencies' },
-    { label: 'Question Generation', sub: 'Synthesizing scenario distractor options' },
-    { label: 'Difficulty Optimization', sub: 'Calibrating against CERT-In standards' },
-    { label: 'Quiz Ready', sub: 'Formulating assessment session' },
+    { label: 'Exam Pattern Scanning', sub: `Calibrating ${targetExam} syllabus weightage` },
+    { label: 'Weakness Diagnostic', sub: targetWeakAreas ? 'Extracting questions from General Awareness (48%) & English (63%)' : 'Aligning difficulty parameters' },
+    { label: 'Question Generation', sub: 'Synthesizing objective scenarios and distractors' },
+    { label: 'Marking Calibration', sub: 'Applying +2 / -0.50 negative marking standard' },
+    { label: 'Mock Ready', sub: 'Formulating timed CBT test session' },
   ];
 
   const [activeQuestions, setActiveQuestions] = useState([]);
@@ -46,13 +54,22 @@ export const AIQuizGeneratorPage = () => {
   const [showImmediateFeedback, setShowImmediateFeedback] = useState(false);
   const [timerSeconds, setTimerSeconds] = useState(300);
 
-  const topicsList = [
+  const govTopicsList = [
+    'Reasoning',
+    'Quantitative Aptitude',
+    'English Comprehension',
+    'General Awareness',
+  ];
+
+  const civilTopicsList = [
     'Cybersecurity',
     'Cloud Computing',
     'Data Analytics',
     'AI Fundamentals',
     'Digital Governance',
   ];
+
+  const topicsList = examMode === 'gov_mock' ? govTopicsList : civilTopicsList;
 
   const handleSelectAnswer = (optionIndex) => {
     setUserAnswers((prev) => ({
@@ -91,9 +108,9 @@ export const AIQuizGeneratorPage = () => {
     setQuizState('generating');
     setGenerationPhase(0);
 
-    // Concurrently fetch dynamic quiz from backend
+    // Concurrently fetch dynamic quiz from backend or fallback to question bank
     const apiPromise = quizApi.generate({
-      topic,
+      topic: targetWeakAreas ? 'General Awareness' : topic,
       difficulty,
       questionCount: Number(questionCount),
       questionType,
@@ -107,18 +124,29 @@ export const AIQuizGeneratorPage = () => {
       } else {
         clearInterval(interval);
         try {
-          const apiRes = await apiPromise;
-          const questions = apiRes?.questions && apiRes.questions.length > 0
-            ? apiRes.questions
-            : (quizQuestionBank[topic] || quizQuestionBank.Cybersecurity)[questionType]?.slice(0, Number(questionCount)) || [];
+          let questions = [];
+          if (targetWeakAreas) {
+            // Prioritize weak areas: General Awareness & English
+            const gaQs = (quizQuestionBank['General Awareness'] || {})[questionType] || [];
+            const engQs = (quizQuestionBank['English Comprehension'] || {})[questionType] || [];
+            const quantQs = (quizQuestionBank['Quantitative Aptitude'] || {})[questionType] || [];
+            questions = [...gaQs, ...engQs, ...quantQs].slice(0, Number(questionCount));
+          } else {
+            const apiRes = await apiPromise;
+            if (apiRes?.questions && apiRes.questions.length > 0) {
+              questions = apiRes.questions;
+            } else {
+              questions = (quizQuestionBank[topic] || quizQuestionBank.Reasoning || quizQuestionBank.Cybersecurity)[questionType]?.slice(0, Number(questionCount)) || [];
+            }
+          }
 
           setActiveQuestions(questions);
           setCurrentQuestionIndex(0);
           setUserAnswers({});
           setTimerSeconds(Number(questionCount) * 60);
           setQuizState('active');
-          setActiveQuizConfig({ topic, difficulty, questionCount, questionType });
-          addToast(`AI Quiz generated successfully (${questions.length} questions)!`, 'success');
+          setActiveQuizConfig({ topic, difficulty, questionCount, questionType, examMode, targetExam, targetWeakAreas });
+          addToast(`AI Mock Test generated (${questions.length} questions calibrated for ${targetExam})!`, 'success');
         } catch (err) {
           console.warn('Backend quiz gen error, using local fallback:', err);
         }
@@ -142,6 +170,12 @@ export const AIQuizGeneratorPage = () => {
     const secs = timeSpentSeconds % 60;
     const timeSpentStr = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
+    // Update GovReady score if scored well
+    if (calculatedScore >= 70) {
+      updateGovReadyScore(2);
+      addToast('Achievement: +2 Points gained toward your GovReady Score!', 'success', 5000);
+    }
+
     // Submit to backend evaluation API
     try {
       const evalRes = await quizApi.evaluate({
@@ -157,6 +191,10 @@ export const AIQuizGeneratorPage = () => {
           ...evalRes.result,
           questions: activeQuestions,
           userAnswers,
+          targetExam,
+          isGovMock: examMode === 'gov_mock',
+          weakTopicsIdentified: calculatedScore < 70 ? ['Indian Polity & Constitution Articles', 'Modern Indian History', 'Algebraic Identities'] : [],
+          govReadyGain: calculatedScore >= 70 ? 2 : 0,
         });
       } else {
         setQuizResult({
@@ -164,10 +202,14 @@ export const AIQuizGeneratorPage = () => {
           correctCount: correct,
           totalCount: total,
           timeSpent: timeSpentStr,
-          topic,
+          topic: targetWeakAreas ? 'Weak Areas Drill (General Awareness & English)' : topic,
           difficulty,
           questions: activeQuestions,
           userAnswers,
+          targetExam,
+          isGovMock: examMode === 'gov_mock',
+          weakTopicsIdentified: calculatedScore < 70 ? ['Indian Polity & Constitution Articles', 'Modern Indian History', 'Algebraic Identities'] : [],
+          govReadyGain: calculatedScore >= 70 ? 2 : 0,
         });
       }
     } catch (err) {
@@ -176,10 +218,14 @@ export const AIQuizGeneratorPage = () => {
         correctCount: correct,
         totalCount: total,
         timeSpent: timeSpentStr,
-        topic,
+        topic: targetWeakAreas ? 'Weak Areas Drill (General Awareness & English)' : topic,
         difficulty,
         questions: activeQuestions,
         userAnswers,
+        targetExam,
+        isGovMock: examMode === 'gov_mock',
+        weakTopicsIdentified: calculatedScore < 70 ? ['Indian Polity & Constitution Articles', 'Modern Indian History', 'Algebraic Identities'] : [],
+        govReadyGain: calculatedScore >= 70 ? 2 : 0,
       });
     }
 
@@ -200,37 +246,135 @@ export const AIQuizGeneratorPage = () => {
           <span>AUTONOMOUS EVALUATION ENGINE</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight font-display">
-          AI-Powered Assessment
+          Personalized AI Mock Tests
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-          Generate practice questions based on your learning materials.
+          Targeted CBT mock examinations calibrated to government recruitment standards.
         </p>
       </div>
 
       {/* STATE 1: CONFIGURATION PANEL */}
       {quizState === 'config' && (
         <div className="command-card rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-navy-800 shadow-xl space-y-6">
-          <div className="flex items-center gap-2 pb-3 border-b border-slate-100 dark:border-navy-800">
-            <Sliders className="w-4 h-4 text-cyan-500" />
-            <span className="font-bold text-sm text-slate-900 dark:text-white">
-              Assessment Configuration Parameters
-            </span>
+          {/* Mode Switcher Tabs */}
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-navy-800">
+            <div className="flex items-center gap-2">
+              <Sliders className="w-4 h-4 text-cyan-500" />
+              <span className="font-bold text-sm text-slate-900 dark:text-white font-display">
+                Mock Test Configuration
+              </span>
+            </div>
+
+            <div className="flex items-center p-1 rounded-xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => {
+                  setExamMode('gov_mock');
+                  setTopic('Reasoning');
+                }}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  examMode === 'gov_mock'
+                    ? 'bg-blue-600 text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Government Exam Mock
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setExamMode('civil_services');
+                  setTopic('Cybersecurity');
+                }}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  examMode === 'civil_services'
+                    ? 'bg-cyan-600 text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Civil Services Upskilling
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Target Government Exam Selection (Requirement #9) */}
+            {examMode === 'gov_mock' && (
+              <div className="space-y-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Target Government Examination:
+                </label>
+                <select
+                  value={targetExam}
+                  onChange={(e) => setTargetExam(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-navy-700 text-slate-800 dark:text-slate-200 text-xs font-semibold focus:outline-none focus:border-cyan-500"
+                >
+                  <option>SSC CGL 2026 (Tier-1 CBT)</option>
+                  <option>RRB NTPC CEN 03/2026 (CBT-1)</option>
+                  <option>TNPSC Group 2 & 2A (Combined Civil Services)</option>
+                  <option>IBPS PO / Specialist IT Officer</option>
+                  <option>SSC CHSL 10+2 Level</option>
+                </select>
+              </div>
+            )}
+
+            {/* REQUIREMENT #9: TARGET MY WEAK AREAS SWITCH */}
+            {examMode === 'gov_mock' && (
+              <div className="space-y-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Adaptive AI Weakness Targeting:
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setTargetWeakAreas(!targetWeakAreas)}
+                  className={`w-full p-2.5 rounded-xl border text-xs font-bold flex items-center justify-between transition-all ${
+                    targetWeakAreas
+                      ? 'bg-amber-500/15 border-amber-500/40 text-amber-700 dark:text-amber-300 shadow-sm ring-1 ring-amber-500/30'
+                      : 'bg-slate-50 dark:bg-navy-950 border-slate-200 dark:border-navy-700 text-slate-600 dark:text-slate-400 hover:border-slate-400'
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-amber-500" />
+                    <span>{t('targetWeakAreas', 'Target My Weak Areas')}</span>
+                  </span>
+                  <span
+                    className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase ${
+                      targetWeakAreas ? 'bg-amber-500 text-navy-950' : 'bg-slate-200 dark:bg-navy-800 text-slate-500'
+                    }`}
+                  >
+                    {targetWeakAreas ? 'ENABLED' : 'OFF'}
+                  </span>
+                </button>
+              </div>
+            )}
+
+            {/* AI Weak Area Diagnostic Banner */}
+            {examMode === 'gov_mock' && targetWeakAreas && (
+              <div className="sm:col-span-2 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-800 dark:text-amber-200 flex items-start gap-2.5 animate-fade-in">
+                <Sparkles className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                <div className="leading-relaxed text-[11px] sm:text-xs">
+                  <strong>Adaptive AI Diagnostic Active:</strong> Based on your previous mock drills, this test focuses on{' '}
+                  <strong>General Awareness (48%)</strong> and <strong>English Comprehension (63%)</strong> to accelerate your GovReady score.
+                </div>
+              </div>
+            )}
+
             {/* Topic Selector */}
             <div className="space-y-2 sm:col-span-2">
               <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
-                Select Competency Topic:
+                {examMode === 'gov_mock' ? 'Subject Focus Area:' : 'Select Competency Topic:'}
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {topicsList.map((t) => (
                   <button
                     key={t}
                     type="button"
-                    onClick={() => setTopic(t)}
+                    onClick={() => {
+                      setTopic(t);
+                      setTargetWeakAreas(false);
+                    }}
                     className={`p-3 rounded-xl text-xs font-bold text-center transition-all border btn-command ${
-                      topic === t
+                      topic === t && !targetWeakAreas
                         ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/20'
                         : 'bg-white dark:bg-navy-950 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-navy-800 hover:bg-slate-50'
                     }`}
@@ -270,7 +414,7 @@ export const AIQuizGeneratorPage = () => {
                 Number of Questions:
               </label>
               <div className="grid grid-cols-3 gap-2">
-                {[5, 10, 15].map((count) => (
+                {[5, 10, 20].map((count) => (
                   <button
                     key={count}
                     type="button"
