@@ -19,11 +19,17 @@ import {
   HelpCircle,
   FileText,
   ShieldAlert,
+  Briefcase,
+  AlertTriangle,
+  Zap,
 } from 'lucide-react';
+import { GovReadyScoreCard } from '../components/government/GovReadyScoreCard';
+import { CareerRoadmap } from '../components/government/CareerRoadmap';
+import { ExamAlertsSection } from '../components/government/ExamAlertsSection';
 
 export const EmployeeDashboard = () => {
   const navigate = useNavigate();
-  const { currentUser, courses, addToast } = useApp();
+  const { currentUser, courses, govCareerProfile, t, addToast } = useApp();
 
   // Show transition only once per session
   const [showTransition, setShowTransition] = useState(() => {
@@ -46,7 +52,7 @@ export const EmployeeDashboard = () => {
       {/* 1.2s Quick Calibration Transition */}
       {showTransition && <DashboardTransition onComplete={handleTransitionDone} />}
 
-      <div className="space-y-6 animate-fade-in">
+      <div className="space-y-7 animate-fade-in">
         {/* Welcome Banner */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-navy-800">
           <div>
@@ -57,28 +63,134 @@ export const EmployeeDashboard = () => {
               <span className="text-lg">👋</span>
             </div>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Your personalized learning journey is ready. You have 2 high-priority skill recommendations today.
+              Your AI-powered government career trajectory is active. <strong>SSC CGL 2026</strong> application closes in <strong>4 days</strong>.
             </p>
           </div>
 
           <div className="flex items-center gap-2.5 shrink-0">
             <button
-              onClick={handleQuickQuizLaunch}
+              onClick={() => navigate('/jobs')}
               className="px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-bold border border-cyan-500/30 transition-all flex items-center gap-1.5 btn-command"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Generate AI Quiz</span>
+              <Briefcase className="w-3.5 h-3.5" />
+              <span>{t('jobMatch', 'Government Job Match')}</span>
             </button>
 
             <button
-              onClick={() => navigate('/learning/cloud-fundamentals')}
+              onClick={() => navigate('/analyzer?notice=ssc-cgl-2026')}
               className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/20 transition-all flex items-center gap-1.5 btn-command"
             >
-              <PlayCircle className="w-3.5 h-3.5" />
-              <span>Resume Cloud Course</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span>Analyze SSC CGL Notice</span>
             </button>
           </div>
         </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* REQUIREMENT #13: YOUR GOVERNMENT CAREER OVERVIEW BANNER */}
+        {/* ------------------------------------------------------------- */}
+        <div className="command-card rounded-2xl p-5 sm:p-6 border border-cyan-500/40 bg-gradient-to-r from-blue-950 via-navy-900 to-navy-950 text-white shadow-2xl relative overflow-hidden">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-0 right-0 w-80 h-40 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 flex items-center justify-center">
+                <Target className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-cyan-300 font-mono">
+                  Executive Intelligence Briefing
+                </span>
+                <h2 className="text-base sm:text-lg font-black tracking-tight text-white font-display">
+                  YOUR GOVERNMENT CAREER
+                </h2>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Cadre Matched: B.E CSE (Tamil Nadu)</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Key Metric Tiles in Current Dashboard Style */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs mb-4">
+            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-slate-400 text-[10px] block font-semibold">{t('targetExam', 'Target Exam')}:</span>
+              <p className="font-extrabold text-white text-sm mt-0.5 truncate">
+                {govCareerProfile?.targetExam || 'SSC CGL 2026'}
+              </p>
+              <span className="text-[10px] text-cyan-300 font-semibold">Tier-1 CBT Nov 2026</span>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-slate-400 text-[10px] block font-semibold">{t('govReadyScore', 'GovReady Score')}:</span>
+              <p className="font-black text-cyan-300 text-base mt-0.5">
+                {govCareerProfile?.govReadyScore || 76} / 100
+              </p>
+              <span className="text-[10px] text-emerald-400 font-semibold">Above Cutoff (71.5)</span>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-slate-400 text-[10px] block font-semibold">{t('bestJobMatch', 'Best Job Match')}:</span>
+              <p className="font-extrabold text-white text-sm mt-0.5 truncate">
+                SSC CGL — 94%
+              </p>
+              <span className="text-[10px] text-slate-300">Level 7 (₹1.42L Max)</span>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-slate-400 text-[10px] block font-semibold">{t('studyPlan', 'Study Plan')}:</span>
+              <p className="font-extrabold text-white text-sm mt-0.5">
+                72% Complete
+              </p>
+              <span className="text-[10px] text-amber-300 font-semibold">Adaptive Slot Active</span>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/5 border border-white/10 col-span-2 sm:col-span-1">
+              <span className="text-slate-400 text-[10px] block font-semibold">{t('nextExamAlert', 'Next Exam Alert')}:</span>
+              <p className="font-extrabold text-rose-300 text-xs mt-0.5 flex items-center gap-1">
+                <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+                <span>Closes in 4 days</span>
+              </p>
+              <span className="text-[10px] text-slate-300">Fee Last Date: 20 Sep</span>
+            </div>
+          </div>
+
+          {/* Next Recommended Action Bar */}
+          <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-400/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2">
+              <Zap className="w-4 h-4 text-cyan-300 shrink-0" />
+              <div>
+                <span className="text-slate-300">{t('nextAction', 'Next Recommended Action')}:</span>{' '}
+                <strong className="text-white">"Complete General Awareness Assessment (Static GK & Polity)"</strong>
+                <span className="text-cyan-300 text-[11px] block sm:inline sm:ml-2">
+                  (Projected +4 points to GovReady Score)
+                </span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => navigate('/quiz')}
+              className="self-end sm:self-auto py-1.5 px-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-navy-950 font-black text-xs transition-all flex items-center gap-1 shrink-0"
+            >
+              <span>Take Drill Now</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+
+        {/* GovReady Score Visual Meter & Subject Readiness */}
+        <GovReadyScoreCard compact={false} />
+
+        {/* Government Career Roadmap Widget */}
+        <CareerRoadmap />
+
+        {/* Government Exam Alerts Section */}
+        <ExamAlertsSection maxItems={3} showFilters={false} />
 
         {/* 4 Required Stats Cards with Animated Count-Up */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
